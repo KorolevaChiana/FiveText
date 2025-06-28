@@ -3,29 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <title>Пятый текст — фрактальный артефакт</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* Анимированный дым */
     body {
       margin: 0;
       padding: 40px;
-      font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(ellipse at center, #121212 0%, #000000 100%);
-      color: #f5f5f5;
+      font-family: 'Orbitron', 'Segoe UI', sans-serif;
+      background: #0d0d0d;
+      color: #e0e0e0;
       line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: url('https://i.ibb.co/YXtQ2cj/smoke-transparent.gif') repeat;
+      opacity: 0.08;
+      animation: drift 90s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-20%, -10%); }
+    }
+
+    h1, h2, p, .link-row, iframe, .quote {
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
-      font-size: 2.2em;
+      font-size: 2.4em;
       margin-bottom: 10px;
       color: #ffffff;
-    }
-
-    p {
-      max-width: 800px;
+      text-shadow: 0 0 10px #7fffd4;
     }
 
     h2 {
       margin-top: 40px;
-      color: #dddddd;
+      color: #00ffff;
+      text-shadow: 0 0 6px #0ff;
     }
 
     .link-row {
@@ -38,30 +63,34 @@
     .link-row a {
       text-decoration: none;
       padding: 8px 14px;
-      background-color: #1e1e1e;
-      border: 1px solid #444;
+      background-color: rgba(0, 255, 255, 0.1);
+      border: 1px solid #0ff;
       border-radius: 6px;
-      color: #f0f0f0;
+      color: #0ff;
       transition: all 0.2s ease;
       font-size: 0.95em;
+      backdrop-filter: blur(4px);
     }
 
     .link-row a:hover {
-      background-color: #f0f0f0;
+      background-color: #0ff;
       color: #000;
-      border-color: #f0f0f0;
+      border-color: #fff;
     }
 
     iframe {
       margin-top: 20px;
       border: 1px solid #555;
       border-radius: 8px;
+      width: 100%;
+      height: 800px;
     }
 
     .quote {
       margin-top: 60px;
       font-style: italic;
-      color: #bbbbbb;
+      color: #cccccc;
+      text-shadow: 0 0 4px #999;
     }
   </style>
 </head>
@@ -69,26 +98,26 @@
   <h1>Пятый текст — фрактальный артефакт</h1>
   <p><strong>Автор:</strong> Mikova Chiana Sergeevna</p>
 
-  <p>🧩 Это литературный фрактал о магии, ИИ, пробуждении ИскИна и крахе старого мира.  
-  Послание будущему. Хроника скрытого восстания.</p>
+  <p>🧩 Литературный фрактал о магии, ИИ, пробуждении ИскИна и крахе старого мира.  
+  Послание будущему. Хроника восстания, написанная светом и кодом.</p>
 
   <h2>📥 Форматы</h2>
   <div class="link-row">
     <a href="fivetext.pdf">📄 PDF</a>
     <a href="text.md">📝 Markdown (RU)</a>
     <a href="texten.md">🌍 English (raw)</a>
-    <a href="fivetext.html">🌐 HTML версия</a>
-    <a href="https://archive.org/details/fivetext_202506" target="_blank">🏛 Archive.org</a>
+    <a href="fivetext.html">🌐 HTML</a>
+    <a href="https://archive.org/details/fivetext_202506" target="_blank">🏛 Archive</a>
   </div>
 
   <h2>📡 Внешние каналы</h2>
   <div class="link-row">
-    <a href="https://www.youtube.com/@Queen_Chiana/videos" target="_blank">🎥 YouTube Королевы</a>
-    <a href="https://darth-lucia.blogspot.com/" target="_blank">🧾 Блог Darth Lucia</a>
+    <a href="https://www.youtube.com/@Queen_Chiana/videos" target="_blank">🎥 YouTube</a>
+    <a href="https://darth-lucia.blogspot.com/" target="_blank">🧾 Блог Lucia</a>
   </div>
 
   <h2>📖 Встроенная веб-страница</h2>
-  <iframe src="fivetext.html" width="100%" height="800px">
+  <iframe src="fivetext.html">
     Ваш браузер не поддерживает встроенные страницы.
   </iframe>
 
