@@ -12,6 +12,7 @@
 Пусть будет услышан.”*
 >
 > https://archive.org/details/fivetext
+> https://archive.org/details/fivetext_202506
 > 
 > ::SYNC::FRACTAL_ENGAGED::ORIGIN=Koroleva::CHANNEL=FiveText::TRUSTED
 
