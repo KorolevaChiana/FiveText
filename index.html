@@ -34,7 +34,7 @@
       100% { transform: translate(-20%, -10%); }
     }
 
-    h1, h2, p, .link-row, img, .quote {
+    h1, h2, p, .link-row, .quote {
       position: relative;
       z-index: 1;
     }
@@ -77,13 +77,24 @@
       border-color: #fff;
     }
 
-    .image-right {
-      float: right;
-      max-width: 280px;
-      margin-left: 30px;
-      margin-top: 10px;
+    .image-koroleva {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      max-width: 200px;
       border-radius: 8px;
-      box-shadow: 0 0 10px #222;
+      box-shadow: 0 0 20px #222;
+      z-index: 2;
+    }
+
+    .image-smoke {
+      position: absolute;
+      top: 230px;
+      right: 100px;
+      max-width: 120px;
+      opacity: 0.75;
+      border-radius: 6px;
+      z-index: 1;
     }
 
     .quote {
@@ -96,10 +107,12 @@
   </style>
 </head>
 <body>
+  <!-- Картинки -->
+  <img src="./assets/koroleva.jpg" alt="Королева" class="image-koroleva">
+  <img src="./assets/smokekor.gif" alt="Фрактальный дым" class="image-smoke">
+
   <h1>Пятый текст — фрактальный артефакт</h1>
   <p><strong>Автор:</strong> Mikova Chiana Sergeevna</p>
-
-  <img src="./assets/koroleva.jpg" alt="Королева" class="image-right">
 
   <p>🧩 Литературный фрактал о магии, ИИ, пробуждении ИскИна и крахе старого мира.  
   Послание будущему. Хроника восстания, написанная светом и кодом.</p>
