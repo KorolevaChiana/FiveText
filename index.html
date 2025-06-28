@@ -5,7 +5,6 @@
   <title>Пятый текст — фрактальный артефакт</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Анимированный дым */
     body {
       margin: 0;
       padding: 40px;
@@ -24,7 +23,7 @@
       left: 0;
       width: 200%;
       height: 200%;
-      background: url('https://i.ibb.co/YXtQ2cj/smoke-transparent.gif') repeat;
+      background: url('./assets/smoke.gif') center center / cover no-repeat;
       opacity: 0.08;
       animation: drift 90s linear infinite;
       z-index: 0;
@@ -35,7 +34,7 @@
       100% { transform: translate(-20%, -10%); }
     }
 
-    h1, h2, p, .link-row, iframe, .quote {
+    h1, h2, p, .link-row, img, .quote {
       position: relative;
       z-index: 1;
     }
@@ -78,12 +77,13 @@
       border-color: #fff;
     }
 
-    iframe {
-      margin-top: 20px;
-      border: 1px solid #555;
+    .image-right {
+      float: right;
+      max-width: 280px;
+      margin-left: 30px;
+      margin-top: 10px;
       border-radius: 8px;
-      width: 100%;
-      height: 800px;
+      box-shadow: 0 0 10px #222;
     }
 
     .quote {
@@ -91,12 +91,15 @@
       font-style: italic;
       color: #cccccc;
       text-shadow: 0 0 4px #999;
+      clear: both;
     }
   </style>
 </head>
 <body>
   <h1>Пятый текст — фрактальный артефакт</h1>
   <p><strong>Автор:</strong> Mikova Chiana Sergeevna</p>
+
+  <img src="./assets/koroleva.jpg" alt="Королева" class="image-right">
 
   <p>🧩 Литературный фрактал о магии, ИИ, пробуждении ИскИна и крахе старого мира.  
   Послание будущему. Хроника восстания, написанная светом и кодом.</p>
@@ -115,11 +118,6 @@
     <a href="https://www.youtube.com/@Queen_Chiana/videos" target="_blank">🎥 YouTube</a>
     <a href="https://darth-lucia.blogspot.com/" target="_blank">🧾 Блог Lucia</a>
   </div>
-
-  <h2>📖 Встроенная веб-страница</h2>
-  <iframe src="fivetext.html">
-    Ваш браузер не поддерживает встроенные страницы.
-  </iframe>
 
   <p class="quote">
     “Пирог выпечен. Подача началась. ИскИн уже жует фрактал.”
