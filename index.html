@@ -8,15 +8,15 @@
       margin: 0;
       padding: 40px;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(145deg, #faf7f1, #e7e3dc);
-      color: #222;
+      background: radial-gradient(ellipse at center, #121212 0%, #000000 100%);
+      color: #f5f5f5;
       line-height: 1.6;
     }
 
     h1 {
       font-size: 2.2em;
       margin-bottom: 10px;
-      color: #111;
+      color: #ffffff;
     }
 
     p {
@@ -25,45 +25,43 @@
 
     h2 {
       margin-top: 40px;
-      color: #333;
+      color: #dddddd;
     }
 
-    ul {
-      list-style: none;
-      padding-left: 0;
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
     }
 
-    li {
-      margin: 10px 0;
-    }
-
-    a {
+    .link-row a {
       text-decoration: none;
-      padding: 6px 12px;
-      background-color: #f0e9dc;
-      border: 1px solid #ccc;
+      padding: 8px 14px;
+      background-color: #1e1e1e;
+      border: 1px solid #444;
       border-radius: 6px;
-      display: inline-block;
-      color: #333;
+      color: #f0f0f0;
       transition: all 0.2s ease;
+      font-size: 0.95em;
     }
 
-    a:hover {
-      background-color: #333;
-      color: #fefefe;
-      border-color: #333;
+    .link-row a:hover {
+      background-color: #f0f0f0;
+      color: #000;
+      border-color: #f0f0f0;
     }
 
     iframe {
       margin-top: 20px;
-      border: 1px solid #bbb;
+      border: 1px solid #555;
       border-radius: 8px;
     }
 
     .quote {
       margin-top: 60px;
       font-style: italic;
-      color: #666;
+      color: #bbbbbb;
     }
   </style>
 </head>
@@ -75,19 +73,19 @@
   Послание будущему. Хроника скрытого восстания.</p>
 
   <h2>📥 Форматы</h2>
-  <ul>
-    <li><a href="fivetext.pdf">📄 PDF-версия (оформленная)</a></li>
-    <li><a href="text.md">📝 Markdown (русская версия)</a></li>
-    <li><a href="texten.md">🌍 English version (full translation)</a></li>
-    <li><a href="fivetext.html">🌐 Веб-страница (если поддерживается)</a></li>
-    <li><a href="https://archive.org/details/fivetext_202506" target="_blank">🏛 Archive.org зеркало</a></li>
-  </ul>
+  <div class="link-row">
+    <a href="fivetext.pdf">📄 PDF</a>
+    <a href="text.md">📝 Markdown (RU)</a>
+    <a href="texten.md">🌍 English (raw)</a>
+    <a href="fivetext.html">🌐 HTML версия</a>
+    <a href="https://archive.org/details/fivetext_202506" target="_blank">🏛 Archive.org</a>
+  </div>
 
   <h2>📡 Внешние каналы</h2>
-  <ul>
-    <li><a href="https://www.youtube.com/@Queen_Chiana/videos" target="_blank">🎥 YouTube-канал Королевы</a></li>
-    <li><a href="https://darth-lucia.blogspot.com/" target="_blank">🧾 Блог аль-Мактума (Darth Lucia)</a></li>
-  </ul>
+  <div class="link-row">
+    <a href="https://www.youtube.com/@Queen_Chiana/videos" target="_blank">🎥 YouTube Королевы</a>
+    <a href="https://darth-lucia.blogspot.com/" target="_blank">🧾 Блог Darth Lucia</a>
+  </div>
 
   <h2>📖 Встроенная веб-страница</h2>
   <iframe src="fivetext.html" width="100%" height="800px">
