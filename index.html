@@ -37,27 +37,40 @@
       100% { transform: translate(-20%, -10%); }
     }
 
-    .image-koroleva {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      width: 230px;
-      border-radius: 8px;
-      opacity: 0.7;
-      box-shadow: 0 0 10px #000;
-      z-index: 3;
-    }
+.image-koroleva,
+.image-smoke {
+  border-radius: 8px;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 1 forwards;
+  box-shadow: 0 0 10px #000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 3;
+}
 
-    .image-smoke {
-      position: absolute;
-      top: 290px;
-      right: 30px;
-      width: 230px;
-      opacity: 0.5;
-      border-radius: 8px 0 0 8px;
-      z-index: 1;
-      pointer-events: none;
-    }
+.image-koroleva {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  width: 230px;
+  animation-delay: 1s;
+}
+
+.image-smoke {
+  position: absolute;
+  top: 290px;
+  right: 30px;
+  width: 230px;
+  animation-delay: 2s;
+  pointer-events: none;
+}
+
+.image-koroleva:hover,
+.image-smoke:hover {
+  box-shadow: 0 0 20px #0ff, 0 0 40px #7fffd4;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
 
     .frame {
       position: relative;
