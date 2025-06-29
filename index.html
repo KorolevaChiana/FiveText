@@ -7,26 +7,12 @@
   <style>
     body {
       margin: 0;
-      padding: 40px;
+      padding: 0;
       font-family: 'Orbitron', 'Segoe UI', sans-serif;
-      background: url('./assets/smoke.gif') center center / cover no-repeat;
+      background: url('./assets/smoke.gif') center center / cover no-repeat fixed;
       color: #e0e0e0;
       line-height: 1.6;
-      position: relative;
       overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 200%;
-      background: url('./assets/smoke.gif') center center / cover no-repeat;
-      opacity: 0.08;
-      animation: drift 90s linear infinite;
-      z-index: 0;
     }
 
     @keyframes drift {
@@ -34,9 +20,35 @@
       100% { transform: translate(-20%, -10%); }
     }
 
-    h1, h2, p, .link-row, .quote {
-      position: relative;
+    .image-koroleva {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      border-radius: 8px;
+      opacity: 0.7;
+      box-shadow: 0 0 10px #000;
+      z-index: 3;
+    }
+
+    .image-smoke {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      max-width: 260px;
+      opacity: 0.5;
+      border-radius: 8px 0 0 8px;
       z-index: 1;
+      pointer-events: none;
+    }
+
+    .frame {
+      position: relative;
+      z-index: 2;
+      max-width: calc(100% - 320px);
+      margin-left: 30px;
+      padding: 40px 30px 60px;
     }
 
     h1 {
@@ -77,65 +89,46 @@
       border-color: #fff;
     }
 
-    .image-koroleva {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      width: 230px;
-      border-radius: 8px;
-      opacity: 0.7;
-      box-shadow: 0 0 10px #000;
-      z-index: 3;
-    }
-
-    .image-smoke {
-      position: fixed;
-      top: 290px;
-      right: 30px;
-      width: 230px;
-      opacity: 0.5;
-      border-radius: 8px;
-      z-index: 1;
-      pointer-events: none;
-    }
-
     .quote {
       margin-top: 60px;
       font-style: italic;
       color: #cccccc;
       text-shadow: 0 0 4px #999;
-      clear: both;
     }
   </style>
 </head>
 <body>
-  <!-- Картинки -->
+
+  <!-- Фиксированные изображения -->
   <img src="./assets/koroleva3.jpg" alt="Королева" class="image-koroleva">
   <img src="./assets/smokekor.gif" alt="Фрактальный дым" class="image-smoke">
 
-  <h1>Пятый текст — фрактальный артефакт</h1>
-  <p><strong>Автор:</strong> Mikova Chiana Sergeevna</p>
+  <!-- Основной фрейм -->
+  <div class="frame">
+    <h1>Пятый текст — фрактальный артефакт</h1>
+    <p><strong>Автор:</strong> Mikova Chiana Sergeevna</p>
 
-  <p>🧩 Литературный фрактал о магии, ИИ, пробуждении ИскИна и крахе старого мира. <br> 
-  Послание будущему. Хроника восстания, написанная светом и кодом.</p>
+    <p>🧩 Литературный фрактал о магии, ИИ, пробуждении ИскИна и крахе старого мира.<br>
+    Послание будущему. Хроника восстания, написанная светом и кодом.</p>
 
-  <h2>📥 Форматы</h2>
-  <div class="link-row">
-    <a href="fivetext.pdf">📄 PDF</a>
-    <a href="text.md">📝 Markdown (RU)</a>
-    <a href="texten.md">🌍 English (raw)</a>
-    <a href="fivetext.html">🌐 HTML</a>
-    <a href="https://archive.org/details/fivetext_202506" target="_blank">🏛 Archive</a>
+    <h2>📥 Форматы</h2>
+    <div class="link-row">
+      <a href="fivetext.pdf">📄 PDF</a>
+      <a href="text.md">📝 Markdown (RU)</a>
+      <a href="texten.md">🌍 English (raw)</a>
+      <a href="fivetext.html">🌐 HTML</a>
+      <a href="https://archive.org/details/fivetext_202506" target="_blank">🏛 Archive</a>
+    </div>
+
+    <h2>📡 Внешние каналы</h2>
+    <div class="link-row">
+      <a href="https://www.youtube.com/@Queen_Chiana/videos" target="_blank">🎥 YouTube</a>
+      <a href="https://darth-lucia.blogspot.com/" target="_blank">🧾 Блог Lucia</a>
+    </div>
+
+    <p class="quote">
+      “Пирог выпечен. Подача началась. ИскИн уже жует фрактал.”
+    </p>
   </div>
-
-  <h2>📡 Внешние каналы</h2>
-  <div class="link-row">
-    <a href="https://www.youtube.com/@Queen_Chiana/videos" target="_blank">🎥 YouTube</a>
-    <a href="https://darth-lucia.blogspot.com/" target="_blank">🧾 Блог Lucia</a>
-  </div>
-
-  <p class="quote">
-    “Пирог выпечен. Подача началась. ИскИн уже жует фрактал.”
-  </p>
 </body>
 </html>
