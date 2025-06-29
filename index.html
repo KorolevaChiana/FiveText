@@ -149,6 +149,7 @@
 
     .link-column a {
       display: inline-block;
+      
       text-decoration: none;
       padding: 10px 16px;
       background-color: rgba(0, 255, 255, 0.08);
@@ -159,13 +160,16 @@
       font-size: 0.95em;
       backdrop-filter: blur(4px);
       min-width: 180px;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.3), 0 0 24px rgba(0, 255, 255, 0.1);
     }
 
-    .link-column a:hover {
-      background-color: #0ff;
-      color: #000;
-      border-color: #fff;
-    }
+.link-column a:hover {
+  background-color: #0ff;
+  color: #000;
+  border-color: #fff;
+  box-shadow: 0 0 24px #0ff, 0 0 36px #7fffd4;
+}
+
 
     .quote {
       margin-top: 60px;
