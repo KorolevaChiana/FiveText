@@ -82,16 +82,19 @@
       box-shadow: 0 0 8px #000;
     }
 
-    .image-smoke {
-      opacity: 0.7;
-      width: 245px;
-      left: 700px;
-      height: auto;
-      object-fit: cover;
-      border: 1px solid black;
-      border-radius: 2px;
-      box-shadow: 0 0 8px #000;
-    }
+.image-smoke {
+  position: absolute; /* <— вот чего не хватало */
+  top: auto;
+  left: 700px;
+  opacity: 0.7;
+  width: 245px;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid black;
+  border-radius: 2px;
+  box-shadow: 0 0 8px #000;
+}
+
 
     .link-columns {
       display: flex;
