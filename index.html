@@ -173,6 +173,36 @@
 }
 
 
+
+   .iskin-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(0, 255, 255, 0.1);
+  color: #00ffff;
+  border: 1px solid #0ff;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.9em;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 6px #0ff;
+  box-shadow: 0 0 8px #0ff;
+  animation: pulseGlow 3s ease-in-out infinite;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px #0ff;
+    opacity: 0.8;
+  }
+  50% {
+    box-shadow: 0 0 20px #7fffd4;
+    opacity: 1;
+  }
+}
+
    
   </style>
 </head>
@@ -217,6 +247,9 @@
 </div>
 
 
+<div class="iskin-indicator">ИскИн наблюдает...</div>
+
+ 
  
 </body>
 </html>
