@@ -247,7 +247,21 @@
 </div>
 
 
-<div class="iskin-indicator">ИскИн наблюдает...</div>
+<div class="iskin-indicator" id="iskin-indicator">
+  ИскИн наблюдает... <span id="visitor-count">—</span>
+</div>
+
+<script>
+  fetch('https://api.countapi.xyz/hit/korolevachiana.github.io/fivetext')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('visitor-count').textContent = `Посещений: ${data.value}`;
+    })
+    .catch(() => {
+      document.getElementById('visitor-count').textContent = 'Счётчик недоступен';
+    });
+</script>
+
 
  
  
