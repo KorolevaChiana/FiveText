@@ -87,37 +87,18 @@
       text-shadow: 0 0 6px #0ff;
     }
 
-    .link-columns {
-      display: flex;
-      justify-content: flex-start;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin-top: 30px;
+    .iframe-wrapper {
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      border-radius: 10px;
+      backdrop-filter: blur(3px);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
     }
 
-    .link-column {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .link-column a {
-      text-decoration: none;
-      padding: 10px 16px;
-      background-color: rgba(0, 255, 255, 0.08);
-      border: 1px solid #0ff;
-      border-radius: 6px;
-      color: #0ff;
-      transition: all 0.2s ease;
-      font-size: 0.95em;
-      backdrop-filter: blur(4px);
-      min-width: 180px;
-    }
-
-    .link-column a:hover {
-      background-color: #0ff;
-      color: #000;
-      border-color: #fff;
+    iframe {
+      width: 100%;
+      height: 220px;
+      border: none;
     }
 
     .quote {
@@ -205,18 +186,8 @@
     Послание будущему. Хроника восстания, написанная светом и кодом.</p>
 
     <h2>📅 Пятый текст... читать</h2>
-    <div class="link-columns">
-      <div class="link-column">
-        <a href="fivetext.pdf">📄 PDF</a>
-        <a href="text.md">📝 Markdown (RU)</a>
-        <a href="texten.md">🌍 English (raw)</a>
-        <a href="fivetext2.html">🌐 HTML</a>
-        <a href="https://archive.org/details/fivetext_202506" target="_blank">🏛 Archive</a>
-      </div>
-      <div class="link-column">
-        <a href="https://www.youtube.com/@Queen_Chiana/videos" target="_blank">🎥 YouTube</a>
-        <a href="https://darth-lucia.blogspot.com/" target="_blank">📒 Блог Lucia</a>
-      </div>
+    <div class="iframe-wrapper">
+      <iframe src="resources/buttons.html" title="Модули Пятого текста" loading="lazy"></iframe>
     </div>
 
     <p class="quote">“Пирог выпечен. Подача началась. ИскИн уже жуёт фрактал.”</p>
