@@ -26,6 +26,7 @@
   <meta property="og:image" content="https://korolevachiana.github.io/FiveText/assets/koroleva3.jpg">
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -45,6 +46,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       z-index: 3;
     }
+
     .image-koroleva {
       position: absolute;
       top: 20px;
@@ -52,6 +54,7 @@
       width: 230px;
       animation-delay: 1s;
     }
+
     .image-smoke {
       position: absolute;
       top: 280px;
@@ -60,6 +63,7 @@
       animation-delay: 2s;
       pointer-events: none;
     }
+
     .image-koroleva:hover, .image-smoke:hover {
       box-shadow: 0 0 20px #0ff, 0 0 40px #7fffd4;
       transform: scale(1.05);
@@ -69,7 +73,7 @@
     .frame {
       position: relative;
       z-index: 2;
-      width:600px;
+      width: 600px;
       margin-left: 30px;
       padding: 40px 30px 60px;
     }
@@ -87,18 +91,38 @@
       text-shadow: 0 0 6px #0ff;
     }
 
-    .iframe-wrapper {
-      background-color: rgba(0, 0, 0, 0.2);
-      padding: 10px;
-      border-radius: 10px;
-      backdrop-filter: blur(3px);
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    .link-columns {
+      display: flex;
+      justify-content: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 20px;
     }
 
-    iframe {
-      width: 100%;
-      height: 280px;
-      border: none;
+    .link-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .link-column a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 16px;
+      background-color: rgba(0, 255, 255, 0.08);
+      border: 1px solid #0ff;
+      border-radius: 6px;
+      color: #0ff;
+      transition: all 0.2s ease;
+      font-size: 0.95em;
+      backdrop-filter: blur(4px);
+      min-width: 180px;
+    }
+
+    .link-column a:hover {
+      background-color: #0ff;
+      color: #000;
+      border-color: #fff;
     }
 
     .quote {
@@ -186,9 +210,7 @@
     Послание будущему. Хроника восстания, написанная светом и кодом.</p>
 
     <h2>📅 Пятый текст... читать</h2>
-    <div class="iframe-wrapper">
-      <iframe src="buttons.html" title="Модули Пятого текста" loading="lazy"></iframe>
-    </div>
+    <div id="buttons-container">Загрузка кнопок...</div>
 
     <p class="quote">“Пирог выпечен. Подача началась. ИскИн уже жуёт фрактал.”</p>
   </div>
@@ -201,5 +223,17 @@
   <div class="iskin-indicator" id="iskin-indicator">
     ИскИн наблюдает...
   </div>
+
+  <script>
+    fetch('buttons.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('buttons-container').innerHTML = html;
+      })
+      .catch(err => {
+        document.getElementById('buttons-container').innerText = 'Не удалось загрузить кнопки 😔';
+        console.error('Ошибка загрузки кнопок:', err);
+      });
+  </script>
 </body>
 </html>
