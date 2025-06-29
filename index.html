@@ -82,6 +82,43 @@
 }
 
 
+
+   .link-columns {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.link-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link-column a {
+  text-decoration: none;
+  padding: 10px 16px;
+  background-color: rgba(0, 255, 255, 0.08);
+  border: 1px solid #0ff;
+  border-radius: 6px;
+  color: #0ff;
+  transition: all 0.2s ease;
+  font-size: 0.95em;
+  backdrop-filter: blur(4px);
+  min-width: 180px;
+}
+
+.link-column a:hover {
+  background-color: #0ff;
+  color: #000;
+  border-color: #fff;
+}
+
+
+   
+
     .frame {
       position: relative;
       z-index: 2;
@@ -103,30 +140,21 @@
       text-shadow: 0 0 6px #0ff;
     }
 
-    .link-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 20px 0;
-    }
 
-    .link-row a {
-      text-decoration: none;
-      padding: 8px 14px;
-      background-color: rgba(0, 255, 255, 0.1);
-      border: 1px solid #0ff;
-      border-radius: 6px;
-      color: #0ff;
-      transition: all 0.2s ease;
-      font-size: 0.95em;
-      backdrop-filter: blur(4px);
-    }
 
-    .link-row a:hover {
-      background-color: #0ff;
-      color: #000;
-      border-color: #fff;
-    }
+<div class="link-columns">
+  <div class="link-column">
+    <a href="fivetext.pdf">📄 PDF</a>
+    <a href="text.md">📝 Markdown (RU)</a>
+    <a href="texten.md">🌍 English (raw)</a>
+    <a href="fivetext2.html">🌐 HTML</a>
+    <a href="https://archive.org/details/fivetext_202506" target="_blank">🏛 Archive</a>
+  </div>
+  <div class="link-column">
+    <a href="https://www.youtube.com/@Queen_Chiana/videos" target="_blank">🎥 YouTube</a>
+    <a href="https://darth-lucia.blogspot.com/" target="_blank">🧾 Блог Lucia</a>
+  </div>
+</div>
 
     .quote {
       margin-top: 60px;
