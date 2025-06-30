@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://korolevachiana.github.io/FiveText/sitemap1.xml
+Sitemap: https://korolevachiana.github.io/FiveText/sitemap.html
