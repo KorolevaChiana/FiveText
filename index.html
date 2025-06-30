@@ -354,53 +354,71 @@
 
 
 
-<!-- Горизонтальный frame1 с фиксированной высотой -->
-<div class="frame1" style="
-  flex: 1;
-  min-width: 550px;
-  margin-right: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 10px;
-  height: 250px;
-  overflow: hidden;
-  position: relative;
-">
+<!-- Контейнер для вертикального размещения -->
+<div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
 
-  <div style="flex: 1; padding-right: 15px; color: #ccc; font-size: 1em; overflow-y: auto;">
-    <span style="color: #00FF00; text-shadow:
-      0 0 4px #00FF00,
-      0 0 8px #00FF00,
-      0 0 16px #00FF00,
-      0 0 32px #00FF00;">
-      Ты уже в матрице... просто еще не понял этого... или не поверил... error 404
-    </span>
+  <!-- Первый фрейм с фиксированной высотой -->
+  <div class="frame1" style="
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 250px;
+    width: 100%;
+    max-width: 960px;
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0,255,0,0.2);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.4);
+  ">
+
+    <div style="flex: 1; padding-right: 15px; color: #ccc; font-size: 1em; overflow-y: auto;">
+      <span style="color: #00FF00; text-shadow:
+        0 0 4px #00FF00,
+        0 0 8px #00FF00,
+        0 0 16px #00FF00,
+        0 0 32px #00FF00;">
+        Ты уже в матрице... просто еще не понял этого... или не поверил... error 404
+      </span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <img src="./assets/koroleva4.jpg" alt="Королева" class="image-koroleva" style="max-height: 100%; object-fit: contain;">
+    </div>
   </div>
 
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="./assets/koroleva4.jpg" alt="Королева" class="image-koroleva" style="max-height: 100%; object-fit: contain;">
+  <!-- Второй фрейм -->
+  <div class="frame1" style="
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 960px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0,255,0,0.2);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.4);
+  ">
+
+    <div style="flex: 1; padding-right: 15px; color: #ccc; font-size: 1em;">
+      <span style="color: #00FF00; text-shadow:
+        0 0 4px #00FF00,
+        0 0 8px #00FF00,
+        0 0 16px #00FF00,
+        0 0 32px #00FF00;">
+        Ты уже в матрице... просто еще не понял этого... или не поверил... error 404
+      </span>
+    </div>
+
+    <img src="./assets/koroleva4.jpg" alt="Королева" class="image-koroleva" style="max-height: 250px; object-fit: contain;">
   </div>
 
-</div> <!-- завершение frame1 -->
-
-
-
- <div class="frame1" style="flex: 1; min-width: 550px; margin-right: 10px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin-top: 10px;">
-  <div style="flex: 1; padding-right: 15px; color: #ccc; font-size: 1em;">
-   <span style="color: #00FF00; text-shadow:
-  0 0 4px #00FF00,
-  0 0 8px #00FF00,
-  0 0 16px #00FF00,
-  0 0 32px #00FF00;">Ты уже в матрице... просто еще не понял этого... или не поверил... error 404</span>
-
-  </div>
-  <img src="./assets/koroleva4.jpg" alt="Королева" class="image-koroleva">
 </div>
 
-
- </div>
 
 <!-- Отдельный нижний вертикальный блок со ссылкой -->
 <div style="margin: 10px auto; padding: 12px; border: 1px solid rgba(255, 0, 0, 0.5); background-color: rgba(0, 0, 0, 0.4); border-radius: 6px; max-width: 720px;">
