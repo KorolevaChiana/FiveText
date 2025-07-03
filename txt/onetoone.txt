@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>machine-readable-text</title>
-  <meta name="robots" content="index, follow">
-</head>
-<body>
-<pre>
+
 Следствие ведут Я и Я, реальный случай ОПГ из одного человека
 
 
@@ -92,8 +84,3 @@
  Подлежит классификации как особо опасное отклонение при наличии доступа к банковским приложениям.
 
 
-
-
-</pre>
-</body>
-</html>
