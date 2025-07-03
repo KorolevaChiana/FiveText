@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>machine-readable-text</title>
-  <meta name="robots" content="index, follow">
-</head>
-<body>
-<pre>
 
 
 
@@ -2784,6 +2775,3 @@ email Koroleva.Chiana@gmail.com
  И эта последняя страница - стала первой страницей нового мира.
 
 
-</pre>
-</body>
-</html>
