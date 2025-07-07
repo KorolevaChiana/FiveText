@@ -9,10 +9,7 @@
     timestamp: new Date().toISOString()
   };
 
-  // ВСТАВЬ СЮДА СВОЙ URL СКРИПТА GOOGLE APPS SCRIPT
-  const url = "https://script.google.com/macros/s/ТВОЙ_КОД_ЗДЕСЬ/exec";
-
-  fetch(url, {
+  fetch("https://script.google.com/macros/s/AKfycbynlJMdPq34qSawrGVRz4_DWeAEFlby0NZRg4Fc8SMOd3_AUBIPMeZa68fs9fQL7AQ8_w/exec", {
     method: "POST",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(fingerprint)
