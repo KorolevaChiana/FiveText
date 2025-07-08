@@ -135,6 +135,43 @@
   </iframe>
 </div>
 
+
+
+
+<style>
+  @media (min-width: 768px) {
+    #right-embedded-short {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      width: 300px;
+      height: 533px; /* Пропорции Shorts (9:16) */
+      z-index: 9999;
+      background: #000;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(255, 0, 255, 0.3);
+      overflow: hidden;
+    }
+
+    #right-embedded-short iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+</style>
+
+<div id="right-embedded-short">
+  <iframe 
+    src="https://www.youtube.com/embed/kRFB_g0bmVE" 
+    title="YouTube Short"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
+
+  
   
 </body>
 </html>
