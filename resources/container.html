@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Фреймовый Контейнер</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      font-family: sans-serif;
+      background-color: #111;
+      color: #eee;
+    }
+
+    .left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      gap: 10px;
+      overflow-y: auto;
+    }
+
+    .video-frame {
+      flex: 1;
+      min-height: 30%;
+      border: 2px solid #444;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .right {
+      width: 400px; /* фиксированная ширина */
+      border-left: 2px solid #444;
+      background-color: #222;
+    }
+
+    .right iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="left">
+    <!-- Сюда подсовываешь ссылки на YouTube -->
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="right">
+    <!-- Сюда загружается страница по ссылке -->
+    <iframe src="https://example.com"></iframe>
+  </div>
+
+</body>
+</html>
