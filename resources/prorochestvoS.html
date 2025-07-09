@@ -1087,22 +1087,22 @@ a:active {
 
   ];
 
-const random = quatrains[Math.floor(Math.random() * quatrains.length)];
-const quoteElement = document.getElementById("quote");
-quoteElement.textContent = ""; // очищаем
+  const random = quatrains[Math.floor(Math.random() * quatrains.length)];
+  const quoteElement = document.getElementById("quote");
+  quoteElement.textContent = "";
+  quoteElement.style.opacity = 0;
 
-let i = 0;
-function typeNextChar() {
-  if (i < random.length) {
-    quoteElement.textContent += random[i];
-    i++;
-    setTimeout(typeNextChar, 25);
-  } else {
-    quoteElement.style.opacity = "1"; // плавное проявление после печати
+  let i = 0;
+  function typeNextChar() {
+    if (i < random.length) {
+      quoteElement.textContent += random[i];
+      quoteElement.style.opacity = (i + 1) / random.length; // плавное увеличение прозрачности
+      i++;
+      setTimeout(typeNextChar, 25); // по 0.2 сек на символ
+    }
   }
-}
-typeNextChar();
 
+  typeNextChar();
 </script>
 
 </body>
