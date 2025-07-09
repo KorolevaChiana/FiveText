@@ -11,7 +11,7 @@ html, body {
   background-color: transparent !important;
   background: none !important;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: flex-start; /* было center, теперь выравнивание по верху */
   font-family: 'Courier New', monospace;
 }
@@ -1084,7 +1084,7 @@ function typeNextChar() {
   if (i < random.length) {
     quoteElement.textContent += random[i];
     i++;
-    setTimeout(typeNextChar, 100); // 0.2 сек на каждый символ
+    setTimeout(typeNextChar, 50); // 0.2 сек на каждый символ
   }
 }
 typeNextChar();
