@@ -51,7 +51,7 @@ a:active {
     text-align: left;
     white-space: pre-line;
     opacity: 0.3;
-    transition: opacity 1.0s ease-in;
+    transition: opacity 0.5s ease-in;
   ">
 </div>
 
@@ -1096,7 +1096,7 @@ a:active {
   function typeNextChar() {
     if (i < random.length) {
       quoteElement.textContent += random[i];
-      quoteElement.style.opacity = (i + 1) / random.length; // плавное увеличение прозрачности
+      quoteElement.style.opacity =0.3+ (i + 1) / random.length* 0.7; // плавное увеличение прозрачности
       i++;
       setTimeout(typeNextChar, 25); // по 0.2 сек на символ
     }
