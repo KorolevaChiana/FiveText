@@ -16,25 +16,27 @@
       font-family: 'Courier New', monospace;
     }
 
-a {
-  color: #00ff00;
-  text-decoration: none;
-  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
-  font-size: 1.0em;
-  line-height: 1.6em;
-  text-align: left;
-  display: block;
-  white-space: pre-line;
-  opacity: 0;
-  transition: opacity 1.5s ease-in;
-}
+<a href="..." id="prophetic-link"
+   style="
+     color: #00ff00;
+     text-decoration: none;
+     text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+     font-size: 1.0em;
+     line-height: 1.6em;
+     text-align: left;
+     display: block;
+     white-space: pre-line;
+     opacity: 0;
+     transition: opacity 1.5s ease-in;
+   ">
+   <!-- Текст -->
+</a>
 
-a:link,
-a:visited,
-a:hover,
-a:active {
-  opacity: 1;
-}
+<script>
+  window.addEventListener("load", () => {
+    document.getElementById("prophetic-link").style.opacity = "1";
+  });
+</script>
 
 
   </style>
