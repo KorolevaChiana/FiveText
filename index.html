@@ -401,9 +401,12 @@
       width: 150px;
       height: 150px;
       object-fit: cover;
-      opacity: 0.5;
-    ">
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    "
+    onload="this.style.opacity = '0.5';">
 </div>
+
 
 
   </div>
