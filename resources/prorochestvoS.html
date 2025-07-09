@@ -1075,8 +1075,20 @@ a:active {
 
   ];
 
-  const random = quatrains[Math.floor(Math.random() * quatrains.length)];
-  document.getElementById("quote").textContent = random;
+const random = quatrains[Math.floor(Math.random() * quatrains.length)];
+const quoteElement = document.getElementById("quote");
+quoteElement.textContent = ""; // очищаем
+
+let i = 0;
+function typeNextChar() {
+  if (i < random.length) {
+    quoteElement.textContent += random[i];
+    i++;
+    setTimeout(typeNextChar, 200); // 0.2 сек на каждый символ
+  }
+}
+typeNextChar();
+
 </script>
 
 </body>
