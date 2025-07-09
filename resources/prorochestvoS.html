@@ -45,13 +45,16 @@ a:active {
 <div id="quote"
   style="
     color: #00ff00;
-    text-shadow: 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
     font-size: 1.0em;
     line-height: 1.6em;
     text-align: left;
     white-space: pre-line;
+    opacity: 0;
+    transition: opacity 1.5s ease-in;
   ">
 </div>
+
 
 <script>
   const quatrains = [
@@ -1093,7 +1096,9 @@ function typeNextChar() {
   if (i < random.length) {
     quoteElement.textContent += random[i];
     i++;
-    setTimeout(typeNextChar, 25); // 0.2 сек на каждый символ
+    setTimeout(typeNextChar, 25);
+  } else {
+    quoteElement.style.opacity = "1"; // плавное проявление после печати
   }
 }
 typeNextChar();
