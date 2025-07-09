@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Пророчество</title>
   <style>
-    html, body {
-      margin: 0;
-      height: 100vh;
-      background-color: transparent !important;
-      background: none !important;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Courier New', monospace;
-    }
+html, body {
+  margin: 0;
+  height: 100vh;
+  background-color: transparent !important;
+  background: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* было center, теперь выравнивание по верху */
+  font-family: 'Courier New', monospace;
+}
 
 a {
   color: #00ff00;
@@ -1084,7 +1084,7 @@ function typeNextChar() {
   if (i < random.length) {
     quoteElement.textContent += random[i];
     i++;
-    setTimeout(typeNextChar, 200); // 0.2 сек на каждый символ
+    setTimeout(typeNextChar, 100); // 0.2 сек на каждый символ
   }
 }
 typeNextChar();
