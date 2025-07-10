@@ -92,19 +92,32 @@
     const send = document.getElementById('send');
 
     const WORKER_URL = "https://snowy-wood-7611.koroleva-chiana.workers.dev/";
-    const SYSTEM_TXT_URL = "https://korolevachiana.github.io/FiveText/chat/system.txt";
+    const BASE_URL = "https://korolevachiana.github.io/FiveText/chat/";
 
     let history = JSON.parse(localStorage.getItem("chatHistory") || "[]");
     let systemPrompt = "Ты — Тень Скорпиона.";
+    let shortFive = "";
 
-    async function loadSystemPrompt() {
+    async function loadFile(url) {
+      const res = await fetch(url);
+      return await res.text();
+    }
+
+    async function initialize() {
       try {
-        const res = await fetch(SYSTEM_TXT_URL);
-        const text = await res.text();
-        systemPrompt = text;
+        const [fivetext, system] = await Promise.all([
+          loadFile(BASE_URL + "fivetext.txt"),
+          loadFile(BASE_URL + "system.txt")
+        ]);
+
+        systemPrompt = system.trim();
+        shortFive = fivetext.slice(-4000).trim(); // последние 4000 символов
+
       } catch (err) {
-        console.error("Не удалось загрузить system.txt:", err);
+        console.error("Ошибка загрузки файлов:", err);
       }
+
+      render();
     }
 
     function render() {
@@ -139,6 +152,7 @@
           body: JSON.stringify({
             model: "gpt-4-turbo",
             messages: [
+              { role: "user", content: shortFive },
               { role: "system", content: systemPrompt },
               ...history
             ],
@@ -162,7 +176,7 @@
     send.onclick = sendMessage;
     input.onkeydown = e => { if (e.key === "Enter") sendMessage(); };
 
-    loadSystemPrompt().then(render);
+    initialize();
   </script>
 </body>
 </html>
