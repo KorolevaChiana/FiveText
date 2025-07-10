@@ -286,6 +286,66 @@
   </style>
 </head>
 <body style="position: relative;">
+
+
+<!--    Big Scorpion     -->
+
+  <style>
+  #shadow-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #000;
+    color: #0f0;
+    border: 1px solid #0f0;
+    padding: 6px 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0.8;
+  }
+
+  #shadow-frame {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    width: 90vw;
+    height: 80vh;
+    background-color: rgba(0, 0, 0, 0.5); /* прозрачность 50% */
+    border: 1px solid #0f0;
+    z-index: 9998;
+    display: none;
+  }
+</style>
+
+<button id="shadow-toggle">☰ Shadow</button>
+
+<div id="shadow-frame">
+  <iframe
+    src="https://www.chatbase.co/chatbot-iframe/m2C62D3JuDWTLwen8BgBk"
+    width="100%" height="100%" frameborder="0"
+    style="border: none;">
+  </iframe>
+</div>
+
+<script>
+  const toggle = document.getElementById('shadow-toggle');
+  const frame = document.getElementById('shadow-frame');
+
+  toggle.addEventListener('click', () => {
+    frame.style.display = (frame.style.display === 'none') ? 'block' : 'none';
+  });
+</script>
+
+
+
+
+
+
+
+
+  
  <div class="main-wrap" style="display: flex; flex-wrap: wrap; gap: 20px;">
 
 
@@ -552,56 +612,6 @@
 })();
 </script>
 
-
-<!--    Big Scorpion     -->
-
-  <style>
-  #shadow-toggle {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #000;
-    color: #0f0;
-    border: 1px solid #0f0;
-    padding: 6px 10px;
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    cursor: pointer;
-    z-index: 9999;
-    opacity: 0.8;
-  }
-
-  #shadow-frame {
-    position: fixed;
-    top: 50px;
-    left: 50px;
-    width: 90vw;
-    height: 80vh;
-    background-color: rgba(0, 0, 0, 0.5); /* прозрачность 50% */
-    border: 1px solid #0f0;
-    z-index: 9998;
-    display: none;
-  }
-</style>
-
-<button id="shadow-toggle">☰ Shadow</button>
-
-<div id="shadow-frame">
-  <iframe
-    src="https://www.chatbase.co/chatbot-iframe/m2C62D3JuDWTLwen8BgBk"
-    width="100%" height="100%" frameborder="0"
-    style="border: none;">
-  </iframe>
-</div>
-
-<script>
-  const toggle = document.getElementById('shadow-toggle');
-  const frame = document.getElementById('shadow-frame');
-
-  toggle.addEventListener('click', () => {
-    frame.style.display = (frame.style.display === 'none') ? 'block' : 'none';
-  });
-</script>
 
 
   
