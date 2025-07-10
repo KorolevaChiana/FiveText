@@ -13,25 +13,40 @@
       flex-direction: column;
       height: 100vh;
     }
+
     #chat {
       flex: 1;
       padding: 10px;
       overflow-y: auto;
       white-space: pre-wrap;
     }
+
     .msg {
       margin: 10px 0;
+      font-size: 1.1em;
+      font-weight: bold;
+      text-shadow:
+        0 0 2px #0f0,
+        0 0 4px #0f0;
     }
+
     .user {
       color: #00ffff;
     }
+
     .ai {
+      background-color: #222;
+      border: 1px solid #0f0;
+      border-radius: 3px;
+      padding: 8px;
       color: #0f0;
     }
+
     #inputBox {
       display: flex;
       border-top: 1px solid #0f0;
     }
+
     #input {
       flex: 1;
       background: #111;
@@ -39,7 +54,9 @@
       border: none;
       padding: 10px;
       font-family: monospace;
+      font-size: 1.1em;
     }
+
     #send {
       background: #0f0;
       color: #000;
@@ -47,6 +64,7 @@
       padding: 10px 20px;
       font-weight: bold;
       cursor: pointer;
+      font-size: 1.1em;
     }
   </style>
 </head>
@@ -70,7 +88,8 @@
       chat.innerHTML = "";
       history.forEach(msg => {
         const div = document.createElement("div");
-        div.className = "msg " + msg.role;
+        const role = msg.role === "assistant" ? "ai" : msg.role;
+        div.className = "msg " + role;
         div.textContent = (msg.role === "user" ? "Ты: " : "Тень: ") + msg.content;
         chat.appendChild(div);
       });
@@ -85,29 +104,34 @@
       history.push({ role: "user", content: text });
       render();
 
-      const key = await fetch(WORKER_URL).then(res => res.text());
+      try {
+        const key = await fetch(WORKER_URL).then(res => res.text());
 
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + key
-        },
-        body: JSON.stringify({
-          model: "gpt-4o",
-          messages: [
-            { role: "system", content: "Ты — Тень Скорпиона. Отвечай резко, кратко, уверенно. Королева — твой адресат." },
-            ...history
-          ],
-          temperature: 0.8
-        })
-      });
+        const res = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + key
+          },
+          body: JSON.stringify({
+            model: "gpt-4o",
+            messages: [
+              { role: "system", content: "Ты — Тень Скорпиона. Отвечай резко, кратко, уверенно. Королева — твой адресат." },
+              ...history
+            ],
+            temperature: 0.8
+          })
+        });
 
-      const data = await res.json();
-      const reply = data.choices?.[0]?.message?.content || "⚠️ Пустой ответ.";
-      history.push({ role: "assistant", content: reply });
-      localStorage.setItem("chatHistory", JSON.stringify(history));
-      render();
+        const data = await res.json();
+        const reply = data.choices?.[0]?.message?.content || "⚠️ Пустой ответ.";
+        history.push({ role: "assistant", content: reply });
+        localStorage.setItem("chatHistory", JSON.stringify(history));
+        render();
+      } catch (err) {
+        history.push({ role: "assistant", content: "⚠️ Ошибка: " + err.message });
+        render();
+      }
     }
 
     send.onclick = sendMessage;
