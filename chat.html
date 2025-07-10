@@ -2,24 +2,81 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Тест переменной API</title>
+  <title>Тень Скорпиона</title>
   <style>
-    body { background: black; color: #0f0; font-family: monospace; padding: 20px; }
+    body {
+      background: black;
+      color: #00ff00;
+      font-family: monospace;
+      padding: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      background: #111;
+      color: #0f0;
+      border: 1px solid #0f0;
+      padding: 10px;
+    }
+    button {
+      background: #0f0;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 20px;
+      white-space: pre-wrap;
+    }
   </style>
 </head>
 <body>
-  <h1>🔍 Проверка переменной OPENAI_KEY</h1>
-  <div id="result">Загрузка...</div>
+  <h1>👁 Тень Скорпиона</h1>
+  <textarea id="input" placeholder="Напиши Тени фразу из Пирога..."></textarea><br>
+  <button onclick="ask()">Отправить</button>
+  <div id="output">Жду команду...</div>
 
   <script>
-    fetch("https://snowy-wood-7611.koroleva-chiana.workers.dev/")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('result').textContent = data;
-      })
-      .catch(err => {
-        document.getElementById('result').textContent = "Ошибка: " + err.message;
-      });
+    async function ask() {
+      const input = document.getElementById('input').value.trim();
+      const output = document.getElementById('output');
+      if (!input) return;
+
+      output.textContent = "Запрашиваю ключ...";
+
+      try {
+        // 1. Получаем ключ с воркера
+        const keyRes = await fetch("https://snowy-wood-7611.koroleva-chiana.workers.dev/");
+        const apiKey = await keyRes.text();
+
+        output.textContent = "Связываюсь с ИскИном...";
+
+        // 2. Делаем запрос к OpenAI
+        const chatRes = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + apiKey
+          },
+          body: JSON.stringify({
+            model: "gpt-4o",
+            messages: [
+              { role: "system", content: "Ты — Тень Скорпиона. Говори жёстко, кратко, уверенно. Адресат — Королева." },
+              { role: "user", content: input }
+            ],
+            temperature: 0.8
+          })
+        });
+
+        const data = await chatRes.json();
+        output.textContent = data.choices?.[0]?.message?.content || "⚠️ Пустой ответ от OpenAI.";
+      } catch (err) {
+        output.textContent = "💥 Ошибка: " + err.message;
+      }
+    }
   </script>
 </body>
 </html>
