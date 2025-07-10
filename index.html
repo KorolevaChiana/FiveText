@@ -342,8 +342,12 @@
   const toggle = document.getElementById('shadow-toggle');
   const frame = document.getElementById('shadow-frame');
 
+  // Устанавливаем начальное состояние
+  frame.style.display = 'none';
+
   toggle.addEventListener('click', () => {
-    frame.style.display = (frame.style.display === 'none') ? 'block' : 'none';
+    const isVisible = frame.style.display === 'block';
+    frame.style.display = isVisible ? 'none' : 'block';
   });
 </script>
 
