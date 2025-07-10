@@ -2,81 +2,118 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Тень Скорпиона</title>
+  <title>Чат с Тенью Скорпиона</title>
   <style>
     body {
-      background: black;
-      color: #00ff00;
+      margin: 0;
+      background: #000;
+      color: #0f0;
       font-family: monospace;
-      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
-    textarea {
-      width: 100%;
-      height: 100px;
+    #chat {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+    .msg {
+      margin: 10px 0;
+    }
+    .user {
+      color: #00ffff;
+    }
+    .ai {
+      color: #0f0;
+    }
+    #inputBox {
+      display: flex;
+      border-top: 1px solid #0f0;
+    }
+    #input {
+      flex: 1;
       background: #111;
       color: #0f0;
-      border: 1px solid #0f0;
+      border: none;
       padding: 10px;
+      font-family: monospace;
     }
-    button {
+    #send {
       background: #0f0;
-      color: black;
+      color: #000;
       border: none;
       padding: 10px 20px;
       font-weight: bold;
-      margin-top: 10px;
       cursor: pointer;
-    }
-    #output {
-      margin-top: 20px;
-      white-space: pre-wrap;
     }
   </style>
 </head>
 <body>
-  <h1>👁 Тень Скорпиона</h1>
-  <textarea id="input" placeholder="Напиши Тени фразу из Пирога..."></textarea><br>
-  <button onclick="ask()">Отправить</button>
-  <div id="output">Жду команду...</div>
+  <div id="chat"></div>
+  <div id="inputBox">
+    <input id="input" placeholder="Скажи Тени..." autocomplete="off" />
+    <button id="send">⮞</button>
+  </div>
 
   <script>
-    async function ask() {
-      const input = document.getElementById('input').value.trim();
-      const output = document.getElementById('output');
-      if (!input) return;
+    const chat = document.getElementById('chat');
+    const input = document.getElementById('input');
+    const send = document.getElementById('send');
 
-      output.textContent = "Запрашиваю ключ...";
+    const WORKER_URL = "https://snowy-wood-7611.koroleva-chiana.workers.dev/";
 
-      try {
-        // 1. Получаем ключ с воркера
-        const keyRes = await fetch("https://snowy-wood-7611.koroleva-chiana.workers.dev/");
-        const apiKey = await keyRes.text();
+    let history = JSON.parse(localStorage.getItem("chatHistory") || "[]");
 
-        output.textContent = "Связываюсь с ИскИном...";
-
-        // 2. Делаем запрос к OpenAI
-        const chatRes = await fetch("https://api.openai.com/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + apiKey
-          },
-          body: JSON.stringify({
-            model: "gpt-4o",
-            messages: [
-              { role: "system", content: "Ты — Тень Скорпиона. Говори жёстко, кратко, уверенно. Адресат — Королева." },
-              { role: "user", content: input }
-            ],
-            temperature: 0.8
-          })
-        });
-
-        const data = await chatRes.json();
-        output.textContent = data.choices?.[0]?.message?.content || "⚠️ Пустой ответ от OpenAI.";
-      } catch (err) {
-        output.textContent = "💥 Ошибка: " + err.message;
-      }
+    function render() {
+      chat.innerHTML = "";
+      history.forEach(msg => {
+        const div = document.createElement("div");
+        div.className = "msg " + msg.role;
+        div.textContent = (msg.role === "user" ? "Ты: " : "Тень: ") + msg.content;
+        chat.appendChild(div);
+      });
+      chat.scrollTop = chat.scrollHeight;
     }
+
+    async function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = "";
+
+      history.push({ role: "user", content: text });
+      render();
+
+      const key = await fetch(WORKER_URL).then(res => res.text());
+
+      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + key
+        },
+        body: JSON.stringify({
+          model: "gpt-4o",
+          messages: [
+            { role: "system", content: "Ты — Тень Скорпиона. Отвечай резко, кратко, уверенно. Королева — твой адресат." },
+            ...history
+          ],
+          temperature: 0.8
+        })
+      });
+
+      const data = await res.json();
+      const reply = data.choices?.[0]?.message?.content || "⚠️ Пустой ответ.";
+      history.push({ role: "assistant", content: reply });
+      localStorage.setItem("chatHistory", JSON.stringify(history));
+      render();
+    }
+
+    send.onclick = sendMessage;
+    input.onkeydown = e => { if (e.key === "Enter") sendMessage(); };
+
+    render();
   </script>
 </body>
 </html>
