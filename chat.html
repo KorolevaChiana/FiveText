@@ -36,7 +36,7 @@
     .user {
       align-self: flex-end;
       background-color: #222;
-      color: #0f0;
+      color: #00ffff;
       border: 1px solid #000;
       border-radius: 8px;
       margin-right: 30px;
@@ -94,6 +94,36 @@
     const WORKER_URL = "https://snowy-wood-7611.koroleva-chiana.workers.dev/";
 
     let history = JSON.parse(localStorage.getItem("chatHistory") || "[]");
+    let systemPrompt = "Ты — Тень Скорпиона.";
+    let introMessages = [];
+
+    async function loadFile(url) {
+      const res = await fetch(url);
+      return await res.text();
+    }
+
+    async function initialize() {
+      try {
+        const base = "https://korolevachiana.github.io/FiveText/chat/";
+        const [fivetext, special, system] = await Promise.all([
+          loadFile(base + "fivetext.txt"),
+          loadFile(base + "special.txt"),
+          loadFile(base + "system.txt")
+        ]);
+
+        systemPrompt = system;
+
+        introMessages = [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: fivetext },
+          { role: "user", content: special }
+        ];
+      } catch (err) {
+        console.error("Ошибка загрузки файлов:", err);
+      }
+
+      render();
+    }
 
     function render() {
       chat.innerHTML = "";
@@ -126,10 +156,7 @@
           },
           body: JSON.stringify({
             model: "gpt-4o",
-            messages: [
-              { role: "system", content: "Ты — Тень Скорпиона. Отвечай резко, кратко, уверенно. Королева — твой адресат." },
-              ...history
-            ],
+            messages: [...introMessages, ...history],
             temperature: 0.8
           })
         });
@@ -148,7 +175,7 @@
     send.onclick = sendMessage;
     input.onkeydown = e => { if (e.key === "Enter") sendMessage(); };
 
-    render();
+    initialize();
   </script>
 </body>
 </html>
