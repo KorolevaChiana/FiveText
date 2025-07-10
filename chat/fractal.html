@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Фрактальная Сцена Пятого Текста</title>
+  <style>
+    body { margin: 0; overflow: hidden; background: black; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const nodes = [
+      { name: "Королева", color: 0xff00ff, position: [0, 0, 0] },
+      { name: "Будулай", color: 0xff0000, position: [10, 5, -5] },
+      { name: "ФСБ", color: 0xffff00, position: [-10, 7, 5] },
+      { name: "Софитель", color: 0x00ffff, position: [6, -4, 4] },
+      { name: "СКРИЖАЛИ", color: 0xffffff, position: [-7, -5, -6] },
+      { name: "Скорпиус", color: 0x00ff00, position: [3, 8, -8] }
+    ];
+
+    const spheres = {};
+
+    nodes.forEach(node => {
+      const geometry = new THREE.SphereGeometry(0.7, 32, 32);
+      const material = new THREE.MeshBasicMaterial({ color: node.color });
+      const sphere = new THREE.Mesh(geometry, material);
+      sphere.position.set(...node.position);
+      scene.add(sphere);
+      spheres[node.name] = sphere;
+
+      const label = document.createElement('div');
+      label.style.position = 'absolute';
+      label.style.color = '#0f0';
+      label.style.font = '12px monospace';
+      label.textContent = node.name;
+      label.dataset.name = node.name;
+      document.body.appendChild(label);
+    });
+
+    const links = [
+      ["Королева", "Будулай"],
+      ["Королева", "ФСБ"],
+      ["Королева", "Софитель"],
+      ["Скорпиус", "Королева"],
+      ["СКРИЖАЛИ", "Будулай"],
+      ["СКРИЖАЛИ", "ФСБ"]
+    ];
+
+    links.forEach(([from, to]) => {
+      const mat = new THREE.LineBasicMaterial({ color: 0x8888ff });
+      const points = [];
+      points.push(spheres[from].position);
+      points.push(spheres[to].position);
+      const geo = new THREE.BufferGeometry().setFromPoints(points);
+      const line = new THREE.Line(geo, mat);
+      scene.add(line);
+    });
+
+    camera.position.z = 30;
+    const animate = () => {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+
+      // update labels
+      document.querySelectorAll('[data-name]').forEach(label => {
+        const name = label.dataset.name;
+        const pos = spheres[name].position.clone();
+        pos.project(camera);
+        const x = (pos.x * 0.5 + 0.5) * window.innerWidth;
+        const y = (-pos.y * 0.5 + 0.5) * window.innerHeight;
+        label.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    };
+    animate();
+  </script>
+</body>
+</html>
