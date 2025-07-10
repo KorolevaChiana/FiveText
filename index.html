@@ -290,9 +290,10 @@
 
 <!--    Big Scorpion     -->
 
-  <style>
+<style>
+  /* Кнопка — фиксированная, всегда вверху */
   #shadow-toggle {
-    position: absolute;
+    position: fixed;
     top: 10px;
     left: 10px;
     background-color: #000;
@@ -303,24 +304,26 @@
     font-size: 14px;
     cursor: pointer;
     z-index: 9999;
-    opacity: 0.8;
+    opacity: 0.85;
   }
 
+  /* Фрейм — на всю страницу, по умолчанию скрыт */
   #shadow-frame {
     position: fixed;
-    top: 50px;
-    left: 50px;
-    width: 90vw;
-    height: 80vh;
-    background-color: rgba(0, 0, 0, 0.5); /* прозрачность 50% */
-    border: 1px solid #0f0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% прозрачность */
     z-index: 9998;
     display: none;
   }
 </style>
 
+<!-- Кнопка -->
 <button id="shadow-toggle">☰ Shadow</button>
 
+<!-- Разворачивающийся фрейм -->
 <div id="shadow-frame">
   <iframe
     src="https://www.chatbase.co/chatbot-iframe/m2C62D3JuDWTLwen8BgBk"
