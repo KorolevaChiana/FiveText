@@ -106,8 +106,7 @@
       try {
         const base = "https://korolevachiana.github.io/FiveText/chat/";
         const [fivetext, special, system] = await Promise.all([
-          loadFile(base + "fivetext.txt"),
-          loadFile(base + "special.txt"),
+
           loadFile(base + "system.txt")
         ]);
 
