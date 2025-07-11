@@ -457,19 +457,19 @@
 
 
   
+<!-- СТИЛИ НЕ МЕНЯЕМ -->
 <style>
   @media (min-width: 768px) {
-.smoke-box {
-  position: absolute;
-  top: auto;
-  left: 535px;
-  width: 240px;
-  height: 437px;
-  border-radius: 2px;
-  box-shadow: 0 0 3px #000;
-  overflow: hidden;
-}
-
+    .smoke-box {
+      position: absolute;
+      top: auto;
+      left: 535px;
+      width: 240px;
+      height: 437px;
+      border-radius: 2px;
+      box-shadow: 0 0 3px #000;
+      overflow: hidden;
+    }
 
     .smoke-box img,
     .smoke-box iframe {
@@ -511,7 +511,6 @@
   <img src="./assets/smokekor.gif" alt="Фрактальный дым">
   <iframe 
     id="smokePlayer"
-    src="https://www.youtube.com/embed/kwdpJvysBz8?enablejsapi=1&mute=0&controls=0&loop=1&playlist=kwdpJvysBz8&modestbranding=1"
     title="Фрактальный шорт"
     allow="autoplay; encrypted-media"
     referrerpolicy="strict-origin-when-cross-origin"
@@ -520,9 +519,43 @@
 </div>
 
 <script>
+  const videoIds = [
+    "f6FVrZrvQfM",
+    "kwdpJvysBz8",
+    "7mIS4b_705U",
+    "6Rp7fSFzvIM",
+    "FH2waBLx8qU",
+    "2Vnp90hj5AM",
+    "rQ0vrG9ndRo",
+    "FdSeyvEEB3U",
+    "h4Pp0WwdsbA"
+  ];
+
+  function getRandomVideoId(exclude) {
+    let filtered = videoIds.filter(id => id !== exclude);
+    return filtered[Math.floor(Math.random() * filtered.length)];
+  }
+
+  let currentVideoId = videoIds[Math.floor(Math.random() * videoIds.length)];
+  const playerElement = document.getElementById('smokePlayer');
+  playerElement.src = `https://www.youtube.com/embed/${currentVideoId}?enablejsapi=1&mute=0&controls=0&loop=0&modestbranding=1`; // loop=0
+
   let smokeYT;
+
   function onYouTubeIframeAPIReady() {
-    smokeYT = new YT.Player('smokePlayer');
+    smokeYT = new YT.Player('smokePlayer', {
+      events: {
+        onStateChange: function (event) {
+          if (event.data === 0) { // видео закончилось
+            currentVideoId = getRandomVideoId(currentVideoId);
+            smokeYT.loadVideoById({
+              videoId: currentVideoId,
+              startSeconds: 0
+            });
+          }
+        }
+      }
+    });
   }
 
   function playSmokeVideo() {
@@ -537,6 +570,7 @@
     }
   }
 </script>
+
 
 
 
