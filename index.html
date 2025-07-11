@@ -430,6 +430,7 @@
           0 0 4px currentColor,
           0 0 8px currentColor,
           0 0 16px currentColor;">🏛 Archive</a>
+        <br>
       </div>
 
       <div class="link-column">
@@ -458,17 +459,18 @@
   
 <style>
   @media (min-width: 768px) {
-    .smoke-box {
-      position: absolute;
-      top: auto;
-      left: 535px;
-      width: 240px;
-      height: 426px;
-      
-      border-radius: 2px;
-      box-shadow: 0 0 8px #000;
-      overflow: hidden;
-    }
+.smoke-box {
+  position: absolute;
+  top: auto;
+  left: 535px;
+  width: 240px;
+  height: 426px;
+  border: 1px solid #000; /* ← добавлено */
+  border-radius: 2px;
+  box-shadow: 0 0 3px #000;
+  overflow: hidden;
+}
+
 
     .smoke-box img,
     .smoke-box iframe {
