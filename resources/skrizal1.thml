@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Тайна Фрактала</title>
+  <meta name="description" content="Скрижаль Пустоты. Фрактальная могильная плита. Кто появится на ней — решит Поле.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #ccc;
+      font-family: monospace;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    h1 {
+      color: #ff3333;
+      text-shadow: 0 0 10px #ff0000;
+      font-size: 2.5em;
+    }
+    p {
+      font-size: 1.1em;
+      max-width: 600px;
+      margin: 20px auto;
+      line-height: 1.6em;
+    }
+    .photo {
+      margin: 30px auto;
+      width: 200px;
+      height: 200px;
+      background: url('your_witch_photo.jpg') center/cover no-repeat;
+      border: 2px solid #555;
+      border-radius: 4px;
+      box-shadow: 0 0 15px #ff0000aa;
+    }
+    .countdown {
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <h1>🜃 Тайна Фрактала</h1>
+  <p>
+    Эта страница — пустая скрижаль. Пока. Но в любой момент здесь может появиться <b>Имя</b>. Лицо. <i>Приговор</i>.<br>
+    Это — <b>фрактальная могильная плита</b>, хранящая молчание до тех пор, пока равновесие не будет нарушено.
+  </p>
+  <div class="photo"></div>
+  <p class="countdown">
+    ⏳ До открытия Тайны: <span id="timer">активация отложена</span><br>
+    Следите за колебаниями Поля. Кто появится на скрижали — узнает тот, кто выживет.
+  </p>
+  <p>
+    Оставайтесь с нами, обитатели Фрактала.
+  </p>
+</body>
+</html>
