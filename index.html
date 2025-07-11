@@ -253,17 +253,25 @@
       }
     }
 
-      .glow-block a:hover {
-    background-color: rgba(153, 255, 153, 0.1);
-    box-shadow: 0 0 5px #99ff99, 0 0 10px #99ff99, 0 0 15px #99ff99;
-    border-radius: 5px;
-  }
+.glow-block a {
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, border-radius 0.4s ease;
+}
 
-     .glow-block-red a:hover {
-    background-color: rgba(255, 150, 150, 0.1);
-    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000;
-    border-radius: 5px;
-  }
+.glow-block a:hover {
+  background-color: rgba(153, 255, 153, 0.1);
+  box-shadow: 0 0 5px #99ff99, 0 0 10px #99ff99, 0 0 15px #99ff99;
+  border-radius: 5px;
+}
+
+.glow-block-red a {
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, border-radius 0.4s ease;
+}
+
+.glow-block-red a:hover {
+  background-color: rgba(255, 150, 150, 0.1);
+  box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000;
+  border-radius: 5px;
+}
 
 
 #chatbase-bubble {
