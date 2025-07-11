@@ -128,33 +128,7 @@
 }
 
 
-.smoke-frame {
-  position: absolute;
-  top: auto;
-  left: 535px;
-  width: 240px;
-  height: 426px; /* формат 9:16, можно настроить */
-  overflow: hidden;
-  border: 1px solid black;
-  border-radius: 2px;
-  box-shadow: 0 0 8px #000;
-}
 
-.smoke-gif,
-.smoke-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: opacity 0.3s ease;
-}
-
-.smoke-video {
-  opacity: 0;
-  pointer-events: none;
-}
 
 
 
@@ -479,12 +453,58 @@
   </div>
 
 
-<div class="smoke-frame" onmouseenter="playVideo()" onmouseleave="stopVideo()">
-  <img src="./assets/smokekor.gif" alt="Фрактальный дым" class="smoke-gif" id="smokeGif">
-  <video id="smokeVideo" class="smoke-video" loop preload="auto">
-    <source src="./assets/myshort.mp4" type="video/mp4">
-  </video>
+<style>
+  @media (min-width: 768px) {
+    .smoke-box {
+      position: absolute;
+      top: auto;
+      left: 535px;
+      width: 240px;
+      height: 426px;
+      background: #000;
+      border-radius: 2px;
+      box-shadow: 0 0 8px #000;
+      overflow: hidden;
+    }
+
+    .smoke-box img,
+    .smoke-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .smoke-box iframe {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .smoke-box:hover img {
+      opacity: 0;
+    }
+
+    .smoke-box:hover iframe {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+</style>
+
+<div class="smoke-box">
+  <img src="./assets/smokekor.gif" alt="Фрактальный дым">
+  <iframe 
+    src="https://www.youtube.com/embed/kwdpJvysBz8?autoplay=1&mute=0&controls=0&loop=1&playlist=kwdpJvysBz8&modestbranding=1"
+    title="Фрактальный шорт"
+    allow="autoplay; encrypted-media"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
 </div>
+
 
 
 
@@ -640,28 +660,6 @@
 
 
 
-<script>
-  function playVideo() {
-    const vid = document.getElementById('smokeVideo');
-    document.getElementById('smokeGif').style.opacity = 0;
-    vid.style.opacity = 1;
-    vid.style.pointerEvents = 'auto';
-    vid.muted = false;
-    vid.currentTime = 0;
-    vid.play();
-  }
-
-  function stopVideo() {
-    const vid = document.getElementById('smokeVideo');
-    document.getElementById('smokeGif').style.opacity = 0.5;
-    vid.style.opacity = 0;
-    vid.style.pointerEvents = 'none';
-    vid.pause();
-  }
-</script>
-
-
-  
 
 
   
