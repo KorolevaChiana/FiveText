@@ -128,18 +128,38 @@
 }
 
 
-.image-smoke {
-  position: absolute; /* <— вот чего не хватало */
-  top: auto;
+.smoke-container {
+  position: absolute;
   left: 535px;
-  opacity: 0.5;
   width: 240px;
-  height: auto;
+  height: 426px; /* примерное 9:16 соотношение */
+}
+
+.image-smoke {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border: 1px solid black;
   border-radius: 2px;
   box-shadow: 0 0 8px #000;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease;
 }
+
+.video-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
 
 
     .link-columns {
@@ -463,7 +483,15 @@
   </div>
 
 
-      <img src="./assets/smokekor.gif" alt="Фрактальный дым" class="image-smoke">
+     <div class="smoke-container" onmouseenter="playVideo()" onmouseleave="stopVideo()">
+  <img src="./assets/smokekor.gif" alt="Фрактальный дым" class="image-smoke" id="smokeGif">
+  <div class="video-wrapper" id="videoWrapper">
+    <div id="player"></div>
+  </div>
+</div>
+
+
+  
     </div>
 
       <div class="footer-contact">      
@@ -615,6 +643,47 @@
 
 
 
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  let player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      videoId: 'kwdpJvysBz8',
+      playerVars: {
+        autoplay: 0,
+        controls: 0,
+        mute: 0,
+        loop: 1,
+        playlist: 'kwdpJvysBz8',
+        modestbranding: 1,
+        showinfo: 0
+      },
+      events: {
+        onReady: function () {
+          // готов к бою
+        }
+      }
+    });
+  }
+
+  function playVideo() {
+    document.getElementById('smokeGif').style.opacity = 0;
+    document.getElementById('videoWrapper').style.opacity = 1;
+    document.getElementById('videoWrapper').style.pointerEvents = 'auto';
+    if (player && typeof player.playVideo === 'function') {
+      player.playVideo();
+    }
+  }
+
+  function stopVideo() {
+    document.getElementById('smokeGif').style.opacity = 0.5;
+    document.getElementById('videoWrapper').style.opacity = 0;
+    document.getElementById('videoWrapper').style.pointerEvents = 'none';
+    if (player && typeof player.pauseVideo === 'function') {
+      player.pauseVideo();
+    }
+  }
+</script>
 
   
 
