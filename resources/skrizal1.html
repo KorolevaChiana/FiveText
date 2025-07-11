@@ -51,11 +51,36 @@
       text-align: center;
       padding: 40px 20px;
     }
-    h1 {
-      color: #ff3333;
-      text-shadow: 0 0 10px #ff0000;
-      font-size: 2.5em;
-    }
+h1 {
+  color: #ff3333;
+  font-size: 2.5em;
+  text-shadow:
+    0 0 5px #ff0000,
+    0 0 10px #ff0000,
+    0 0 20px #ff2200,
+    0 0 40px #ff5500,
+    0 0 60px #ff7700;
+  animation: fireGlow 2s infinite alternate;
+}
+
+@keyframes fireGlow {
+  0% {
+    text-shadow:
+      0 0 3px #ff0000,
+      0 0 6px #ff1100,
+      0 0 12px #ff3300,
+      0 0 20px #ff6600;
+    color: #ff5555;
+  }
+  100% {
+    text-shadow:
+      0 0 8px #ff0000,
+      0 0 16px #ff3300,
+      0 0 32px #ff6600,
+      0 0 50px #ffaa00;
+    color: #ff9999;
+  }
+}
     p {
       font-size: 1.1em;
       max-width: 1000px;
