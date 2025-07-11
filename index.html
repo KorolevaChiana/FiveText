@@ -128,36 +128,32 @@
 }
 
 
-.smoke-container {
+.smoke-frame {
   position: absolute;
+  top: auto;
   left: 535px;
   width: 240px;
-  height: 426px; /* примерное 9:16 соотношение */
-}
-
-.image-smoke {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 426px; /* формат 9:16, можно настроить */
+  overflow: hidden;
   border: 1px solid black;
   border-radius: 2px;
   box-shadow: 0 0 8px #000;
-  opacity: 0.5;
+}
+
+.smoke-gif,
+.smoke-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
   transition: opacity 0.3s ease;
 }
 
-.video-wrapper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+.smoke-video {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
 }
 
 
@@ -483,12 +479,13 @@
   </div>
 
 
-     <div class="smoke-container" onmouseenter="playVideo()" onmouseleave="stopVideo()">
-  <img src="./assets/smokekor.gif" alt="Фрактальный дым" class="image-smoke" id="smokeGif">
-  <div class="video-wrapper" id="videoWrapper">
-    <div id="player"></div>
-  </div>
+<div class="smoke-frame" onmouseenter="playVideo()" onmouseleave="stopVideo()">
+  <img src="./assets/smokekor.gif" alt="Фрактальный дым" class="smoke-gif" id="smokeGif">
+  <video id="smokeVideo" class="smoke-video" loop preload="auto">
+    <source src="./assets/myshort.mp4" type="video/mp4">
+  </video>
 </div>
+
 
 
   
@@ -643,47 +640,26 @@
 
 
 
-<script src="https://www.youtube.com/iframe_api"></script>
 <script>
-  let player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      videoId: 'kwdpJvysBz8',
-      playerVars: {
-        autoplay: 0,
-        controls: 0,
-        mute: 0,
-        loop: 1,
-        playlist: 'kwdpJvysBz8',
-        modestbranding: 1,
-        showinfo: 0
-      },
-      events: {
-        onReady: function () {
-          // готов к бою
-        }
-      }
-    });
-  }
-
   function playVideo() {
+    const vid = document.getElementById('smokeVideo');
     document.getElementById('smokeGif').style.opacity = 0;
-    document.getElementById('videoWrapper').style.opacity = 1;
-    document.getElementById('videoWrapper').style.pointerEvents = 'auto';
-    if (player && typeof player.playVideo === 'function') {
-      player.playVideo();
-    }
+    vid.style.opacity = 1;
+    vid.style.pointerEvents = 'auto';
+    vid.muted = false;
+    vid.currentTime = 0;
+    vid.play();
   }
 
   function stopVideo() {
+    const vid = document.getElementById('smokeVideo');
     document.getElementById('smokeGif').style.opacity = 0.5;
-    document.getElementById('videoWrapper').style.opacity = 0;
-    document.getElementById('videoWrapper').style.pointerEvents = 'none';
-    if (player && typeof player.pauseVideo === 'function') {
-      player.pauseVideo();
-    }
+    vid.style.opacity = 0;
+    vid.style.pointerEvents = 'none';
+    vid.pause();
   }
 </script>
+
 
   
 
