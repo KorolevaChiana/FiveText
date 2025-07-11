@@ -453,6 +453,9 @@
   </div>
 
 
+
+
+  
 <style>
   @media (min-width: 768px) {
     .smoke-box {
@@ -498,14 +501,16 @@
   }
 </style>
 
-<!-- YouTube API подключается один раз на страницу -->
+<!-- YouTube API -->
 <script src="https://www.youtube.com/iframe_api"></script>
 
-<div class="smoke-box" onmouseleave="pauseSmokeVideo()">
+<div class="smoke-box" 
+     onmouseenter="playSmokeVideo()" 
+     onmouseleave="pauseSmokeVideo()">
   <img src="./assets/smokekor.gif" alt="Фрактальный дым">
   <iframe 
     id="smokePlayer"
-    src="https://www.youtube.com/embed/kwdpJvysBz8?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=kwdpJvysBz8&modestbranding=1"
+    src="https://www.youtube.com/embed/kwdpJvysBz8?enablejsapi=1&mute=0&controls=0&loop=1&playlist=kwdpJvysBz8&modestbranding=1"
     title="Фрактальный шорт"
     allow="autoplay; encrypted-media"
     referrerpolicy="strict-origin-when-cross-origin"
@@ -519,13 +524,18 @@
     smokeYT = new YT.Player('smokePlayer');
   }
 
+  function playSmokeVideo() {
+    if (smokeYT && typeof smokeYT.playVideo === 'function') {
+      smokeYT.playVideo();
+    }
+  }
+
   function pauseSmokeVideo() {
     if (smokeYT && typeof smokeYT.pauseVideo === 'function') {
       smokeYT.pauseVideo();
     }
   }
 </script>
-
 
 
 
