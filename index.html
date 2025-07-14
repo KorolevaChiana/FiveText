@@ -514,49 +514,58 @@ fünfter text, königin chiana, fraktal, künstliche intelligenz, magie, matrix,
 </style>
 
 <!-- YouTube API -->
-<script src="https://www.youtube.com/iframe_api"></script>
-
-<div class="smoke-box" 
-     onmouseenter="playSmokeVideo()" 
+<div class="smoke-box"
+     onmouseenter="playSmokeVideo()"
      onmouseleave="pauseSmokeVideo()">
   <img src="./assets/smokekor.gif" alt="Фрактальный дым">
-  <iframe 
-    id="smokePlayer"
-    title="Фрактальный шорт"
-    allow="autoplay; encrypted-media"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-  </iframe>
+  <div id="smokeContainer"></div>
 </div>
 
 <script>
   const videoIds = [
-    "kwdpJvysBz8",    "kwdpJvysBz8",    "kwdpJvysBz8",    "kwdpJvysBz8",    "kwdpJvysBz8",    "kwdpJvysBz8",    "f6FVrZrvQfM",    "kwdpJvysBz8",    "7mIS4b_705U",
-    "6Rp7fSFzvIM",    "FH2waBLx8qU",    "2Vnp90hj5AM",    "rQ0vrG9ndRo",    "FdSeyvEEB3U",    "h4Pp0WwdsbA",    "d6BEx192T_k",    "85VefwMKL5c",    "qcVqLz7U0LQ",
-    "Xtq-tdfHBc0",    "ZxzU447ZSUU",    "IFoFFrsezgw",    "gko_LogI9kk",    "4RArET4SIbM",    "kRFB_g0bmVE"
+    // ... список ID ...
   ];
-
   function getRandomVideoId(exclude) {
-    let filtered = videoIds.filter(id => id !== exclude);
+    const filtered = videoIds.filter(id => id !== exclude);
     return filtered[Math.floor(Math.random() * filtered.length)];
   }
-
   let currentVideoId = videoIds[Math.floor(Math.random() * videoIds.length)];
-  const playerElement = document.getElementById('smokePlayer');
-  playerElement.src = `https://www.youtube.com/embed/${currentVideoId}?enablejsapi=1&mute=0&controls=0&loop=0&modestbranding=1`; // loop=0
+  let smokeYT = null;
 
-  let smokeYT;
+  async function initSmoke() {
+    try {
+      const resp = await fetch('https://ipapi.co/json/');
+      const data = await resp.json();
+      if (data.country === 'RU') {
+        console.log('Регион РФ — не загружаем YouTube');
+        return;
+      }
+    } catch (e) {
+      console.warn('Не удалось определить регион — загружаем по умолчанию', e);
+    }
+
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+
+    const container = document.getElementById('smokeContainer');
+    const iframe = document.createElement('iframe');
+    iframe.id = 'smokePlayer';
+    iframe.title = 'Фрактальный шорт';
+    iframe.allow = 'autoplay; encrypted-media';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allowFullscreen = true;
+    iframe.src = `https://www.youtube.com/embed/${currentVideoId}?enablejsapi=1&mute=0&controls=0&loop=0&modestbranding=1`;
+    container.appendChild(iframe);
+  }
 
   function onYouTubeIframeAPIReady() {
     smokeYT = new YT.Player('smokePlayer', {
       events: {
-        onStateChange: function (event) {
-          if (event.data === 0) { // видео закончилось
+        onStateChange(event) {
+          if (event.data === YT.PlayerState.ENDED) {
             currentVideoId = getRandomVideoId(currentVideoId);
-            smokeYT.loadVideoById({
-              videoId: currentVideoId,
-              startSeconds: 0
-            });
+            smokeYT.loadVideoById({ videoId: currentVideoId, startSeconds: 0 });
           }
         }
       }
@@ -574,8 +583,9 @@ fünfter text, königin chiana, fraktal, künstliche intelligenz, magie, matrix,
       smokeYT.pauseVideo();
     }
   }
-</script>
 
+  document.addEventListener('DOMContentLoaded', initSmoke);
+</script>
 
 
 
