@@ -467,8 +467,6 @@ fünfter text, königin chiana, fraktal, künstliche intelligenz, magie, matrix,
 
 
 
-  
-<!-- СТИЛИ НЕ МЕНЯЕМ -->
 <style>
   @media (min-width: 768px) {
     .smoke-box {
@@ -482,110 +480,28 @@ fünfter text, königin chiana, fraktal, künstliche intelligenz, magie, matrix,
       overflow: hidden;
     }
 
-    .smoke-box img,
-    .smoke-box iframe {
+    .smoke-box img {
       width: 100%;
       height: 100%;
       border: none;
       position: absolute;
       top: 0;
       left: 0;
+      opacity: 0.5;
       transition: opacity 0.3s ease;
     }
 
-    .smoke-box img {
-      opacity: 0.5;
-    }
-
-    .smoke-box iframe {
-      opacity: 0;
-      pointer-events: none;
-    }
-
     .smoke-box:hover img {
-      opacity: 0;
-    }
-
-    .smoke-box:hover iframe {
       opacity: 1;
-      pointer-events: auto;
     }
   }
 </style>
 
-<!-- YouTube API -->
-<div class="smoke-box"
-     onmouseenter="playSmokeVideo()"
-     onmouseleave="pauseSmokeVideo()">
+<div class="smoke-box">
   <img src="./assets/smokekor.gif" alt="Фрактальный дым">
-  <div id="smokeContainer"></div>
 </div>
 
-<script>
-  const videoIds = [
-    // ... список ID ...
-  ];
-  function getRandomVideoId(exclude) {
-    const filtered = videoIds.filter(id => id !== exclude);
-    return filtered[Math.floor(Math.random() * filtered.length)];
-  }
-  let currentVideoId = videoIds[Math.floor(Math.random() * videoIds.length)];
-  let smokeYT = null;
 
-  async function initSmoke() {
-    try {
-      const resp = await fetch('https://ipapi.co/json/');
-      const data = await resp.json();
-      if (data.country === 'RU') {
-        console.log('Регион РФ — не загружаем YouTube');
-        return;
-      }
-    } catch (e) {
-      console.warn('Не удалось определить регион — загружаем по умолчанию', e);
-    }
-
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(tag);
-
-    const container = document.getElementById('smokeContainer');
-    const iframe = document.createElement('iframe');
-    iframe.id = 'smokePlayer';
-    iframe.title = 'Фрактальный шорт';
-    iframe.allow = 'autoplay; encrypted-media';
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-    iframe.allowFullscreen = true;
-    iframe.src = `https://www.youtube.com/embed/${currentVideoId}?enablejsapi=1&mute=0&controls=0&loop=0&modestbranding=1`;
-    container.appendChild(iframe);
-  }
-
-  function onYouTubeIframeAPIReady() {
-    smokeYT = new YT.Player('smokePlayer', {
-      events: {
-        onStateChange(event) {
-          if (event.data === YT.PlayerState.ENDED) {
-            currentVideoId = getRandomVideoId(currentVideoId);
-            smokeYT.loadVideoById({ videoId: currentVideoId, startSeconds: 0 });
-          }
-        }
-      }
-    });
-  }
-
-  function playSmokeVideo() {
-    if (smokeYT && typeof smokeYT.playVideo === 'function') {
-      smokeYT.playVideo();
-    }
-  }
-
-  function pauseSmokeVideo() {
-    if (smokeYT && typeof smokeYT.pauseVideo === 'function') {
-      smokeYT.pauseVideo();
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', initSmoke);
-</script>
 
 
 
