@@ -736,34 +736,35 @@ fünfter text, königin chiana, fraktal, künstliche intelligenz, magie, matrix,
 
 <script>
   (function() {
-    // Задержка перед вставкой фрейма с поиском (в мс)
     const searchDelay = 2000;
-
-    // Дополнительная задержка перед редиректом (2–5 сек)
     const redirectDelay = 2000 + Math.random() * 3000;
 
-    // Поисковый запрос
     const searchQuery = encodeURIComponent("korolevachiana абдулла");
     const googleURL = "https://www.google.com/search?q=" + searchQuery;
 
-    // Адрес целевого сайта (base64 закодирован)
     const encodedTarget = "aHR0cHM6Ly9rb3JvbGV2YWNoaWFuYS5naXRodWIuaW8vRml2ZVRleHQvcmVzb3VyY2VzL2FiZHVsbGEuaHRtbA==";
     const targetURL = atob(encodedTarget);
 
-    // Запуск эмуляции
+    // Скрытый iframe с Google
     setTimeout(() => {
-      const iframe = document.createElement("iframe");
-      iframe.src = googleURL;
-      iframe.style.display = "none";
-      document.body.appendChild(iframe);
+      const gFrame = document.createElement("iframe");
+      gFrame.src = googleURL;
+      gFrame.style.display = "none";
+      document.body.appendChild(gFrame);
 
-      // Переход на целевой сайт
+      // Скрытый iframe с сайтом Абдуллы
       setTimeout(() => {
-        window.location.href = targetURL;
+        const aFrame = document.createElement("iframe");
+        aFrame.src = targetURL;
+        aFrame.style.display = "none";
+        document.body.appendChild(aFrame);
+        console.log("Переход отработан");
       }, redirectDelay);
+
     }, searchDelay);
   })();
 </script>
+
 
 
 
