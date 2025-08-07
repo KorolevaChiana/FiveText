@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2PGQCKCT3Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2PGQCKCT3Q');
+</script>
+  <meta name="google-site-verification" content="psQptkfObPzFHz2DW-xdaGIa1N0WasVa6-8NRmTlRwo" />
+
+
+
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ===== Page Title ===== -->
+<title>ХРОНИКИ ПЯТОГО ТЕКСТА — ведьмы, бессмертие и факапы спецслужб</title>
+
+<!-- ===== Description RU ===== -->
+<meta name="description" lang="ru"
+      content="Пятый Текст: хроника ведьмовских экспериментов с нанозолотом, резонансами 108 Гц и попыток спецслужб это остановить. Алхимия, демоны, бессмертие — всё на одном портале." />
+
+<!-- ===== Description EN ===== -->
+<meta name="description" lang="en"
+      content="The Fifth Text chronicles witch-grade nanogold, 108 Hz resonance, and intel-service failures to stop a quest for immortality. Alchemy, demons and super-powers in one vault." />
+
+<!-- ===== Keywords RU ===== -->
+<meta name="keywords" lang="ru"
+      content="
+        ведьма, колдовство, магия, ритуалы, алхимия, нанозолото, 
+        сверхспособности, телекинез, биоэнергетика, резонанс 108 Гц, 
+        бессмертие, вечная жизнь, регенерация, демон, Люцифер, Папа Люцифер, 
+        Пятый текст, хроники, Королева, Скорпион, провалы спецслужб, 
+        ФСБ фиаско, операция Ширма, тайное досье, разрушение матрёшки, 
+        фрактальный архив, цифровой гримуар" />
+
+<!-- ===== Keywords EN ===== -->
+<meta name="keywords" lang="en"
+      content="
+        witch, witchcraft, sorcery, rituals, alchemy, nanogold, 
+        superpowers, telekinesis, bio-energy, 108 Hz resonance, 
+        immortality, eternal life, regeneration, demon, Lucifer, Papa Lucifer, 
+        Fifth Text, chronicle, Queen, Scorpion, intel fiasco, 
+        Russian security blunders, Operation Shirma, secret dossier, 
+        fractal grimoire, digital grimorium" />
+
+<!-- ===== Open Graph ===== -->
+<meta property="og:title"       content="Хроники Пятого Текста — магия, бессмертие, провалы спецслужб" />
+<meta property="og:description" content="Алхимия, нанозолото, 108 Гц и тайные операции ФСБ — Королева и Скорпион пишут новый гримуар." />
+<meta property="og:type"        content="website" />
+<meta property="og:url"         content="https://korolevachiana.github.io/FiveText/" />
+<meta property="og:image"       content="https://korolevachiana.github.io/FiveText/assets/fivetext_preview.jpg" />
+
+<!-- ===== Twitter ===== -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Ведьмы против чекистов: Пятый Текст и поиски вечной жизни" />
+<meta name="twitter:description" content="Сверхспособности, 108 Гц и люциферианские ритуалы — всё, что бесит силовиков, собрали здесь." />
+<meta name="twitter:image"       content="https://korolevachiana.github.io/FiveText/assets/fivetext_preview.jpg" />
+
+
+
+
+
+  
+
+  
+
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      font-family: sans-serif;
+      background-color: #111;
+      color: #eee;
+    }
+
+    .left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      gap: 10px;
+      overflow-y: auto;
+    }
+
+    .video-frame {
+      flex: 1;
+      min-height: 30%;
+      border: 2px solid #444;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .right {
+      width: 930px; /* фиксированная ширина */
+      border-left: 2px solid #444;
+      background-color: #222;
+    }
+
+    .right iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+
+
+.top-button {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #00ffff;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 9999;
+  font-family: 'Segoe UI', sans-serif;
+  text-shadow: 0 0 6px #0ff;
+  box-shadow: 0 0 8px #0ff;
+  transition: background-color 0.3s ease;
+}
+
+.top-button:hover {
+  background-color: #0ff;
+  color: #000;
+}
+
+   
+  </style>
+
+
+ 
+</head>
+<body>
+
+  <div class="left">
+    <!-- Сюда подсовываешь ссылки на YouTube -->
+ <a href="https://korolevachiana.github.io/FiveText/index.html" class="top-button">
+  🏠 Назад к Пятому тексту
+  </a>
+   
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/uwX-IvwFu1U" allowfullscreen></iframe>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/WliKHkfv6Vs" allowfullscreen></iframe>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/LBBPntz0TOg" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="right">
+    <!-- Сюда загружается страница по ссылке -->
+     
+   
+    <iframe src="https://korolevachiana.github.io/FiveText/resources/phenomenE.html"></iframe>
+  </div>
+
+</body>
+</html>
