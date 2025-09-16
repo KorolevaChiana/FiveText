@@ -59,14 +59,15 @@ fünfter text, königin chiana, fraktal, künstliche intelligenz, magie, matrix,
       overflow-x: hidden;
     }
 
-    .frame {
-      position: relative;
-      z-index: 2;
-        flex: 1 1 680px;
-      min-width: 200px;
-      margin-left: 0px;
-      padding: 10px 5px 10px;
-    }
+.frame {
+  position: relative;
+  z-index: 2;
+  width: 700px;        /* фиксированная ширина */
+  min-width: 200px;    /* если нужно ограничение снизу */
+  margin-left: 0;
+  padding: 10px 5px 10px;
+  box-sizing: border-box;
+}
 
 .frame1 {
   background-color: rgba(0, 0, 0, 0.5);
