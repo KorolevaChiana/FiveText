@@ -29,7 +29,7 @@
     document.body.appendChild(renderer.domElement);
 
     // Геометрия клубка
-    const geometry = new THREE.TorusKnotGeometry(2.8, 0.15, 600, 64, 5, 13);
+    const geometry = new THREE.TorusKnotGeometry(5.8, 0.15, 600, 64, 5, 13);
     const material = new THREE.MeshStandardMaterial({
       color: 0x88ccff,
       metalness: 0.7,
@@ -51,7 +51,7 @@
     smokeGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
     const smokeMaterial = new THREE.PointsMaterial({
       color: 0x8888ff,
-      size: 45,        // 0.15 * 30 = 4.5 → точки стали в 30 раз больше
+      size: 1450.1,        // 0.15 * 30 = 4.5 → точки стали в 30 раз больше
       transparent: true,
       opacity: 0.1     // 0.3 / 2 = 0.15 → в 2 раза прозрачнее
     });
