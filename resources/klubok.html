@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>3D Clubok</title>
+  <title>Complex Clubok</title>
   <style>
     body, html {
       margin: 0;
@@ -26,41 +26,51 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    // Геометрия клубка
-    const geometry = new THREE.TorusKnotGeometry(1, 0.3, 256, 32);
+    // Более сложная форма клубка
+    const geometry = new THREE.TorusKnotGeometry(
+      1,    // радиус
+      0.25, // толщина трубы
+      600,  // сегментов по длине
+      128,  // сегментов по окружности
+      5,    // число витков (p)
+      13    // число поворотов (q)
+    );
+
     const material = new THREE.MeshStandardMaterial({
-      color: 0x8888ff,
+      color: 0x88ccff,
       metalness: 0.7,
-      roughness: 0.15,
+      roughness: 0.2,
+      wireframe: false
     });
+
     const knot = new THREE.Mesh(geometry, material);
     scene.add(knot);
 
     // Свет
-    const light1 = new THREE.PointLight(0xffffff, 2, 150); // белый свет стал ярче
+    const light1 = new THREE.PointLight(0xffffff, 2, 200);
     light1.position.set(5, 5, 5);
     scene.add(light1);
 
-    const light2 = new THREE.PointLight(0xff00ff, 1, 150); // розовый ярче
+    const light2 = new THREE.PointLight(0xff00ff, 1, 200);
     light2.position.set(-5, -5, -5);
     scene.add(light2);
 
-    const light3 = new THREE.DirectionalLight(0xffffff, 0.5); // дополнительный белый направленный
-    light3.position.set(0, 5, 5);
+    const light3 = new THREE.DirectionalLight(0xffffff, 0.7);
+    light3.position.set(0, 10, 10);
     scene.add(light3);
 
-    camera.position.z = 4;
+    camera.position.z = 5;
 
     // Анимация
     function animate() {
       requestAnimationFrame(animate);
-      knot.rotation.x += 0.01;
-      knot.rotation.y += 0.01;
+      knot.rotation.x += 0.003;
+      knot.rotation.y += 0.006;
       renderer.render(scene, camera);
     }
     animate();
 
-    // Автоматический ресайз под окно или фрейм
+    // Автоматический ресайз
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
