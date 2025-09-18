@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>3D Clubok</title>
+  <title>Clubok + Kaleidoscope</title>
   <style>
     body, html {
       margin: 0;
@@ -26,7 +26,55 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    // Геометрия клубка
+    // === Калейдоскоп-текстура ===
+    const size = 512;
+    const kaleCanvas = document.createElement("canvas");
+    kaleCanvas.width = kaleCanvas.height = size;
+    const ctx = kaleCanvas.getContext("2d");
+
+    function drawKaleidoscope() {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, size, size);
+
+      const sectors = 8; // симметрия
+      const centerX = size / 2;
+      const centerY = size / 2;
+
+      for (let i = 0; i < 10; i++) {
+        const gray = Math.floor(Math.random() * 255);
+        ctx.fillStyle = `rgb(${gray},${gray},${gray})`;
+
+        const r = Math.random() * size * 0.4;
+        const angle = Math.random() * Math.PI * 2;
+        const x = centerX + r * Math.cos(angle);
+        const y = centerY + r * Math.sin(angle);
+
+        ctx.beginPath();
+        ctx.arc(x, y, 20 + Math.random() * 40, 0, Math.PI * 2);
+        ctx.fill();
+
+        // зеркалим в другие сектора
+        for (let s = 1; s < sectors; s++) {
+          const a = angle + (s * 2 * Math.PI) / sectors;
+          const xx = centerX + r * Math.cos(a);
+          const yy = centerY + r * Math.sin(a);
+          ctx.beginPath();
+          ctx.arc(xx, yy, 20 + Math.random() * 40, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
+    drawKaleidoscope();
+
+    const texture = new THREE.CanvasTexture(kaleCanvas);
+    const bgGeometry = new THREE.PlaneGeometry(40, 40);
+    const bgMaterial = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
+    const bgPlane = new THREE.Mesh(bgGeometry, bgMaterial);
+    bgPlane.position.z = -10;
+    scene.add(bgPlane);
+
+    // === Клубок ===
     const geometry = new THREE.TorusKnotGeometry(1.5, 0.4, 256, 32);
     const material = new THREE.MeshStandardMaterial({
       color: 0x8888ff,
@@ -36,32 +84,46 @@
     const knot = new THREE.Mesh(geometry, material);
     scene.add(knot);
 
-    // Свет
-    const light1 = new THREE.PointLight(0xffffff, 2, 150); // белый свет стал ярче
+    // === Свет ===
+    const light1 = new THREE.PointLight(0xffffff, 2, 150);
     light1.position.set(5, 5, 5);
     scene.add(light1);
 
-    const light2 = new THREE.PointLight(0xff00ff, 1, 150); // розовый ярче
+    const light2 = new THREE.PointLight(0xff00ff, 1, 150);
     light2.position.set(-5, -5, -5);
     scene.add(light2);
 
-    const light3 = new THREE.DirectionalLight(0xffffff, 0.5); // дополнительный белый направленный
+    const light3 = new THREE.DirectionalLight(0xffffff, 0.5);
     light3.position.set(0, 5, 5);
     scene.add(light3);
 
     camera.position.z = 4;
 
-    // Анимация
+    // === Анимация ===
+    let scale = 1;
     function animate() {
       requestAnimationFrame(animate);
+
       knot.rotation.x += 0.005;
       knot.rotation.y += 0.005;
+
+      // калейдоскоп расширяется
+      scale += 0.002;
+      bgPlane.scale.set(scale, scale, 1);
+
+      // раз в момент пересоздаём узор
+      if (scale > 2) {
+        drawKaleidoscope();
+        texture.needsUpdate = true;
+        scale = 1;
+      }
+
       renderer.render(scene, camera);
     }
     animate();
 
-    // Автоматический ресайз под окно или фрейм
-    window.addEventListener('resize', () => {
+    // === Автоматический ресайз ===
+    window.addEventListener("resize", () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
