@@ -51,9 +51,9 @@
     smokeGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
     const smokeMaterial = new THREE.PointsMaterial({
       color: 0x8888ff,
-      size: 0.15,
+      size: 4.5,        // 0.15 * 30 = 4.5 → точки стали в 30 раз больше
       transparent: true,
-      opacity: 0.3
+      opacity: 0.15     // 0.3 / 2 = 0.15 → в 2 раза прозрачнее
     });
     const smoke = new THREE.Points(smokeGeometry, smokeMaterial);
     scene.add(smoke);
@@ -72,7 +72,6 @@
     scene.add(light3);
 
     camera.position.z = 6;
-    
 
     // Анимация
     function animate() {
