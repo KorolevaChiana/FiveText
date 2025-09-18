@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Clubok</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #000;
+      height: 100%;
+      width: 100%;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Геометрия клубка
+    const geometry = new THREE.TorusKnotGeometry(1, 0.3, 256, 32);
+    const material = new THREE.MeshStandardMaterial({
+      color: 0x8888ff,
+      metalness: 0.7,
+      roughness: 0.15,
+    });
+    const knot = new THREE.Mesh(geometry, material);
+    scene.add(knot);
+
+    // Свет
+    const light1 = new THREE.PointLight(0xffffff, 2, 150); // белый свет стал ярче
+    light1.position.set(5, 5, 5);
+    scene.add(light1);
+
+    const light2 = new THREE.PointLight(0xff00ff, 1, 150); // розовый ярче
+    light2.position.set(-5, -5, -5);
+    scene.add(light2);
+
+    const light3 = new THREE.DirectionalLight(0xffffff, 0.5); // дополнительный белый направленный
+    light3.position.set(0, 5, 5);
+    scene.add(light3);
+
+    camera.position.z = 4;
+
+    // Анимация
+    function animate() {
+      requestAnimationFrame(animate);
+      knot.rotation.x += 0.01;
+      knot.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Автоматический ресайз под окно или фрейм
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
