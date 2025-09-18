@@ -54,8 +54,8 @@
     // Анимация
     function animate() {
       requestAnimationFrame(animate);
-      knot.rotation.x += 0.01;
-      knot.rotation.y += 0.01;
+      knot.rotation.x += 0.001;
+      knot.rotation.y += 0.001;
       renderer.render(scene, camera);
     }
     animate();
