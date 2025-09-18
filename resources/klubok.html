@@ -29,41 +29,29 @@
     // Геометрия клубка
     const geometry = new THREE.TorusKnotGeometry(1, 0.3, 256, 32);
     const material = new THREE.MeshStandardMaterial({
-      color: 0x88aaff,
-      emissive: 0x2222ff,
-      emissiveIntensity: 0.7,
-      metalness: 0.9,
-      roughness: 0.1,
+      color: 0x8888ff,
+      metalness: 0.8,
+      roughness: 0.2,
     });
     const knot = new THREE.Mesh(geometry, material);
     scene.add(knot);
 
     // Свет
-    const light1 = new THREE.PointLight(0xffffff, 1.5, 100);
+    const light1 = new THREE.PointLight(0xffffff, 1, 100);
     light1.position.set(5, 5, 5);
     scene.add(light1);
 
-    const light2 = new THREE.PointLight(0xff00ff, 1.2, 100);
+    const light2 = new THREE.PointLight(0xff00ff, 0.6, 100);
     light2.position.set(-5, -5, -5);
     scene.add(light2);
-
-    const light3 = new THREE.PointLight(0x00ffff, 1.2, 100);
-    light3.position.set(0, 5, -5);
-    scene.add(light3);
 
     camera.position.z = 4;
 
     // Анимация
-    function animate(time) {
+    function animate() {
       requestAnimationFrame(animate);
       knot.rotation.x += 0.01;
       knot.rotation.y += 0.01;
-
-      // Переливы цвета
-      const hue = (time * 0.0002) % 1; // меняем оттенок по кругу
-      material.color.setHSL(hue, 1, 0.5);
-      material.emissive.setHSL((hue + 0.2) % 1, 1, 0.4);
-
       renderer.render(scene, camera);
     }
     animate();
