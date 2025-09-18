@@ -2,131 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Clubok + Kaleidoscope</title>
+  <title>3D Kaleidoscope</title>
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background: #000;
-      height: 100%;
-      width: 100%;
-    }
-    canvas {
-      display: block;
-    }
+    body, html { margin: 0; padding: 0; overflow: hidden; background: #000; height: 100%; width: 100%; }
+    canvas { display: block; }
   </style>
 </head>
 <body>
+  <!-- Подключаем Three.js и дополнительные скрипты постобработки -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+  <script src="https://threejs.org/examples/js/postprocessing/EffectComposer.js"></script>
+  <script src="https://threejs.org/examples/js/postprocessing/RenderPass.js"></script>
+  <script src="https://threejs.org/examples/js/postprocessing/ShaderPass.js"></script>
+  <script src="https://threejs.org/examples/js/shaders/KaleidoShader.js"></script>
   <script>
+    // Сцена и камера
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 4;
+    // Рендерер на весь экран
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-
-    // === Калейдоскоп-текстура ===
-    const size = 512;
-    const kaleCanvas = document.createElement("canvas");
-    kaleCanvas.width = kaleCanvas.height = size;
-    const ctx = kaleCanvas.getContext("2d");
-
-    function drawKaleidoscope() {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, size, size);
-
-      const sectors = 8; // симметрия
-      const centerX = size / 2;
-      const centerY = size / 2;
-
-      for (let i = 0; i < 10; i++) {
-        const gray = Math.floor(Math.random() * 255);
-        ctx.fillStyle = `rgb(${gray},${gray},${gray})`;
-
-        const r = Math.random() * size * 0.4;
-        const angle = Math.random() * Math.PI * 2;
-        const x = centerX + r * Math.cos(angle);
-        const y = centerY + r * Math.sin(angle);
-
-        ctx.beginPath();
-        ctx.arc(x, y, 20 + Math.random() * 40, 0, Math.PI * 2);
-        ctx.fill();
-
-        // зеркалим в другие сектора
-        for (let s = 1; s < sectors; s++) {
-          const a = angle + (s * 2 * Math.PI) / sectors;
-          const xx = centerX + r * Math.cos(a);
-          const yy = centerY + r * Math.sin(a);
-          ctx.beginPath();
-          ctx.arc(xx, yy, 20 + Math.random() * 40, 0, Math.PI * 2);
-          ctx.fill();
-        }
+    // Создание группы "стекляшек" (цветных фрагментов)
+    const pieces = [];
+    const pieceCount = 20;
+    const maxX = 4, maxY = 3;
+    for (let i = 0; i < pieceCount; i++) {
+      // Случайная геометрия фрагмента: круг или треугольник
+      let geometry;
+      if (Math.random() < 0.5) {
+        geometry = new THREE.CircleGeometry(0.2 + Math.random() * 0.2, 16);
+      } else {
+        geometry = new THREE.BufferGeometry();
+        const vertices = new Float32Array([
+          0, 0.3 + Math.random()*0.2, 0,
+          -0.3 - Math.random()*0.2, -0.3 - Math.random()*0.2, 0,
+          0.3 + Math.random()*0.2, -0.3 - Math.random()*0.2, 0
+        ]);
+        geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
       }
+      // Материал BasicMaterial яркого случайного цвета (без освещения)
+      const material = new THREE.MeshBasicMaterial({ color: Math.random() * 0xffffff, side: THREE.DoubleSide });
+      const mesh = new THREE.Mesh(geometry, material);
+      // Случайная начальная позиция в пределах видимой области
+      mesh.position.x = (Math.random() * 2 - 1) * maxX;
+      mesh.position.y = (Math.random() * 2 - 1) * maxY;
+      mesh.position.z = 0;
+      // Случайный поворот вокруг Z (для несимметричных форм)
+      mesh.rotation.z = Math.random() * Math.PI * 2;
+      scene.add(mesh);
+      // Сохраняем объект и его скорость
+      pieces.push({
+        mesh: mesh,
+        vx: (Math.random() * 0.01) - 0.005, // скорость по X (-0.005..0.005)
+        vy: (Math.random() * 0.01) - 0.005  // скорость по Y
+      });
     }
-
-    drawKaleidoscope();
-
-    const texture = new THREE.CanvasTexture(kaleCanvas);
-    const bgGeometry = new THREE.PlaneGeometry(40, 40);
-    const bgMaterial = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
-    const bgPlane = new THREE.Mesh(bgGeometry, bgMaterial);
-    bgPlane.position.z = -10;
-    scene.add(bgPlane);
-
-    // === Клубок ===
-    const geometry = new THREE.TorusKnotGeometry(1.5, 0.4, 256, 32);
-    const material = new THREE.MeshStandardMaterial({
-      color: 0x8888ff,
-      metalness: 0.7,
-      roughness: 0.15,
-    });
-    const knot = new THREE.Mesh(geometry, material);
-    scene.add(knot);
-
-    // === Свет ===
-    const light1 = new THREE.PointLight(0xffffff, 2, 150);
-    light1.position.set(5, 5, 5);
-    scene.add(light1);
-
-    const light2 = new THREE.PointLight(0xff00ff, 1, 150);
-    light2.position.set(-5, -5, -5);
-    scene.add(light2);
-
-    const light3 = new THREE.DirectionalLight(0xffffff, 0.5);
-    light3.position.set(0, 5, 5);
-    scene.add(light3);
-
-    camera.position.z = 4;
-
-    // === Анимация ===
-    let scale = 1;
+    // Постобработка: эффект калейдоскопа
+    const composer = new THREE.EffectComposer(renderer);
+    composer.addPass(new THREE.RenderPass(scene, camera));
+    const kaleidoPass = new THREE.ShaderPass(THREE.KaleidoShader);
+    kaleidoPass.uniforms['sides'].value = 6;   // 6 секций симметрии (3 зеркала)
+    kaleidoPass.uniforms['angle'].value = 0.0; // начальный угол поворота узора
+    kaleidoPass.renderToScreen = true;         // выводим финальное изображение на экран
+    composer.addPass(kaleidoPass);
+    // Анимация сцены
     function animate() {
       requestAnimationFrame(animate);
-
-      knot.rotation.x += 0.005;
-      knot.rotation.y += 0.005;
-
-      // калейдоскоп расширяется
-      scale += 0.002;
-      bgPlane.scale.set(scale, scale, 1);
-
-      // раз в момент пересоздаём узор
-      if (scale > 2) {
-        drawKaleidoscope();
-        texture.needsUpdate = true;
-        scale = 1;
+      // Обновляем позиции фрагментов
+      for (const item of pieces) {
+        const m = item.mesh;
+        m.position.x += item.vx;
+        m.position.y += item.vy;
+        // Меняем направление при выходе за границы области
+        if (m.position.x > maxX || m.position.x < -maxX) item.vx = -item.vx;
+        if (m.position.y > maxY || m.position.y < -maxY) item.vy = -item.vy;
       }
-
-      renderer.render(scene, camera);
+      // Плавно поворачиваем весь узор калейдоскопа
+      kaleidoPass.uniforms['angle'].value += 0.005;
+      // Рендерим сцену с пост-эффектом
+      composer.render();
     }
     animate();
-
-    // === Автоматический ресайз ===
-    window.addEventListener("resize", () => {
+    // Автоматический ресайз канвы и эффектов при изменении окна
+    window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+      composer.setSize(window.innerWidth, window.innerHeight);
     });
   </script>
 </body>
