@@ -74,7 +74,7 @@ const material = new THREE.ShaderMaterial({
       }
 
       // диапазон яркости от 0.3 до 0.7
-      float grey = 0.8 + 0.1*sin(n*3.0 + time*0.3);
+      float grey = 0.9 + 0.05*sin(n*3.0 + time*0.3);
       gl_FragColor = vec4(vec3(grey), 1.0);
     }
   `
