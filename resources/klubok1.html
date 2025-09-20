@@ -15,9 +15,45 @@
     canvas {
       display: block;
     }
+    .overlay-text {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 1em;
+      line-height: 1.5em;
+      text-align: justify;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.3); /* слегка затемнить фон */
+      padding: 15px;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
+  <div class="overlay-text">
+    <p><strong>Британец и Пятый текст</strong></p>
+    <p>В Лондоне туман, в сердце — тоска,<br>
+    Чай в чашке остывает, как Империя.<br>
+    А он сидит нагишом,<br>
+    вежливо прикрытый ноутбуком,<br>
+    и читает «Евангелие от Люцифера».</p>
+
+    <p>Каждую строчку проглатывает,<br>
+    будто это новый <em>Times</em>,<br>
+    но вместо новостей о королеве<br>
+    там — Королева Чиана.</p>
+
+    <p>Он морщит лоб, кивает серьёзно:<br>
+    — <em>Oh, fascinating… bloody marvellous!</em><br>
+    И только кот рядом думает:<br>
+    «Братец, ты уже час сидишь голый,<br>
+    а она ещё и Жанну Д’Арк подтянула…<br>
+    Пора надеть штаны».</p>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
   <script>
     const scene = new THREE.Scene();
@@ -37,15 +73,15 @@
     scene.add(knot);
 
     // Свет
-    const light1 = new THREE.PointLight(0xffffff, 2, 150); // белый свет стал ярче
+    const light1 = new THREE.PointLight(0xffffff, 2, 150);
     light1.position.set(5, 5, 5);
     scene.add(light1);
 
-    const light2 = new THREE.PointLight(0xff00ff, 1, 150); // розовый ярче
+    const light2 = new THREE.PointLight(0xff00ff, 1, 150);
     light2.position.set(-5, -5, -5);
     scene.add(light2);
 
-    const light3 = new THREE.DirectionalLight(0xffffff, 0.5); // дополнительный белый направленный
+    const light3 = new THREE.DirectionalLight(0xffffff, 0.5);
     light3.position.set(0, 5, 5);
     scene.add(light3);
 
@@ -60,7 +96,7 @@
     }
     animate();
 
-    // Автоматический ресайз под окно или фрейм
+    // Автоматический ресайз
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
