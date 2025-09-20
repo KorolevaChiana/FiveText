@@ -695,5 +695,97 @@
     frame.style.visibility = "hidden";
     document.body.appendChild(frame);
   </script>
+
+
+
+
+
+
+
+
+
+<div id="donation-balance">Загрузка...</div>
+
+<script>
+const address = "0xf671789cF86a762651459Ab22B14D4F137128270";
+const etherscanApiKey = "SQNSV6C62SEZSUEFX58G8YVHA5DX6TZJAF"; // вставь сюда ключ
+const etherscanApi = "https://api.etherscan.io/api";
+const coingeckoApi = "https://api.coingecko.com/api/v3/simple/price";
+
+// 1. Получаем список токенов ERC20 (через Etherscan)
+async function getTokenTransfers() {
+  const res = await fetch(`${etherscanApi}?module=account&action=tokentx&address=${address}&page=1&offset=50&sort=desc&apikey=${etherscanApiKey}`);
+  const data = await res.json();
+  if (data.status !== "1") return [];
+  const tokens = {};
+  data.result.forEach(tx => {
+    tokens[tx.contractAddress] = {
+      symbol: tx.tokenSymbol,
+      decimals: tx.tokenDecimal
+    };
+  });
+  return tokens;
+}
+
+// 2. Получаем баланс конкретного токена
+async function getTokenBalance(contract, decimals) {
+  const res = await fetch(`${etherscanApi}?module=account&action=tokenbalance&contractaddress=${contract}&address=${address}&tag=latest&apikey=${etherscanApiKey}`);
+  const data = await res.json();
+  return parseFloat(data.result) / Math.pow(10, decimals);
+}
+
+// 3. Получаем цены с CoinGecko
+async function getPrices(ids) {
+  const res = await fetch(`${coingeckoApi}?ids=${ids.join(",")}&vs_currencies=usd`);
+  return await res.json();
+}
+
+// 4. Сопоставление токенов Etherscan → CoinGecko
+const tokenMap = {
+  "ethereum": "ethereum",
+  "USDT": "tether",
+  "USDC": "usd-coin",
+  "DAI": "dai",
+  "SHIB": "shiba-inu"
+  // добавь сюда, если появятся новые токены
+};
+
+async function displayBalance() {
+  let total = 0;
+
+  // ETH
+  const ethRes = await fetch(`${etherscanApi}?module=account&action=balance&address=${address}&tag=latest&apikey=${etherscanApiKey}`);
+  const ethData = await ethRes.json();
+  const ethBalance = parseFloat(ethData.result) / 1e18;
+
+  const prices = await getPrices(Object.values(tokenMap));
+  total += ethBalance * prices["ethereum"].usd;
+
+  // ERC20 токены
+  const tokens = await getTokenTransfers();
+  for (let contract in tokens) {
+    const token = tokens[contract];
+    const balance = await getTokenBalance(contract, token.decimals);
+
+    if (tokenMap[token.symbol]) {
+      total += balance * prices[tokenMap[token.symbol]].usd;
+    }
+  }
+
+  document.getElementById("donation-balance").innerText =
+    "✨ Собрано донатов: $" + total.toFixed(2);
+}
+
+displayBalance();
+</script>
+
+
+
+
+
+
+
+
+  
 </body>
 </html>
