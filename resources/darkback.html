@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fractal Grey Shader</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #000;
+      height: 100%;
+      width: 100%;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script type="module">
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js";
+
+// Сцена и камера
+const scene = new THREE.Scene();
+const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// uniforms
+const uniforms = {
+  time: { value: 0.0 },
+  resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) }
+};
+
+// Шейдер
+const material = new THREE.ShaderMaterial({
+  uniforms,
+  vertexShader: `
+    void main() {
+      gl_Position = vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    uniform float time;
+    uniform vec2 resolution;
+
+    float hash(vec2 p) {
+      return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+    }
+    float noise(in vec2 p){
+      vec2 i = floor(p);
+      vec2 f = fract(p);
+      float a = hash(i);
+      float b = hash(i + vec2(1.0, 0.0));
+      float c = hash(i + vec2(0.0, 1.0));
+      float d = hash(i + vec2(1.0, 1.0));
+      vec2 u = f*f*(3.0-2.0*f);
+      return mix(a, b, u.x) +
+             (c - a)* u.y * (1.0 - u.x) +
+             (d - b) * u.x * u.y;
+    }
+
+    void main() {
+      vec2 uv = (gl_FragCoord.xy - 0.5*resolution.xy) / resolution.y;
+      float t = time*0.05;
+
+      float n = 0.0;
+      float scale = 1.0;
+      for(int i=0;i<5;i++) {
+        n += noise(uv*scale + t) / scale;
+        scale *= 2.0;
+      }
+
+      // диапазон яркости от 0.3 до 0.7
+      float grey = 0.2 + 0.1*sin(n*3.0 + time*0.3);
+      gl_FragColor = vec4(vec3(grey), 1.0);
+    }
+  `
+});
+
+// Полноэкранный прямоугольник
+const plane = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
+scene.add(plane);
+
+// Анимация
+function animate(t) {
+  requestAnimationFrame(animate);
+  uniforms.time.value = t * 0.001;
+  renderer.render(scene, camera);
+}
+animate();
+
+// Ресайз
+window.addEventListener("resize", () => {
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  uniforms.resolution.value.set(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
