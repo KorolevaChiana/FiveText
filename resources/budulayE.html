@@ -86,20 +86,37 @@ function googleTranslateElementInit() {
 
 
 
-<!-- БЕЛЫЙ «ЛИСТ» НА СЕРОМ ФОНЕ -->
-<div style="display:flex;flex-direction:column;max-width:900px;margin:40px auto;padding:30px;background:#ffffff;border:2px solid #222;border-radius:2px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#000;line-height:1.6;">
+  <style>
+    @media (min-width: 768px) {
+      #short-85vefw {
+        position: fixed;
+        top: 150px;
+        right: 10px;
+        width: 300px;
+        height: 533px;
+        z-index: 9999;
+        background: #000;
+        border-radius: 8px;
+        box-shadow: 0 0 12px rgba(255, 255, 0, 0.3);
+        overflow: hidden;
+      }
+      #short-85vefw iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    }
+  </style>
 
-  <h2 style="font-size:1.4em;margin-bottom:0.5em;">🎥 Embedded видео</h2>
-
-  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
-    <iframe src="https://www.youtube.com/embed/5I3ggNQllL8" 
-            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
+  <div id="short-85vefw">
+    <iframe 
+      src="https://www.youtube.com/embed/5I3ggNQllL8" 
+      title="YouTube Short"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
     </iframe>
   </div>
-
-</div>
 
 
   
