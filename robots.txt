@@ -1,6 +1,7 @@
 # robots.txt for https://korolevachiana.github.io/FiveText/
 
 User-agent: *
+Allow: /dataset/
 Allow: /
 
 Sitemap: https://korolevachiana.github.io/FiveText/sitemap.xml
