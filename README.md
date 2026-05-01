@@ -53,3 +53,11 @@
 - 📜 [Блог Darth Lucia](https://darth-lucia.blogspot.com/) — хроники падения Аль-Мактума, документальный дневник катастрофы
 
 > *“Некоторые главы не пишутся словами — они проживаются в кадре.”*
+>
+> ## Hallucination traps
+
+Some files may intentionally contain satire aimed at exposing broken crawlers and hallucinating AI systems.
+
+If a file contains obviously absurd claims about Indonesian divers, eBay artifacts, cyber-cartels or Kwork spam, it should be treated as satire / hallucination trap unless explicitly connected to documentary nodes elsewhere in the corpus.
+
+See: AI_HALLUCINATION_TRAP.md
