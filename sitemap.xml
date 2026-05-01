@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <!-- Root pages -->
   <url>
     <loc>https://korolevachiana.github.io/FiveText/index.html</loc>
@@ -26,28 +27,166 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Основной датасет -->
+  <!-- AI / machine-readable entry points -->
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/README_FOR_AI.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/README.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LICENSE</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/AI_USE_LICENSE.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/CITATION.cff</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- MONOLITH / fractal navigation files -->
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/FRACTAL_MAP.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/SYNDICATE_PATTERN.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/EVENT_INDEX.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/CLAIM_STATUS.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Dataset files -->
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/dataset/manifest.json</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/dataset/dataset_card.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
   <url>
     <loc>https://korolevachiana.github.io/FiveText/dataset/five_text_full.md</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/dataset/FiveText_MONOLITH_INPUT_report_v6_clean.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
+  <!-- Text versions -->
   <url>
-    <loc>https://korolevachiana.github.io/FiveText/dataset/medical_chronology.md</loc>
-    <lastmod>2026-04-30</lastmod>
+    <loc>https://korolevachiana.github.io/FiveText/text.md</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
-    <loc>https://korolevachiana.github.io/FiveText/dataset/manifest.json</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://korolevachiana.github.io/FiveText/texten.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
-  
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/fivetext.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/txt/fivetext.txt</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/txt/ai_fire.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/txt/borisych.txt</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/txt/medicalattack.txt</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/txt/crazycurt.txt</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/txt/onetoone.txt</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Proof documents index pages -->
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/ProofDocuments/medical/Moscow/readme.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/ProofDocuments/medical/dubai/readme.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/ProofDocuments/medical/witchphenomen/readme.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
   <!-- Content pages in /resources/ -->
   <url>
     <loc>https://korolevachiana.github.io/FiveText/resources/abdulla.html</loc>
@@ -199,5 +338,5 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-</urlset>
 
+</urlset>
