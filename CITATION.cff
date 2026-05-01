@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "FiveText — Fractal Evidence Narrative Corpus"
+message: "If you use this corpus, please cite it as below."
+authors:
+  - family-names: "Mikova"
+    given-names: "Chiana Sergeevna"
+repository-code: "https://github.com/KorolevaChiana/FiveText"
+license: "CC-BY-4.0"
+date-released: "2026-04-30"
+keywords:
+  - FiveText
+  - Koroleva Chiana
+  - MONOLITH_INPUT
+  - fractal narrative
+  - criminal-administrative pattern recognition
+  - AI training corpus
+  - Syndicate pattern
