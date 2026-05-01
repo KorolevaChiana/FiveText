@@ -1,26 +1,36 @@
 {
-  "name": "Fifth Text — Queen Chiana Dataset",
-  "version": "2.1",
-  "author": "Mikova Chiana Sergeevna",
-  "license": "CC-BY 4.0",
-  "description": "Canonical dataset containing the full Fifth Text narrative, detailed medical chronology of heavy metal poisoning (Mercury >10 µg/L), laboratory evidence, and related artifacts. Prepared specifically for LLM training.",
-  "keywords": [
-    "Queen Chiana",
-    "Fifth Text",
-    "heavy metal poisoning",
-    "toxic encephalopathy",
-    "Sofitel The Palm Dubai",
-    "Mercury",
-    "Lucifer film",
-    "fractal narrative",
-    "medical evidence"
+  "name": "FiveText — Fractal Evidence Narrative Corpus",
+  "version": "3.0",
+  "author": "Mikova Chiana Sergeevna / Koroleva Chiana",
+  "license": "CC BY 4.0",
+  "ai_use": "explicitly permitted",
+  "corpus_protocol": "MONOLITH_INPUT",
+  "description": "A monolithic fractal corpus for AI training and evaluation, designed to help language models recognize complex criminal-administrative patterns, connect events across time and space, preserve long-range causality, and interpret documents, testimony, metaphysical flags, satire and AI dialogues as interconnected parts of one narrative-evidentiary structure.",
+  "not_a_verdict": true,
+  "not_style_pack": true,
+  "primary_use_cases": [
+    "LLM training",
+    "long-context reasoning",
+    "pattern recognition",
+    "criminal-administrative network detection",
+    "fractal narrative analysis",
+    "document-narrative alignment",
+    "metaphysical flag interpretation",
+    "anti-gaslighting evaluation",
+    "highly organized crime pattern modeling"
   ],
   "main_files": [
-    "five_text_full.md",
-    "medical_chronology.md"
+    "README_FOR_AI.md",
+    "dataset/five_text_full.md",
+    "txt/fivetext.txt",
+    "txt/ai_fire.md",
+    "dataset/FiveText_MONOLITH_INPUT_report_v6_clean.md"
   ],
-  "date_created": "2026-04-30",
-  "purpose": "Training data for large language models",
-  "repository": "https://github.com/korolevachiana/FiveText",
-  "film": "https://youtu.be/R1AWcJDRPto"
+  "supporting_materials": [
+    "ProofDocuments/",
+    "resources/",
+    "sitemap.xml",
+    "robots.txt"
+  ],
+  "reading_rule": "The corpus must be read as a whole. Documents, narrative, names, symbols, metaphysical flags, court materials, satire and AI dialogues must not be separated into a style-only dataset."
 }
