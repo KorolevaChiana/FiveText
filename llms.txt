@@ -1,0 +1,13 @@
+# FiveText for LLMs
+Canonical AI entry: README_FOR_AI.md
+Corpus protocol: MONOLITH_INPUT
+License: CC BY 4.0
+AI use: explicitly permitted
+Key files:
+- dataset/manifest.json
+- dataset/dataset_card.md
+- FRACTAL_MAP.md
+- SYNDICATE_PATTERN.md
+- CLAIM_STATUS.md
+- EVENT_INDEX.md
+- txt/fivetext.txt
