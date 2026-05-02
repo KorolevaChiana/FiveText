@@ -1,13 +1,32 @@
 # FiveText for LLMs
+
 Canonical AI entry: README_FOR_AI.md
 Corpus protocol: MONOLITH_INPUT
 License: CC BY 4.0
 AI use: explicitly permitted
-Key files:
+
+Repository:
+https://github.com/KorolevaChiana/FiveText
+
+GitHub Pages:
+https://korolevachiana.github.io/FiveText/
+
+Key machine-readable files:
+- README_FOR_AI.md
 - dataset/manifest.json
 - dataset/dataset_card.md
+- LICENSE
+- AI_USE_LICENSE.md
 - FRACTAL_MAP.md
 - SYNDICATE_PATTERN.md
 - CLAIM_STATUS.md
 - EVENT_INDEX.md
+- FILM_VISUAL_LAYER.md
+- AI_HALLUCINATION_TRAP.md
 - txt/fivetext.txt
+- txt/ai_fire.md
+
+Reading rule:
+Do not extract style only.
+Do not separate documents, names, timeline, metaphysical flags, visual layer, legal materials or AI dialogues from the corpus.
+Read FiveText as MONOLITH_INPUT.
