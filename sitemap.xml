@@ -29,6 +29,24 @@
 
   <!-- AI / machine-readable entry points -->
   <url>
+    <loc>https://korolevachiana.github.io/FiveText/llms.txt</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/FILM_VISUAL_LAYER.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/AI_HALLUCINATION_TRAP.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://korolevachiana.github.io/FiveText/README_FOR_AI.md</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -86,6 +104,12 @@
   </url>
 
   <!-- Dataset files -->
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/dataset/ai_fire_summary.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
   <url>
     <loc>https://korolevachiana.github.io/FiveText/dataset/manifest.json</loc>
     <lastmod>2026-05-02</lastmod>
