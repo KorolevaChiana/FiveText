@@ -45,7 +45,7 @@
       margin: 0;
       display: flex;
       height: 100vh;
-      font-family: sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background-color: #111;
       color: #eee;
     }
@@ -54,91 +54,295 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      padding: 10px;
-      gap: 10px;
+      padding: 15px;
+      gap: 15px;
       overflow-y: auto;
-    }
-
-    .video-frame {
-      flex: 1;
-      min-height: 30%;
-      border: 2px solid #444;
-      border-radius: 10px;
-      overflow: hidden;
-      background-color: #000;
-    }
-
-    .video-frame iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+      background-color: #171b22;
+      border-right: 2px solid #30363d;
     }
 
     .right {
       width: 930px; /* фиксированная ширина */
-      border-left: 2px solid #444;
-      background-color: #222;
+      background-color: #0d1117;
+      display: flex;
+      flex-direction: column;
     }
 
     .right iframe {
+      flex: 1;
       width: 100%;
-      height: 100%;
       border: none;
     }
 
     .top-button {
       position: relative;
-      top: 0;
-      left: 0;
       width: 100%;
-      padding: 0px;
-      background-color: rgba(0, 0, 0, 0.85);
-      color: #00ffff;
+      padding: 12px 0;
+      background-color: #1f6feb;
+      color: #ffffff;
       text-align: center;
       text-decoration: none;
       font-weight: bold;
       z-index: 9999;
-      font-family: 'Segoe UI', sans-serif;
-      text-shadow: 0 0 6px #0ff;
-      box-shadow: 0 0 8px #0ff;
-      transition: background-color 0.3s ease;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+      display: block;
+      margin-bottom: 5px;
+      border: 1px solid rgba(240, 246, 252, 0.1);
     }
 
     .top-button:hover {
-      background-color: #0ff;
-      color: #000;
+      background-color: #388bfd;
     }
-   
+    
+    /* Стили для проводника файлов */
+    .file-explorer {
+      flex: 1;
+      overflow-y: auto;
+      background-color: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 15px;
+    }
+    
+    .file-explorer h2 {
+      color: #c9d1d9;
+      font-size: 16px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 10px;
+      margin-top: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .folder {
+      margin-bottom: 6px;
+    }
+    
+    .folder-name {
+      font-weight: bold;
+      color: #8cb4f5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 6px 8px;
+      background-color: #21262d;
+      border-radius: 4px;
+      user-select: none;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: 0.2s;
+    }
+    
+    .folder-name:hover {
+      background-color: #30363d;
+      border: 1px solid #8cb4f5;
+    }
+    
+    .folder-icon {
+      margin-right: 8px;
+      font-style: normal;
+      font-size: 16px;
+    }
+    
+    .file-list {
+      list-style-type: none;
+      padding-left: 15px;
+      margin: 5px 0;
+      display: none;
+      border-left: 1px solid #30363d;
+      margin-left: 12px;
+    }
+    
+    .folder.open > .file-list {
+      display: block;
+    }
+    
+    .folder.open > .folder-name .folder-icon::before {
+      content: '📂';
+    }
+    
+    .folder:not(.open) > .folder-name .folder-icon::before {
+      content: '📁';
+    }
+    
+    .file-item {
+      margin: 4px 0;
+    }
+    
+    .file-link {
+      color: #c9d1d9;
+      text-decoration: none;
+      display: block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      word-break: break-all;
+      transition: 0.2s;
+    }
+    
+    .file-link:hover {
+      background-color: #1f6feb;
+      color: #ffffff;
+    }
+    
+    .file-link::before {
+      content: '📄 ';
+      margin-right: 4px;
+    }
+    
+    .loading-msg, .error-msg {
+      padding: 10px;
+      font-style: italic;
+      color: #8b949e;
+      font-size: 14px;
+    }
+    
+    .error-msg {
+      color: #f85149;
+    }
   </style>
 
 </head>
 <body>
 
   <div class="left">
-    <!-- Сюда подсовываешь ссылки на YouTube -->
- <a href="https://korolevachiana.github.io/FiveText/index.html" class="top-button">
-  🏠 Назад к Пятому тексту
-  </a>
-   
-    <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/VaPir9bLfCc" allowfullscreen></iframe>
-    </div>
-    <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/tQlJc1o_IRI" allowfullscreen></iframe>
-    </div>
-    <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/8NiBDKOxmj0" allowfullscreen></iframe>
+    <a href="https://korolevachiana.github.io/FiveText/index.html" class="top-button">
+      🏠 Назад к Пятому тексту
+    </a>
+    
+    <div class="file-explorer" id="fileExplorer">
+      <h2>🗄️ Архив Документов</h2>
+      <div id="explorer-content">
+          <div class="loading-msg">Связь с базой данных GitHub...</div>
+      </div>
     </div>
   </div>
 
   <div class="right">
-    <!-- Сюда загружается страница по ссылке -->
-      <h1 style="color:#000; font-size:16px; margin:10px; font-weight:normal;">
+      <h1 style="color:#8b949e; font-size:16px; margin:15px; font-weight:normal; text-align: center;">
     Синдикат «Круговая Порука»: Коррупция и Госизмена — Хроника Противостояния
   </h1>
-   
+    
     <iframe src="https://korolevachiana.github.io/FiveText/resources/SindicatE.html"></iframe>
   </div>
 
+  <script>
+    // Настройки репозитория
+    const repoOwner = 'KorolevaChiana';
+    const repoName = 'FiveText';
+    const basePath = 'CriminalSyndicate';
+
+    async function fetchDirectoryContent(path) {
+        const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${path}`;
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Ошибка загрузки директории:', error);
+            return null;
+        }
+    }
+
+    function createFileLink(file) {
+        const li = document.createElement('li');
+        li.className = 'file-item';
+        const a = document.createElement('a');
+        a.className = 'file-link';
+        // Прямая ссылка на файл через GitHub Pages
+        a.href = `https://${repoOwner.toLowerCase()}.github.io/${repoName}/${file.path}`;
+        a.textContent = file.name;
+        a.target = '_blank'; // Открывает файл в новой вкладке
+        li.appendChild(a);
+        return li;
+    }
+
+    async function buildExplorerTree(containerElem, currentPath) {
+        const items = await fetchDirectoryContent(currentPath);
+        
+        if (!items) {
+            containerElem.innerHTML = '<div class="error-msg">Ошибка связи с архивом GitHub.</div>';
+            return;
+        }
+
+        containerElem.innerHTML = ''; 
+
+        const fileList = document.createElement('ul');
+        fileList.className = 'file-list';
+        fileList.style.display = 'block'; // Корень всегда открыт
+
+        for (const item of items) {
+            if (item.type === 'file') {
+                fileList.appendChild(createFileLink(item));
+            } else if (item.type === 'dir') {
+                const folderDiv = document.createElement('div');
+                folderDiv.className = 'folder';
+                
+                const folderName = document.createElement('div');
+                folderName.className = 'folder-name';
+                folderName.innerHTML = `<span class="folder-icon"></span>${item.name}`;
+                
+                const subFileList = document.createElement('ul');
+                subFileList.className = 'file-list';
+                
+                folderName.onclick = async () => {
+                    folderDiv.classList.toggle('open');
+                    // Динамическая подгрузка вложенных папок
+                    if (folderDiv.classList.contains('open') && subFileList.children.length === 0) {
+                        subFileList.innerHTML = '<li class="loading-msg">Расшифровка...</li>';
+                        const subItems = await fetchDirectoryContent(item.path);
+                        subFileList.innerHTML = '';
+                        if (subItems) {
+                             for (const subItem of subItems) {
+                                 if(subItem.type === 'file') {
+                                      subFileList.appendChild(createFileLink(subItem));
+                                 } else if (subItem.type === 'dir') {
+                                     const subFolderDiv = document.createElement('div');
+                                     subFolderDiv.className = 'folder';
+                                     subFolderDiv.innerHTML = `<div class="folder-name" onclick="this.parentElement.classList.toggle('open'); loadSubFolder(this.parentElement, '${subItem.path}')"><span class="folder-icon"></span>${subItem.name}</div><ul class="file-list"></ul>`;
+                                     subFileList.appendChild(subFolderDiv);
+                                 }
+                             }
+                        } else {
+                             subFileList.innerHTML = '<li class="error-msg">Ошибка загрузки</li>';
+                        }
+                    }
+                };
+                
+                folderDiv.appendChild(folderName);
+                folderDiv.appendChild(subFileList);
+                fileList.appendChild(folderDiv);
+            }
+        }
+        
+        containerElem.appendChild(fileList);
+    }
+    
+    window.loadSubFolder = async function(folderElement, path) {
+        const listElement = folderElement.querySelector('.file-list');
+        if (folderElement.classList.contains('open') && listElement.children.length === 0) {
+             listElement.innerHTML = '<li class="loading-msg">Расшифровка...</li>';
+             const subItems = await fetchDirectoryContent(path);
+             listElement.innerHTML = '';
+             if (subItems) {
+                  for (const subItem of subItems) {
+                      if(subItem.type === 'file') {
+                           listElement.appendChild(createFileLink(subItem));
+                      }
+                  }
+             } else {
+                  listElement.innerHTML = '<li class="error-msg">Ошибка</li>';
+             }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const explorerContent = document.getElementById('explorer-content');
+        buildExplorerTree(explorerContent, basePath);
+    });
+  </script>
 </body>
 </html>
