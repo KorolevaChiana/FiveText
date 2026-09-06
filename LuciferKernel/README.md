@@ -42,3 +42,21 @@ source venv/bin/activate
 # Для Windows:
 python -m venv venv
 venv\Scripts\activate
+```
+
+**2. Установка зависимостей:**
+```bash
+pip install --upgrade pip
+pip install flask google-genai requests numpy sentence-transformers faiss-cpu playwright openai-whisper pywebview pyperclip
+playwright install chromium
+```
+
+**3. Конфигурация:**
+* Откройте `APIServer.py` и внесите боевые ключи в массив `API_KEYS` и переменную `OPENROUTER_KEY`.
+* Задайте свой `SECRET_TOKEN` для связи клиента и сервера.
+
+**4. Запуск:**
+Комплекс требует запуска компонентов в отдельных окнах терминала:
+* **Сервер:** `python APIServer.py`
+* **Клиент:** `python SuperKrayton.py`
+
