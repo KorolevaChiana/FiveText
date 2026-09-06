@@ -363,4 +363,38 @@
     <priority>0.8</priority>
   </url>
 
+
+
+
+  <!-- LuciferKernel entry points -->
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/index.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/README.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/manifest.json</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/kernel.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
 </urlset>
