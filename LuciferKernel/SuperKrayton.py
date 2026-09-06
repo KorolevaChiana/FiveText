@@ -47,7 +47,7 @@ SETTINGS_FILE = 'settings.json'
 PROXY_URL = "http://127.0.0.1:49215/chat"
 
 # --- СЕКРЕТНЫЙ ТОКЕН ЗАЩИТЫ ДЛЯ ШЛЮЗА ---
-SECRET_TOKEN = "MyImperialGuard2026"
+SECRET_TOKEN = "YOUR_SECRET_TOKEN" # -- your personal secret for server
 
 class TerminalApi:
     # Тонкий клиент связи между Python и веб-интерфейсом
