@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>SuperCrichton Web Terminal</title>
+    <!-- Глушилка политик безопасности браузера -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: blob: 'unsafe-inline' 'unsafe-eval'; script-src * data: blob: 'unsafe-inline' 'unsafe-eval'; connect-src * data: blob: 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src * data: blob: ; style-src * data: blob: 'unsafe-inline';">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --font-size: 20px;
+            --spacing: 12px;
+        }
+        body {
+            background-color: #0e1621;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* ЭКРАН АВТОРИЗАЦИИ */
+        #auth-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #0e1621;
+            display: flex; justify-content: center; align-items: center;
+            z-index: 100;
+        }
+        .auth-box {
+            background-color: #17212b;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #2b5278;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .auth-box h2 { margin-top: 0; color: #80c7ff; font-size: 22px; margin-bottom: 25px; }
+        
+        .input-group { margin-bottom: 15px; width: 100%; }
+        .pwd-container { position: relative; width: 100%; margin-bottom: 15px; }
+        
+        .auth-box input {
+            width: 100%; background: #242f3d; color: #fff; border: 1px solid #3b6b9a;
+            padding: 12px; border-radius: 5px; font-size: 16px; font-family: Consolas, monospace;
+            outline: none; box-sizing: border-box; margin: 0;
+        }
+        .auth-box input:focus { border-color: #64b5f6; }
+        
+        .toggle-btn {
+            position: absolute; right: 5px; top: 50%; transform: translateY(-50%);
+            background: transparent; color: #64b5f6; border: none; padding: 5px 10px;
+            font-size: 12px; cursor: pointer; font-weight: bold; width: auto;
+        }
+        .toggle-btn:hover { background: transparent; color: #ffffff; }
+
+        .auth-buttons { display: flex; gap: 10px; margin-top: 10px; }
+        .auth-buttons button { flex: 1; padding: 12px; font-size: 16px; }
+        #auth-error { color: #ff4d4d; font-size: 14px; margin-bottom: 15px; min-height: 20px; font-weight: bold; line-height: 1.2; word-wrap: break-word;}
+
+        /* ОСНОВНОЙ ИНТЕРФЕЙС */
+        #main {
+            flex: 1; display: none; flex-direction: column;
+            min-width: 0; 
+            width: 100%;
+        }
+        #chat-container {
+            flex: 1; 
+            padding: 20px; 
+            overflow-y: auto; 
+            overflow-x: hidden; 
+            display: flex; 
+            flex-direction: column;
+            min-width: 0;
+        }
+        
+        .msg-row { 
+            display: flex; 
+            width: 100%; 
+            margin-bottom: var(--spacing); 
+            min-width: 0; 
+        }
+        .msg-row.user-msg { justify-content: flex-end; }
+        .msg-row.crichton-msg { justify-content: flex-start; }
+        .msg-row.system-msg { justify-content: center; }
+        
+        .bubble {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 6px; 
+            font-size: var(--font-size);
+            line-height: 1.45;
+            position: relative;
+            -webkit-user-select: text;
+            user-select: text;
+            min-width: 0; 
+            overflow-wrap: anywhere; 
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-x: auto; 
+        }
+        .bubble.user-msg { background-color: rgba(43, 82, 120, 0.4); border: 1px solid rgba(100, 181, 246, 0.2); }
+        .bubble.crichton-msg { background-color: rgba(24, 37, 51, 0.7); }
+        
+        .bubble p { margin: 0 0 0.5em 0; }
+        .bubble p:last-child { margin-bottom: 0; }
+        .bubble ul, .bubble ol { margin: 4px 0 8px 24px; padding: 0; }
+        .bubble li { margin-bottom: 6px; }
+        .bubble h1, .bubble h2, .bubble h3, .bubble h4 { 
+            margin: 12px 0 8px 0; 
+            color: #80c7ff; 
+            font-size: 1.15em;
+        }
+        .bubble blockquote {
+            border-left: 3px solid #64b5f6;
+            margin: 10px 0;
+            padding: 6px 12px;
+            background: rgba(0, 0, 0, 0.25);
+            color: #cfd8dc;
+        }
+        .bubble hr {
+            border: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 12px 0;
+        }
+        .bubble pre {
+            background-color: #17212b;
+            border: 1px solid #1e2a36;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #64b5f6;
+            margin: 10px 0;
+            white-space: pre-wrap;       
+            word-wrap: break-word;       
+            overflow-x: hidden;          
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        .bubble code {
+            font-family: Consolas, monospace;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #80c7ff;
+            font-size: 0.95em;
+            word-break: break-word;
+        }
+        .bubble pre code {
+            background-color: transparent;
+            padding: 0;
+            color: #a9b7c6;
+            font-size: calc(var(--font-size) - 1px);
+            white-space: pre-wrap;       
+            word-break: break-all;       
+        }
+        .bubble table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            display: table;
+        }
+        .bubble th, .bubble td {
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .bubble th {
+            background-color: rgba(43, 82, 120, 0.3);
+        }
+        .bubble a { color: #80c7ff; text-decoration: none; }
+        .bubble a:hover { text-decoration: underline; }
+
+        .bubble-system {
+            background-color: rgba(30, 44, 58, 0.85);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: calc(var(--font-size) - 2px);
+            color: #7a8a96;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .sender-name { color: #64b5f6; font-weight: bold; margin-bottom: 6px; font-size: calc(var(--font-size) - 2px); }
+        .time { 
+            font-size: calc(var(--font-size) - 6px); 
+            color: rgba(255, 255, 255, 0.5); 
+            float: right; margin-top: 10px; margin-left: 15px; user-select: none; 
+        }
+        
+        #input-container {
+            background-color: #17212b; padding: 15px 20px;
+            display: flex; gap: 10px; border-top: 1px solid #000;
+        }
+        input[type="text"] {
+            flex: 1; background: #242f3d; color: #fff; border: none;
+            padding: 14px 18px; border-radius: 6px; font-size: var(--font-size);
+            font-family: Consolas, monospace; outline: none;
+        }
+        button {
+            background: #2b5278; color: #fff; border: none; padding: 10px 15px; border-radius: 6px;
+            font-weight: bold; cursor: pointer; transition: 0.2s;
+        }
+        button:hover { background: #3b6b9a; }
+        button:active { background: #1e3a54; }
+        #btn-send { width: 140px; font-size: 16px; }
+        #btn-logout { background: #8b0000; width: auto; font-size: 14px; }
+        #btn-logout:hover { background: #b30000; }
+        #btn-send:disabled { background: #555; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+    <!-- ЭКРАН ИДЕНТИФИКАЦИИ -->
+    <div id="auth-screen">
+        <div class="auth-box">
+            <h2>КОНТУР ДОСТУПА</h2>
+            <div id="auth-error"></div>
+            
+            <div class="input-group">
+                <input type="text" id="auth-username" placeholder="Имя (Login)" autocapitalize="none" autocorrect="off" spellcheck="false" autocomplete="username" onkeydown="if(event.key === 'Enter' || event.keyCode === 13) authenticate('login')">
+            </div>
+            
+            <div class="pwd-container">
+                <input type="password" id="auth-password" placeholder="Пароль" autocapitalize="none" autocorrect="off" spellcheck="false" autocomplete="current-password" onkeydown="if(event.key === 'Enter' || event.keyCode === 13) authenticate('login')">
+                <button type="button" class="toggle-btn" onclick="togglePassword()">ПОКАЗАТЬ</button>
+            </div>
+            
+            <div class="auth-buttons">
+                <button onclick="authenticate('login')">ВОЙТИ</button>
+                <button onclick="authenticate('register')">РЕГИСТРАЦ.</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ОСНОВНОЙ ИНТЕРФЕЙС -->
+    <div id="main">
+        <div id="chat-container"></div>
+        <div id="input-container">
+            <input type="text" id="msg-input" placeholder="Ввод команды..." autocapitalize="none" autocorrect="off" spellcheck="false" onkeydown="if(event.key === 'Enter' || event.keyCode === 13) sendMessage()">
+            <button id="btn-send" onclick="sendMessage()">ОТПРАВИТЬ</button>
+            <button id="btn-logout" onclick="logout()">ВЫЙТИ</button>
+        </div>
+    </div>
+
+    <script>
+        const PROXY_URL = "http://92.61.71.68:49500/chat";
+        const SECRET_TOKEN = "MyImperialGuard2026";
+
+        if (typeof marked !== 'undefined') {
+            marked.use({ breaks: true, gfm: true });
+        }
+
+        let userToken = null;
+        let currentUsername = null;
+        
+        try {
+            userToken = localStorage.getItem('crichton_user_token');
+            currentUsername = localStorage.getItem('crichton_username');
+        } catch (e) {
+            console.warn("LocalStorage недоступен.");
+        }
+
+        const chatBox = document.getElementById('chat-container');
+        const inputField = document.getElementById('msg-input');
+        const sendBtn = document.getElementById('btn-send');
+
+        window.onload = async () => {
+            try {
+                const savedUser = localStorage.getItem('crichton_saved_user');
+                const savedPass = localStorage.getItem('crichton_saved_pass');
+                if (savedUser) document.getElementById('auth-username').value = savedUser;
+                if (savedPass) document.getElementById('auth-password').value = savedPass;
+            } catch(e) {}
+
+            if (userToken && currentUsername) {
+                document.getElementById('auth-screen').style.display = 'none';
+                document.getElementById('main').style.display = 'flex';
+                await loadHistory();
+            } else {
+                document.getElementById('auth-screen').style.display = 'flex';
+                document.getElementById('main').style.display = 'none';
+            }
+        };
+
+        function togglePassword() {
+            const pwdInput = document.getElementById('auth-password');
+            const btn = document.querySelector('.toggle-btn');
+            if (pwdInput.type === "password") {
+                pwdInput.type = "text";
+                btn.innerText = "СКРЫТЬ";
+            } else {
+                pwdInput.type = "password";
+                btn.innerText = "ПОКАЗАТЬ";
+            }
+        }
+
+        function uint8ArrayToBase64(bytes) {
+            let binary = '';
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+
+        function base64ToUint8Array(base64) {
+            const binaryString = window.atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes;
+        }
+
+        async function apiRequest(payloadObj) {
+            const jsonStr = JSON.stringify(payloadObj);
+            const compressedBytes = pako.deflate(new TextEncoder().encode(jsonStr), { level: 9 });
+            const encodedPayload = uint8ArrayToBase64(compressedBytes);
+
+            let response;
+            try {
+                response = await fetch(PROXY_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Crichton-Token': SECRET_TOKEN
+                    },
+                    body: JSON.stringify({ payload_compressed: encodedPayload })
+                });
+            } catch (netErr) {
+                throw new Error("Браузер убил HTTP-запрос (Mixed Content или сеть). Зайди на сайт по http://, а не https://. Детали: " + netErr.message);
+            }
+
+            let rawData;
+            try {
+                rawData = await response.json();
+            } catch (jsonErr) {
+                throw new Error(`HTTP ${response.status}: Пустой ответ шлюза.`);
+            }
+            
+            if (rawData.response_compressed) {
+                try {
+                    const compressedResponseBytes = base64ToUint8Array(rawData.response_compressed);
+                    const decompressedBytes = pako.inflate(compressedResponseBytes);
+                    const jsonStrResp = new TextDecoder().decode(decompressedBytes);
+                    return JSON.parse(jsonStrResp);
+                } catch (pakoErr) {
+                    throw new Error("Сбой распаковки: " + pakoErr.message);
+                }
+            }
+            return rawData;
+        }
+
+        async function authenticate(actionType) {
+            const user = document.getElementById('auth-username').value.trim();
+            const pass = document.getElementById('auth-password').value.trim();
+            const errDiv = document.getElementById('auth-error');
+            errDiv.innerText = 'Подключение к шлюзу...';
+
+            if (!user || !pass) {
+                errDiv.innerText = 'Заполните логин и пароль!';
+                return;
+            }
+
+            try {
+                const data = await apiRequest({
+                    action: actionType,
+                    username: user,
+                    password: pass
+                });
+
+                if (data.status === "success") {
+                    userToken = data.token;
+                    currentUsername = data.username;
+                    
+                    try {
+                        localStorage.setItem('crichton_user_token', userToken);
+                        localStorage.setItem('crichton_username', currentUsername);
+                        localStorage.setItem('crichton_saved_user', user);
+                        localStorage.setItem('crichton_saved_pass', pass);
+                    } catch (storageErr) {
+                        console.warn("Память недоступна (приватный режим браузера).");
+                    }
+                    
+                    document.getElementById('auth-screen').style.display = 'none';
+                    document.getElementById('main').style.display = 'flex';
+                    
+                    chatBox.innerHTML = ''; 
+                    await loadHistory();
+                } else {
+                    errDiv.innerText = data.message || "Отказ: Неверный логин или пароль";
+                }
+            } catch(e) {
+                errDiv.innerText = "Ошибка: " + e.message;
+            }
+        }
+
+        function logout() {
+            try {
+                localStorage.removeItem('crichton_user_token');
+                localStorage.removeItem('crichton_username');
+            } catch (e) {}
+            
+            userToken = null;
+            currentUsername = null;
+            chatBox.innerHTML = '';
+            document.getElementById('auth-error').innerText = '';
+            document.getElementById('main').style.display = 'none';
+            document.getElementById('auth-screen').style.display = 'flex';
+        }
+
+        async function loadHistory() {
+            try {
+                const data = await apiRequest({ 
+                    action: "get_history", 
+                    power_level: 8,
+                    user_token: userToken 
+                });
+                
+                if (data.status === "auth_required") {
+                    logout();
+                    alert("Сессия устарела. Войдите заново.");
+                    return;
+                }
+
+                if (data && data.history) {
+                    data.history.forEach(msg => {
+                        if (msg.text.includes("[SYSTEM_RESULT]")) return;
+                        const role = msg.role === 'user' ? 'user' : 'crichton';
+                        let timeStr = msg.timestamp || "Архив";
+                        if (timeStr && timeStr.length > 10) {
+                            timeStr = timeStr.split(" ")[1];
+                        }
+                        addMessage(role, msg.text, timeStr, false);
+                    });
+                }
+                addMessage("system", `Добро пожаловать, ${currentUsername}.<br>Тонкий Веб-клиент Синдиката активирован.`, "", true);
+            } catch (e) {
+                addMessage("error", "Сбой загрузки истории: " + e.message, "", true);
+            }
+        }
+
+        async function sendMessage() {
+            const text = inputField.value.trim();
+            if (!text) return;
+
+            inputField.value = '';
+            disableInput();
+            
+            const timeStr = new Date().toLocaleTimeString('ru-RU');
+            addMessage("user", text, timeStr, true);
+
+            try {
+                const data = await apiRequest({
+                    action: "chat",
+                    user_text: text,
+                    power_level: 8,
+                    memory_depth: 1,
+                    user_token: userToken
+                });
+
+                if (data.status === "auth_required") {
+                    logout();
+                    alert("Сессия устарела. Войдите заново.");
+                    return;
+                }
+
+                if (data.status === "success") {
+                    addMessage("crichton", data.text, new Date().toLocaleTimeString('ru-RU'), false);
+                } else {
+                    throw new Error(data.message || "Unknown error from server");
+                }
+            } catch (e) {
+                let err = e.message;
+                if (err.includes("ALL_KEYS_EXHAUSTED")) err = "[Тактическая пауза: Все ключи исчерпаны.]";
+                addMessage("error", err, "", true);
+            } finally {
+                enableInput();
+            }
+        }
+
+        function disableInput() {
+            inputField.disabled = true;
+            sendBtn.disabled = true;
+            sendBtn.innerText = 'ОБРАБОТКА...';
+        }
+
+        function enableInput() {
+            inputField.disabled = false;
+            sendBtn.disabled = false;
+            sendBtn.innerText = 'ОТПРАВИТЬ';
+            inputField.focus();
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/&/g, "&amp;")
+                      .replace(/</g, "&lt;")
+                      .replace(/>/g, "&gt;")
+                      .replace(/"/g, "&quot;")
+                      .replace(/'/g, "&#039;")
+                      .replace(/\n/g, "<br>");
+        }
+
+        function addMessage(role, text, timeStr, allowHtml = false) {
+            const row = document.createElement('div');
+            let htmlContent = "";
+            let cleanText = text;
+            
+            if (!allowHtml) {
+                cleanText = (text || "").replace(/<br\s*\/?>/gi, '\n').replace(/\n{3,}/g, '\n\n'); 
+                cleanText = cleanText.replace(/```html\s*<div/gi, '<div');
+                cleanText = cleanText.replace(/<\/div>\s*```/gi, '</div>');
+            }
+            
+            if (role === 'crichton') {
+                htmlContent = (typeof marked !== 'undefined') ? marked.parse(cleanText) : escapeHTML(cleanText);
+            } else {
+                htmlContent = allowHtml ? cleanText : escapeHTML(cleanText);
+            }
+            
+            if (role === 'user') {
+                const displayName = (currentUsername === 'Koroleva') ? 'Королева' : currentUsername;
+                row.className = 'msg-row user-msg';
+                row.innerHTML = `<div class="bubble user-msg"><div class="sender-name" style="text-align: right; color: #b3e5fc;">${displayName}</div>${htmlContent}<div class="time">${timeStr}</div></div>`;
+            } 
+            else if (role === 'system' || role === 'error') {
+                row.className = 'msg-row system-msg';
+                const color = role === 'error' ? '#ff4d4d' : '#7a8a96';
+                const label = role === 'error' ? 'ОШИБКА СИСТЕМЫ' : 'Система';
+                row.innerHTML = `<div class="bubble-system" style="color: ${color}"><b>${label}</b>: ${htmlContent}</div>`;
+            } 
+            else {
+                row.className = 'msg-row crichton-msg';
+                row.innerHTML = `
+                    <div class="bubble crichton-msg">
+                        <div class="sender-name">Крайтон</div>
+                        ${htmlContent}
+                        <div class="time">${timeStr}</div>
+                    </div>`;
+            }
+            
+            chatBox.appendChild(row);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
