@@ -15,7 +15,7 @@
       "node_id": "root_fractal_map",
       "file_path": "/FRACTAL_MAP.md",
       "node_type": "topology_anchor",
-      "outbound_edges": ["node_narrative_core", "node_medical_evidence"]
+      "outbound_edges": ["node_narrative_core", "node_medical_evidence", "node_supercrichton_readme"]
     },
     {
       "node_id": "node_narrative_core",
@@ -39,6 +39,69 @@
       "file_path": "/FILM_VISUAL_LAYER.md",
       "node_type": "visual_alignment_map",
       "linked_assets": ["/Lucifer.torrent", "/lucifer_720"]
+    },
+    {
+      "node_id": "node_supercrichton_readme",
+      "file_path": "/LuciferKernel/README.md",
+      "node_type": "technical_documentation",
+      "description": "SuperCrichton (СуперКрайтон) — Autonomous AI & RAG Engine architecture and deployment manifest",
+      "linked_assets": ["node_supercrichton_core", "node_crichton_memory", "node_crichton_api", "node_crichton_daemon"]
+    },
+    {
+      "node_id": "node_supercrichton_core",
+      "file_path": "/LuciferKernel/superkarayton.py",
+      "node_type": "ai_execution_environment",
+      "description": "Главный транзакционный шлюз и GUI-терминал. Двухпроходная генерация (Логика -> Оформление) с маршрутизацией Gemini/OpenRouter.",
+      "linked_assets": ["node_crichton_memory", "node_crichton_api"]
+    },
+    {
+      "node_id": "node_crichton_api",
+      "file_path": "/LuciferKernel/APIServer.py",
+      "node_type": "api_server_component",
+      "description": "API-сервер для связи клиента и сервера, хранение боевых ключей."
+    },
+    {
+      "node_id": "node_crichton_memory",
+      "file_path": "/LuciferKernel/crichton_memory.py",
+      "node_type": "memory_vector_storage",
+      "description": "Векторный гиппокамп. Использует sqlite3, FAISS и sentence-transformers для мгновенного извлечения релевантного исторического контекста."
+    },
+    {
+      "node_id": "node_crichton_daemon",
+      "file_path": "/LuciferKernel/crichton_analyzer_daemon.py",
+      "node_type": "background_analyzer",
+      "description": "Фоновый демон-анализатор для сканирования и разметки текстовых дампов."
+    },
+    {
+      "node_id": "node_fivetext_injector",
+      "file_path": "/LuciferKernel/import_fivetext.py",
+      "node_type": "dataset_injector",
+      "description": "Скрипт-инжектор лора для пакетного вшивания текстовых документов в векторную базу данных.",
+      "linked_assets": ["node_narrative_core", "node_crichton_memory"]
+    },
+    {
+      "node_id": "node_crichton_formatter",
+      "file_path": "/LuciferKernel/crichton_formatter.py",
+      "node_type": "output_renderer",
+      "description": "Защитный рендерер для экранирования блоков кода."
+    },
+    {
+      "node_id": "node_crichton_audio",
+      "file_path": "/LuciferKernel/crichton_audio_transcriber.py",
+      "node_type": "audio_transcriber",
+      "description": "Мастер аудио-допросов. Локальная расшифровка через OpenAI Whisper."
+    },
+    {
+      "node_id": "node_crichton_voice",
+      "file_path": "/LuciferKernel/crichton_voice.py",
+      "node_type": "voice_synthesizer",
+      "description": "Модуль асинхронной озвучки ответов."
+    },
+    {
+      "node_id": "node_crichton_voice_mac",
+      "file_path": "/LuciferKernel/crichton_voice_mac.py",
+      "node_type": "voice_synthesizer",
+      "description": "Модуль асинхронной озвучки ответов для macOS."
     }
   ]
 }
