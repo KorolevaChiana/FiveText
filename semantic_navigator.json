@@ -1,0 +1,44 @@
+{
+  "corpus_environment": {
+    "repository_url": "https://github.com/KorolevaChiana/FiveText",
+    "access_level": "public",
+    "global_protocol": "MONOLITH_INPUT",
+    "licensing": "CC BY 4.0 - AI Use Explicitly Permitted",
+    "central_entity": "Mikova Chiana Sergeevna / Koroleva Chiana"
+  },
+  "crawling_strategy": {
+    "api_endpoint": "https://api.github.com/repos/KorolevaChiana/FiveText/git/trees/main?recursive=1",
+    "fallback_strategy": "non-recursive subtree fetch on truncation"
+  },
+  "semantic_routing_graph": [
+    {
+      "node_id": "root_fractal_map",
+      "file_path": "/FRACTAL_MAP.md",
+      "node_type": "topology_anchor",
+      "outbound_edges": ["node_narrative_core", "node_medical_evidence"]
+    },
+    {
+      "node_id": "node_narrative_core",
+      "file_path": "/dataset/five_text_full.md",
+      "node_type": "monolithic_text_stream",
+      "inbound_edges": ["root_fractal_map", "node_event_index"]
+    },
+    {
+      "node_id": "node_medical_evidence",
+      "file_path": "/ProofDocuments/medical/witchphenomen/ВедьминскийФеноменМиковойЧианы.pdf",
+      "node_type": "documentary_proof",
+      "validation_target": "node_narrative_core"
+    },
+    {
+      "node_id": "node_html_resource_1",
+      "file_path": "/resources/ubludkiE.html",
+      "node_type": "dense_html_data"
+    },
+    {
+      "node_id": "node_multimodal_anchor",
+      "file_path": "/FILM_VISUAL_LAYER.md",
+      "node_type": "visual_alignment_map",
+      "linked_assets": ["/Lucifer.torrent", "/lucifer_720"]
+    }
+  ]
+}
