@@ -36,7 +36,7 @@
   </url>
   <url>
     <loc>https://korolevachiana.github.io/FiveText/semantic_navigator.json</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -86,7 +86,7 @@
   <!-- MONOLITH / fractal navigation files -->
   <url>
     <loc>https://korolevachiana.github.io/FiveText/MONOLITH_INPUT.md</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -203,7 +203,7 @@
     <priority>0.85</priority>
   </url>
 
-  <!-- Proof documents index pages -->
+  <!-- Proof documents index pages and core proofs -->
   <url>
     <loc>https://korolevachiana.github.io/FiveText/ProofDocuments/medical/Moscow/readme.md</loc>
     <lastmod>2026-05-02</lastmod>
@@ -224,7 +224,7 @@
   </url>
   <url>
     <loc>https://korolevachiana.github.io/FiveText/ProofDocuments/medical/witchphenomen/ВедьминскийФеноменМиковойЧианы.pdf</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -232,7 +232,7 @@
   <!-- Chat and Interactive Nodes -->
   <url>
     <loc>https://korolevachiana.github.io/FiveText/chat/fractal.html</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -240,7 +240,7 @@
   <!-- Multimodal / Visual Layer -->
   <url>
     <loc>https://korolevachiana.github.io/FiveText/Lucifer.torrent</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -397,7 +397,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- LuciferKernel entry points -->
+  <!-- SuperCrichton Autonomous AI & RAG Engine (LuciferKernel) -->
   <url>
     <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/</loc>
     <lastmod>2026-05-02</lastmod>
@@ -412,9 +412,9 @@
   </url>
   <url>
     <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/README.md</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/manifest.json</loc>
@@ -427,5 +427,65 @@
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/superkarayton.py</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/SuperKrayton.py</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/APIServer.py</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/crichton_memory.py</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/crichton_analyzer_daemon.py</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/import_fivetext.py</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/crichton_formatter.py</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/crichton_audio_transcriber.py</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/crichton_voice.py</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/LuciferKernel/crichton_voice_mac.py</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
