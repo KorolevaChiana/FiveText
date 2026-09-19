@@ -35,6 +35,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://korolevachiana.github.io/FiveText/semantic_navigator.json</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://korolevachiana.github.io/FiveText/FILM_VISUAL_LAYER.md</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -78,6 +84,12 @@
   </url>
 
   <!-- MONOLITH / fractal navigation files -->
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/MONOLITH_INPUT.md</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
   <url>
     <loc>https://korolevachiana.github.io/FiveText/FRACTAL_MAP.md</loc>
     <lastmod>2026-05-02</lastmod>
@@ -209,6 +221,28 @@
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/ProofDocuments/medical/witchphenomen/ВедьминскийФеноменМиковойЧианы.pdf</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Chat and Interactive Nodes -->
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/chat/fractal.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Multimodal / Visual Layer -->
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/Lucifer.torrent</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
   </url>
 
   <!-- Content pages in /resources/ -->
@@ -362,9 +396,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
-
-
 
   <!-- LuciferKernel entry points -->
   <url>
