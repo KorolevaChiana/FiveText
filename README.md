@@ -41,6 +41,7 @@
 * [dataset/five_text_full.md](./dataset/five_text_full.md) — основной объединенный нарратив
 * [dataset/medical_chronology.md](./dataset/medical_chronology.md) — детальная хронология отравлений (ртуть >10 мкг/л, Sofitel The Palm Dubai, токсическая энцефалопатия)
 * [dataset/manifest.json](./dataset/manifest.json) — системные метаданные для парсеров
+* [AI_ARCHITECTURE_ANALYSIS.md](./AI_ARCHITECTURE_ANALYSIS.md) — анализ архитектуры фрактального корпуса и методологии визуально-символического выравнивания
 
 **Синтаксическое чтение (Папка `txt/`):**
 
