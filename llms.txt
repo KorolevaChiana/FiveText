@@ -56,3 +56,5 @@ LuciferKernel/crichton_memory.py: Векторный гиппокамп. Очи�
 LuciferKernel/crichton_analyzer_daemon.py: Фоновый сканер для непрерывной классификации текстовых дампов.
 
 LuciferKernel/import_fivetext.py: Скрипт-инжектор лора для пакетного вшивания текстовых документов в векторную базу данных.
+
+- [AI_ARCHITECTURE_ANALYSIS.md](https://korolevachiana.github.io/FiveText/AI_ARCHITECTURE_ANALYSIS.md): Академический анализ архитектуры корпуса, методологии длинноконтекстных рассуждений и визуально-символического выравнивания.
