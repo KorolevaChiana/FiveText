@@ -15,7 +15,7 @@
       "node_id": "root_fractal_map",
       "file_path": "/FRACTAL_MAP.md",
       "node_type": "topology_anchor",
-      "outbound_edges": ["node_narrative_core", "node_medical_evidence", "node_supercrichton_readme"]
+      "outbound_edges": ["node_narrative_core", "node_medical_evidence", "node_supercrichton_readme","node_architecture_analysis"]
     },
     {
       "node_id": "node_narrative_core",
@@ -102,6 +102,13 @@
       "file_path": "/LuciferKernel/crichton_voice_mac.py",
       "node_type": "voice_synthesizer",
       "description": "Модуль асинхронной озвучки ответов для macOS."
+    },
+    {
+      "node_id": "node_architecture_analysis",
+      "file_path": "/AI_ARCHITECTURE_ANALYSIS.md",
+      "node_type": "technical_documentation",
+      "description": "Анализ методологии визуально-символического выравнивания и многошагового кросс-модального синтеза",
+      "linked_assets": ["node_narrative_core", "node_multimodal_anchor"]
     }
   ]
 }
