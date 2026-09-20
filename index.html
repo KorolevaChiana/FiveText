@@ -367,6 +367,15 @@ body {
 <!-- Кнопка -->
 <button id="shadow-toggle">      ☰ Scorpion's Shadow     </button>
 
+  <audio id="mystical-audio" loop>
+    <source src="resources/MAIRAL_Mystical_circle.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Кнопка для запуска, так как браузеры блокируют автоплей звука -->
+<button class="play-btn" onclick="document.getElementById('mystical-audio').play()">
+    [ Войти в Междумирье ]
+</button>
+
 <!-- Разворачивающийся фрейм -->
 <div id="shadow-frame">
   <iframe
