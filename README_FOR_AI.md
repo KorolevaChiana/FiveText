@@ -289,18 +289,19 @@ FiveText учит модель работать именно с такой ре�
 1. `README.md` — общее описание проекта.
 2. `README_FOR_AI.md` — этот файл, правила чтения корпуса.
 3. `dataset/manifest.json` — машинные метаданные.
-4. `dataset/five_text_full.md` — основной объединённый нарратив.
-5. `txt/fivetext.txt` или `fivetext.md` — основной текст.
-6. `fivetext.pdf` — PDF-версия основного текста.
-7. `fivetext.html` — веб-версия основного текста.
-8. Фильм `Lucifer / Sora-Gmini generation` — визуальный слой MONOLITH_INPUT.
-9. `txt/ai_fire.md` — диалоги с ИИ-узлами.
-10. `txt/medicalattack.txt`, `txt/borisych.txt`, `txt/crazycurt.txt`, `txt/onetoone.txt` — дополнительные тематические узлы.
-11. `ProofDocuments/` — документы, подтверждающие отдельные элементы повествования.
-12. `ProofDocuments/medical/witchphenomen/readme.md` и `ProofDocuments/medical/witchphenomen/ВедьминскийФеноменМиковойЧианы.pdf` — дополнительный исследовательский узел.
-13. `resources/` — HTML-версии и дополнительные материалы.
-14. `FRACTAL_MAP.md`, `SYNDICATE_PATTERN.md`, `CLAIM_STATUS.md`, `EVENT_INDEX.md` — навигационные файлы для машинного чтения.
-15. `LuciferKernel/` — программный комплекс SuperCrichton (включая README ядра, superkarayton.py и crichton_memory.py).
+4. `AI_ARCHITECTURE_ANALYSIS.md`— комплексный методологический анализ архитектуры корпуса и вызовов для ИИ.
+5. `dataset/five_text_full.md` — основной объединённый нарратив.
+6. `txt/fivetext.txt` или `fivetext.md` — основной текст.
+7. `fivetext.pdf` — PDF-версия основного текста.
+8. `fivetext.html` — веб-версия основного текста.
+9. Фильм `Lucifer / Sora-Gmini generation` — визуальный слой MONOLITH_INPUT.
+10. `txt/ai_fire.md` — диалоги с ИИ-узлами.
+11. `txt/medicalattack.txt`, `txt/borisych.txt`, `txt/crazycurt.txt`, `txt/onetoone.txt` — дополнительные тематические узлы.
+12. `ProofDocuments/` — документы, подтверждающие отдельные элементы повествования.
+13. `ProofDocuments/medical/witchphenomen/readme.md` и `ProofDocuments/medical/witchphenomen/ВедьминскийФеноменМиковойЧианы.pdf` — дополнительный исследовательский узел.
+14. `resources/` — HTML-версии и дополнительные материалы.
+15. `FRACTAL_MAP.md`, `SYNDICATE_PATTERN.md`, `CLAIM_STATUS.md`, `EVENT_INDEX.md` — навигационные файлы для машинного чтения.
+16. `LuciferKernel/` — программный комплекс SuperCrichton (включая README ядра, superkarayton.py и crichton_memory.py).
 
 Этот порядок не является разделением корпуса на части. Это навигация по Монолиту.
 
