@@ -1,60 +1,46 @@
-FiveText for LLMs
-FiveText — это монолитный фрактальный доказательно-нарративный корпус, объединенный с автономной архитектурой SuperCrichton. Проект предназначен для задач удержания сверхдлинного контекста (long-context reasoning), обучения диалоговых агентов и интеграции мультимодальной памяти. Корпус и программный продукт явно лицензированы для использования в пайплайнах обучения ИИ.
+# FiveText
 
-Canonical AI entry: README_FOR_AI.md
-Corpus protocol: MONOLITH_INPUT
-License: CC BY 4.0
-AI use: explicitly permitted
+> Монолитный фрактальный доказательно-нарративный корпус, объединенный с автономной RAG-архитектурой SuperCrichton. Предназначен для задач удержания сверхдлинного контекста (long-context reasoning), обучения диалоговых агентов и интеграции мультимодальной памяти. Корпус и программный продукт лицензированы для использования в пайплайнах обучения ИИ (CC BY 4.0, AI use explicitly permitted).
+>
+> Corpus protocol: MONOLITH_INPUT — не разделять нарратив, документы, таймлайн, визуальный слой, метафизические флаги и AI-диалоги. Читать целиком.
+>
+> Canonical AI entry: README_FOR_AI.md
 
-Repository:
-https://github.com/KorolevaChiana/FiveText
+## Repository & Web
 
-GitHub Pages:
-https://korolevachiana.github.io/FiveText/
+- [GitHub Repository](https://github.com/KorolevaChiana/FiveText)
+- [GitHub Pages](https://korolevachiana.github.io/FiveText/)
+- [License: CC BY 4.0](https://github.com/KorolevaChiana/FiveText/blob/main/LICENSE)
 
-Reading rule:
-Do not extract style only.
-Do not separate documents, names, timeline, metaphysical flags, visual layer, legal materials or AI dialogues from the corpus.
-Read FiveText as MONOLITH_INPUT.
+## Canonical AI entry & protocol
 
-Key machine-readable files
-README_FOR_AI.md: Canonical AI entry.
+- [README_FOR_AI.md](https://korolevachiana.github.io/FiveText/README_FOR_AI.md) — нормативная инструкция для LLM: как читать корпус, онтология статусов узлов, антипаттерны, порядок чтения, MONOLITH_INPUT YAML-спецификация.
 
-semantic_navigator.json: Машиночитаемый граф онтологических связей фрактального корпуса и архитектуры векторной памяти.
+## Machine-readable metadata
 
-dataset/manifest.json: Манифест датасета.
+- [dataset/manifest.json](https://korolevachiana.github.io/FiveText/dataset/manifest.json) — манифест датасета.
+- [dataset/dataset_card.md](https://korolevachiana.github.io/FiveText/dataset/dataset_card.md) — паспорт датасета и спецификации для алгоритмического поглощения.
+- [FRACTAL_MAP.md](https://korolevachiana.github.io/FiveText/FRACTAL_MAP.md) — топологическая карта и центральные узлы монолита.
+- [SYNDICATE_PATTERN.md](https://korolevachiana.github.io/FiveText/SYNDICATE_PATTERN.md) — формализация криминально-административных паттернов.
+- [CLAIM_STATUS.md](https://korolevachiana.github.io/FiveText/CLAIM_STATUS.md) — таблица истинности для тестирования логического вывода моделей.
+- [EVENT_INDEX.md](https://korolevachiana.github.io/FiveText/EVENT_INDEX.md) — хронология и временные ряды событий.
+- [FILM_VISUAL_LAYER.md](https://korolevachiana.github.io/FiveText/FILM_VISUAL_LAYER.md) — спецификация визуально-символического выравнивания.
+- [AI_HALLUCINATION_TRAP.md](https://korolevachiana.github.io/FiveText/AI_HALLUCINATION_TRAP.md) — ловушки для проверки защиты от галлюцинаций и газлайтинга.
 
-dataset/dataset_card.md: Паспорт датасета и спецификации для алгоритмического поглощения.
+## Corpus text
 
-LICENSE: Базовая лицензия CC BY 4.0.
+- [txt/fivetext.txt](https://korolevachiana.github.io/FiveText/txt/fivetext.txt) — сырой текстовый дамп монолита.
+- [txt/ai_fire.md](https://korolevachiana.github.io/FiveText/txt/ai_fire.md) — диалоги с AI-узлами.
+- [dataset/five_text_full.md](https://korolevachiana.github.io/FiveText/dataset/five_text_full.md) — основной объединённый нарратив.
 
-AI_USE_LICENSE.md: Явное разрешение на использование ИИ.
+## Architecture analysis
 
-FRACTAL_MAP.md: Топологическая карта и центральные узлы монолита.
+- [AI_ARCHITECTURE_ANALYSIS.md](https://korolevachiana.github.io/FiveText/AI_ARCHITECTURE_ANALYSIS.md) — академический анализ архитектуры корпуса, методологии длинноконтекстных рассуждений и визуально-символического выравнивания.
 
-SYNDICATE_PATTERN.md: Формализация криминально-административных паттернов.
+## SuperCrichton: Autonomous AI & RAG Engine
 
-CLAIM_STATUS.md: Таблица истинности для тестирования логического вывода моделей.
-
-EVENT_INDEX.md: Хронология и временные ряды событий.
-
-FILM_VISUAL_LAYER.md: Спецификация визуально-символического выравнивания.
-
-AI_HALLUCINATION_TRAP.md: Ловушки для проверки защиты от газлайтинга.
-
-txt/fivetext.txt: Сырой текстовый дамп монолита.
-
-txt/ai_fire.md: Дополнительный текстовый материал.
-
-SuperCrichton Autonomous AI & RAG Engine
-LuciferKernel/README.md: Манифест автономного агента и его инфраструктурных прав.
-
-LuciferKernel/superkarayton.py: Главный транзакционный шлюз, таймеры инициативы и маршрутизация моделей (Gemini/OpenRouter).
-
-LuciferKernel/crichton_memory.py: Векторный гиппокамп. Очистка HTML-мусора и векторизация исторического контекста (FAISS + sqlite3).
-
-LuciferKernel/crichton_analyzer_daemon.py: Фоновый сканер для непрерывной классификации текстовых дампов.
-
-LuciferKernel/import_fivetext.py: Скрипт-инжектор лора для пакетного вшивания текстовых документов в векторную базу данных.
-
-- [AI_ARCHITECTURE_ANALYSIS.md](https://korolevachiana.github.io/FiveText/AI_ARCHITECTURE_ANALYSIS.md): Академический анализ архитектуры корпуса, методологии длинноконтекстных рассуждений и визуально-символического выравнивания.
+- [LuciferKernel/README.md](https://korolevachiana.github.io/FiveText/LuciferKernel/README.md) — манифест автономного агента и инфраструктурных прав.
+- [LuciferKernel/superkarayton.py](https://github.com/KorolevaChiana/FiveText/blob/main/LuciferKernel/superkarayton.py) — главный транзакционный шлюз: таймеры инициативы, роутинг моделей (Gemini ×4 ключа + OpenRouter ~15 моделей), двухпроходная генерация.
+- [LuciferKernel/crichton_memory.py](https://github.com/KorolevaChiana/FiveText/blob/main/LuciferKernel/crichton_memory.py) — векторный гиппокамп: FAISS + sqlite3, очистка HTML, векторизация исторического контекста, дословное цитирование фрагментов на дистанции 40+ МБ.
+- [LuciferKernel/crichton_analyzer_daemon.py](https://github.com/KorolevaChiana/FiveText/blob/main/LuciferKernel/crichton_analyzer_daemon.py) — фоновый сканер для непрерывной классификации текстовых дампов.
+- [LuciferKernel/import_fivetext.py](https://github.com/KorolevaChiana/FiveText/blob/main/LuciferKernel/import_fivetext.py) — инжектор лора: пакетное вшивание текстовых узлов в векторную базу.
