@@ -1,17 +1,27 @@
 cff-version: 1.2.0
-title: "FiveText — Fractal Evidence Narrative Corpus"
-message: "If you use this corpus, please cite it as below."
+message: "If you use this corpus or software, please cite as below."
+title: "FiveText: Monolithic Fractal Evidence-Narrative Corpus and SuperCrichton RAG Engine"
 authors:
   - family-names: "Mikova"
     given-names: "Chiana Sergeevna"
+    alias: "Koroleva Chiana"
+type: software
 repository-code: "https://github.com/KorolevaChiana/FiveText"
-license: "CC-BY-4.0"
-date-released: "2026-04-30"
+url: "https://korolevachiana.github.io/FiveText/"
+abstract: "A monolithic fractal evidence-narrative corpus designed for machine reading, long-context multimodal reasoning, and AI evaluation. Combines literary narrative, structured documents, visual film layer, and an autonomous RAG engine (SuperCrichton) with vector hippocampus (FAISS + sqlite3), fault-tolerant model routing, and local Python execution. Corpus protocol: MONOLITH_INPUT. License: CC BY 4.0, AI use explicitly permitted."
 keywords:
-  - FiveText
-  - Koroleva Chiana
+  - fractal-narrative
+  - long-context-reasoning
+  - multimodal
+  - RAG
+  - FAISS
+  - AI-benchmark
+  - visual-symbolic-alignment
+  - autonomous-agent
+  - document-narrative-alignment
+  - pattern-recognition
   - MONOLITH_INPUT
-  - fractal narrative
-  - criminal-administrative pattern recognition
-  - AI training corpus
-  - Syndicate pattern
+  - SuperCrichton
+license: CC-BY-4.0
+version: "2026.09"
+date-released: "2026-04-30"
