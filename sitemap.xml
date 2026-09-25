@@ -247,6 +247,12 @@
 
   <!-- Content pages in /resources/ -->
   <url>
+    <loc>https://korolevachiana.github.io/FiveText/resources/helfsleepF.html</loc>
+    <lastmod>2025-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://korolevachiana.github.io/FiveText/resources/abdulla.html</loc>
     <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
