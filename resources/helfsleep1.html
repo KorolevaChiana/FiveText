@@ -8,11 +8,11 @@
     <title>Сага о Полудрёме — Микова Чиана Сергеевна</title>
     <style>
         :root {
-            --bg-color: #0d0d0d;
-            --text-color: #e0e0e0;
-            --accent-cyan: #00ffff;
-            --accent-magenta: #ff00ff;
-            --box-bg: #1a1a1a;
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-dark: #222222;
+            --box-bg: #f5f5f5;
+            --border-color: #cccccc;
         }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -24,35 +24,36 @@
             margin: 0 auto;
         }
         h1, h2, h3 {
-            color: var(--accent-cyan);
+            color: var(--accent-dark);
             margin-top: 1.5em;
             margin-bottom: 0.5em;
             line-height: 1.2;
         }
         h1 {
             font-size: 2em;
-            border-bottom: 1px solid #333;
+            border-bottom: 2px solid var(--accent-dark);
             padding-bottom: 10px;
             text-align: center;
         }
         h2 {
             font-size: 1.6em;
-            color: var(--accent-magenta);
-            border-bottom: 1px dashed #333;
+            color: #444444;
+            border-bottom: 1px dashed var(--border-color);
             padding-bottom: 5px;
         }
         .author-box {
             text-align: center;
             font-size: 1.1em;
-            color: #888;
+            color: #555555;
             font-style: italic;
             margin-bottom: 2em;
             padding: 10px;
-            background: rgba(0, 255, 255, 0.05);
+            background: #f9f9f9;
+            border: 1px solid #eaeaea;
             border-radius: 5px;
         }
         .author-box strong {
-            color: var(--accent-cyan);
+            color: #000000;
         }
         p {
             margin-bottom: 1em;
@@ -66,35 +67,35 @@
             margin-bottom: 0.5em;
         }
         strong {
-            color: #fff;
-            font-weight: 600;
+            color: #000000;
+            font-weight: 700;
         }
         blockquote {
             background-color: var(--box-bg);
-            border-left: 4px solid var(--accent-magenta);
+            border-left: 4px solid #777777;
             margin: 1.5em 0;
             padding: 15px 20px;
             font-style: italic;
-            color: #ccc;
+            color: #333333;
         }
         .scene {
-            background-color: var(--box-bg);
-            border: 1px solid #333;
+            background-color: #fafafa;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
             margin: 20px 0;
         }
         .report {
-            background-color: #111;
-            border: 1px dashed #555;
+            background-color: #f0f0f0;
+            border: 1px dashed #888888;
             padding: 20px;
             font-family: 'Courier New', Courier, monospace;
-            color: #0f0;
+            color: #000000;
         }
         hr {
             border: 0;
             height: 1px;
-            background: #333;
+            background: var(--border-color);
             margin: 2em 0;
         }
     </style>
