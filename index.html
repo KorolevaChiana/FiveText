@@ -178,6 +178,41 @@ body {
 }
 
 
+    .link-column1 {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+   .link-column1 a {
+      display: inline-block;
+      
+      text-decoration: none;
+      padding: 10px 16px;
+      background-color: rgba(0, 255, 200, 0.08);
+      border: 1px solid #0fd;
+      border-radius: 6px;
+      color: #0fd;
+      transition: all 0.2s ease;
+      font-size: 0.95em;
+      backdrop-filter: blur(4px);
+      min-width: 180px;
+      box-shadow: 0 0 32px rgba(0, 255, 200, 0.3), 0 0 24px rgba(0, 255, 200, 0.1);
+    }
+
+.link-column1 a:hover {
+  background-color: #0fd;
+  color: #000;
+  border-color: #fff;
+  box-shadow: 0 0 24px #0ff, 0 0 36px #7fffd4;
+}
+
+
+
+
+
+    
+
     .quote {
       margin-top: 60px;
       font-style: italic;
@@ -700,7 +735,7 @@ function googleTranslateElementInit() {
     </div>
     
 
-    <div class="link-column">
+    <div class="link-column1">
     <a href="./resources/Sindicat.html" style="text-shadow:
           0 0 4px currentColor,
           0 0 8px currentColor,
