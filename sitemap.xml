@@ -185,12 +185,6 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://korolevachiana.github.io/FiveText/txt/medicalattack.txt</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
     <loc>https://korolevachiana.github.io/FiveText/txt/crazycurt.txt</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -228,20 +222,9 @@
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/ProofDocuments/medical/witchphenomen/ВедьминскийФеноменМиковойЧианы.pdf</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
-  </url>
 
-  <!-- Chat and Interactive Nodes -->
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/chat/fractal.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
+
+
 
   <!-- Multimodal / Visual Layer -->
   <url>
@@ -254,18 +237,6 @@
   <!-- Content pages in /resources/ -->
   <url>
     <loc>https://korolevachiana.github.io/FiveText/resources/helfsleepF.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/abdulla.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/abdullaE.html</loc>
     <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -325,30 +296,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/light2.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/light2E.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/medicalattack.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/medicalattackE.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://korolevachiana.github.io/FiveText/resources/onetoone.html</loc>
     <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -356,60 +303,6 @@
   </url>
   <url>
     <loc>https://korolevachiana.github.io/FiveText/resources/onetooneE.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/review.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/reviewE.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/ubludki.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/ubludkiE.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/PsichoQween.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/PsichoQweenE.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/witch.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-    <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/Sindicat.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-    <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/SindicatE.html</loc>
     <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
