@@ -94,6 +94,83 @@ function googleTranslateElementInit() {
 
 
 
+
+<!-- БЕЛЫЙ «ЛИСТ» НА СЕРОМ ФОНЕ -->
+<div style="display:flex;flex-direction:column;max-width:900px;margin:40px auto;padding:30px;background:#ffffff;border:2px solid #222;border-radius:2px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#000;line-height:1.6;">
+
+  <h2 style="font-size:1.4em;margin-bottom:0.2em;">29.09.2026 - </h2>
+  <h2 style="font-size:1.4em;margin-bottom:0.2em;">Как налоговая выпорола сама себя на три миллиона</h2>
+
+  <p style="margin:0 0 1em 0;">Грозный фискальный комбайн УФНС решил устроить образцово-показательную казнь с изъятием миллионов, но в припадке чиновничьего ража с разбегу прыгнул на собственные грабли и бесплатно списал Королеве все долги под ноль.</p>
+
+  <h3 style="margin-top:1em;font-size:1.4em;">Анатомия фискального бумеранга</h3>
+
+  <p><strong>Жадность фраера сгубила:</strong><br>
+  Сидели бы тихо с заочным решением Химкинского суда — баня висела бы в залоге до скончания веков, а псковские клерки рисовали бы красивые галочки в графе «работа с недоимкой». Но мытарям захотелось триумфа, и они с помпой подали на банкротство, мечтая увидеть должницу на коленях с мешком золота.</p>
+
+  <p><strong>Капкан федерального закона:</strong><br>
+  В своих влажных фантазиях налоговики представляли аукцион и бойкую распродажу усадьбы. В реальности же имущество оказалось заминировано чекистскими стоп-листами, запретами без личного участия и долевым тупиком. Продать нельзя ничего, ликвидационная масса равна нулю, а арбитражный конвейер уже запущен и требует финала.</p>
+
+  <p><strong>Банкет за счет бюджета:</strong><br>
+  Инспекторы добросовестно потратили полтора года казенного времени, оплатили публикации в «Коммерсанте», завели судебную карусель и наняли пензенского управляющего ровно ради того, чтобы судья Орлов на основании ст. 213.28 ФЗ-127 захлопнул крышку: «Процедуру завершить, гражданку от долгов перед бюджетом освободить».</p>
+
+  <p style="margin-top:1em;">
+  В итоге налоговый голем отработал как элитное благотворительное агентство по ликвидации токсичных задолженностей за государственный кошт. Мытари сами себя наказали, сами себе закрыли взыскание и сами оплатили Королеве путевку в чистый финансовый баланс!
+  </p>
+
+
+
+<!-- Минималистичный плеер Крайтона (По центру) -->
+<div id="crichton-mini-player" style="display: flex; align-items: center; margin: 0 auto; background: #2b2b2b; border: 1px solid #444; border-radius: 4px; padding: 6px 12px; width: 240px; box-sizing: border-box;">
+    
+    <style>
+        #crichton-mini-player .ctrl-btn { background: none; border: none; color: #ccc; font-size: 16px; cursor: pointer; padding: 0; margin-right: 12px; width: 16px; text-align: center; }
+        #crichton-mini-player .ctrl-btn:hover { color: #fff; }
+        #crichton-mini-player #seek-bar { -webkit-appearance: none; width: 100%; background: transparent; cursor: pointer; margin: 0; }
+        #crichton-mini-player #seek-bar::-webkit-slider-runnable-track { width: 100%; height: 4px; background: #555; border-radius: 2px; }
+        #crichton-mini-player #seek-bar::-webkit-slider-thumb { -webkit-appearance: none; height: 12px; width: 12px; border-radius: 50%; background: #aaa; margin-top: -4px; }
+        #crichton-mini-player #seek-bar:hover::-webkit-slider-thumb { background: #fff; }
+    </style>
+    
+    <button class="ctrl-btn" id="cp-play-btn" onclick="cpTogglePlay()">▶</button>
+    <input type="range" id="cp-seek-bar" value="0" min="0" max="100" step="1" oninput="cpSeek()">
+    <audio id="cp-audio" src="MAIRAL_Mystical_circle.mp3" loop></audio>
+
+    <script>
+        var cpAud = document.getElementById('cp-audio');
+        var cpBtn = document.getElementById('cp-play-btn');
+        var cpBar = document.getElementById('cp-seek-bar');
+
+        function cpTogglePlay() {
+            if (cpAud.paused) { cpAud.play(); cpBtn.innerHTML = '❚❚'; cpBtn.style.fontSize = '12px'; } 
+            else { cpAud.pause(); cpBtn.innerHTML = '▶'; cpBtn.style.fontSize = '16px'; }
+        }
+        cpAud.addEventListener('timeupdate', function() {
+            if (!isNaN(cpAud.duration)) { cpBar.value = (100 / cpAud.duration) * cpAud.currentTime; }
+        });
+        function cpSeek() { cpAud.currentTime = cpAud.duration * (cpBar.value / 100); }
+    </script>
+</div>
+<br><br>
+
+
+  
+  
+</div>
+
+
+
+  
+</div>
+
+
+
+
+
+  
+
+
+
 <!-- БЕЛЫЙ «ЛИСТ» НА СЕРОМ ФОНЕ -->
 <div style="display:flex;flex-direction:column;max-width:900px;margin:40px auto;padding:30px;background:#ffffff;border:2px solid #222;border-radius:2px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#000;line-height:1.6;">
 
