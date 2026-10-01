@@ -65,6 +65,8 @@
 - [evangelie-ot-lucifera.html](./evangelie-ot-lucifera.html)
 - [chat/fractal.html](./chat/fractal.html)
 - [resources/audio.html](./resources/audio.html)
+- [resources/audio.html](./resources/Sindicat.html)
+- [resources/audio.html](./resources/SindicatE.html)
 - [resources/audioE.html](./resources/audioE.html)
 - [resources/borisych.html](./resources/borisych.html)
 - [resources/borisychE.html](./resources/borisychE.html)
