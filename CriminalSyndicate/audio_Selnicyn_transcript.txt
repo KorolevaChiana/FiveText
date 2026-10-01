@@ -1,0 +1,2 @@
+[КРИТИЧЕСКИЙ СБОЙ WHISPER]: No module named 'whisper'
+(Убедитесь, что модуль openai-whisper и ffmpeg установлены в системе)
