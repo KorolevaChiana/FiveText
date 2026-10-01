@@ -230,7 +230,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://korolevachiana.github.io/FiveText/resources/reviewE.html</loc>
+    <loc>https://korolevachiana.github.io/FiveText/resources/SindicatE.html</loc>
+    <lastmod>2025-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/resources/Sindicat.html</loc>
     <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
