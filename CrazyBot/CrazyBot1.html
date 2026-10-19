@@ -1,0 +1,472 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Королева Чиана">
+<meta name="description" content="Imperial Crazy Bot для MetaTrader 5. Демонстрационный торговый алгоритм, исторические тесты на реальных тиках, статистика и файлы проекта.">
+<meta name="keywords" content="торговый бот, торговый робот MT5, советник MetaTrader 5, Forex робот, алгоритмическая торговля, Imperial Crazy Bot, CrazyBot, Alpari MT5, не мартингейл, не Даламбер, не сеточник, trading bot, forex robot, MT5 Expert Advisor, algorithmic trading, 外汇交易机器人, MT5交易机器人, 自动交易, روبوت تداول, روبوت فوركس, مستشار خبير MT5">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://korolevachiana.github.io/FiveText/CrazyBot/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Imperial Crazy Bot | Королева Чиана">
+<meta property="og:description" content="НЕ Мартингейл. НЕ Даламбер. НЕ сеточник. Математика против физики рынка.">
+<meta property="og:url" content="https://korolevachiana.github.io/FiveText/CrazyBot/">
+<meta property="og:image" content="https://korolevachiana.github.io/FiveText/CrazyBot/1.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<title>Imperial Crazy Bot | Торговый алгоритм MT5</title>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Imperial Crazy Bot",
+  "url": "https://korolevachiana.github.io/FiveText/CrazyBot/",
+  "inLanguage": "ru",
+  "description": "Демонстрационный торговый алгоритм MetaTrader 5.",
+  "author": {
+    "@type": "Person",
+    "name": "Королева Чиана",
+    "email": "koroleva.chiana@gmail.com"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Imperial Crazy Bot",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "MetaTrader 5"
+  }
+}
+</script>
+
+<style>
+:root {
+  --ink: #171717;
+  --muted: #686868;
+  --line: #e1e1dc;
+  --soft: #f7f7f5;
+  --accent: #a83228;
+  --max: 1080px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: white;
+  font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+a { color: inherit; text-underline-offset: 4px; }
+.wrap { width: min(var(--max), calc(100% - 36px)); margin: auto; }
+.topbar { border-bottom: 1px solid var(--line); }
+.topbar .wrap {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.back { font-size: 14px; font-weight: 750; text-decoration: none; }
+.tag { color: var(--muted); font-size: 12px; letter-spacing: .08em; }
+.hero {
+  padding: 76px 0 58px;
+  background: linear-gradient(180deg, white, #fafaf8);
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow {
+  margin: 0 0 18px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1 {
+  margin: 0;
+  font-size: clamp(43px, 8vw, 78px);
+  line-height: .98;
+  letter-spacing: -.065em;
+}
+.lead {
+  max-width: 780px;
+  margin: 26px 0;
+  font-size: clamp(18px, 2.5vw, 24px);
+  line-height: 1.5;
+}
+.thesis {
+  margin-top: 28px;
+  padding: 22px 24px;
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  font-size: clamp(17px, 2.3vw, 23px);
+  font-weight: 850;
+  line-height: 1.45;
+}
+.thesis small {
+  display: block;
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 400;
+}
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  min-height: 46px;
+  border: 1px solid var(--ink);
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: 750;
+  font-size: 14px;
+}
+.btn.dark { color: white; background: var(--ink); }
+section { padding: 58px 0; border-bottom: 1px solid var(--line); }
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 25px;
+}
+h2 { margin: 0; font-size: clamp(28px, 4vw, 42px); line-height: 1.15; letter-spacing: -.045em; }
+.intro { max-width: 520px; margin: 0; color: var(--muted); font-size: 14px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.stat { padding: 21px; border: 1px solid var(--line); border-radius: 15px; }
+.value { font-size: clamp(28px, 4vw, 42px); font-weight: 850; line-height: 1.15; letter-spacing: -.05em; }
+.label { margin-top: 10px; font-size: 13px; color: var(--muted); }
+.note { margin-top: 17px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 11px; background: var(--soft); font-size: 13px; color: #555; }
+.screens { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+figure { margin: 0; min-width: 0; }
+.shot {
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--soft);
+}
+.shot img { display: block; width: 100%; height: auto; object-fit: contain; }
+figcaption { padding: 10px 2px; font-size: 13px; color: var(--muted); }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 13px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+th { width: 34%; font-size: 14px; color: #555; font-weight: 650; }
+td { font-size: 15px; }
+.pairs { display: flex; flex-wrap: wrap; gap: 7px; }
+.pair { border: 1px solid var(--line); border-radius: 20px; padding: 4px 10px; font-size: 13px; }
+.columns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.calc { border: 1px solid var(--line); border-radius: 14px; padding: 23px; }
+.calc h3 { margin: 0; font-size: 21px; }
+.calc p { color: var(--muted); font-size: 13px; }
+.calcrow {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+.calcrow span { color: #555; font-size: 14px; }
+.calcrow strong { font-size: 20px; white-space: nowrap; }
+.files { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.file {
+  padding: 21px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  text-decoration: none;
+}
+.file strong { display: block; overflow-wrap: anywhere; }
+.file span { display: block; margin-top: 6px; font-size: 13px; color: var(--muted); }
+.manifesto { max-width: 900px; font-size: clamp(19px, 2.5vw, 27px); line-height: 1.55; }
+.contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 28px;
+  color: white;
+  background: var(--ink);
+  border-radius: 15px;
+}
+.contact p { margin: 7px 0 0; color: #ccc; font-size: 14px; }
+.contact .btn { color: var(--ink); background: white; white-space: nowrap; }
+footer { padding: 28px 0 35px; color: #777; font-size: 12px; }
+footer p { max-width: 950px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
+@media(max-width: 720px) {
+  .hero { padding: 53px 0 42px; }
+  section { padding: 43px 0; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .screens, .columns, .files { grid-template-columns: 1fr; }
+  .heading { display: block; }
+  .intro { margin-top: 12px; }
+  .contact { align-items: flex-start; flex-direction: column; }
+  .tag { display: none; }
+}
+@media(max-width: 430px) {
+  .wrap { width: calc(100% - 28px); }
+  .stat { padding: 14px; }
+  .value { font-size: 28px; }
+  .actions .btn { width: 100%; }
+  th, td { padding: 10px 6px; font-size: 13px; }
+}
+</style>
+</head>
+
+<body>
+<div class="topbar">
+  <div class="wrap">
+    <a class="back" href="https://korolevachiana.github.io/FiveText/index.html">← Назад к Пятому тексту</a>
+    <span class="tag">RESEARCH / CRAZYBOT</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Демонстрационный алгоритм · MetaTrader 5 · Alpari</p>
+    <h1>Imperial<br>Crazy Bot.</h1>
+    <p class="lead">
+      Эксперимент на стыке математики и рыночной динамики.
+      Не обещания на красивом графике, а результат, который можно
+      изучить по истории тестирования и исходным данным.
+    </p>
+
+    <div class="thesis">
+      НЕ Мартингейл. НЕ Даламбер. НЕ сеточник.
+      <br>А всего лишь гениальная игра математики над физикой рынка!
+      <small>Авторская формулировка принципа алгоритма.</small>
+    </div>
+
+    <div class="actions">
+      <a class="btn dark" href="./Imperial_Crazy_Bot.ex5" download>Скачать Imperial_Crazy_Bot.ex5 ↗</a>
+      <a class="btn" href="./CrazyBot.xlsx" download>Скачать отчёт XLSX ↗</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="results">
+  <div class="wrap">
+    <div class="heading">
+      <h2>Что показал тестер</h2>
+      <p class="intro">MetaTrader 5 · 01.01.2025–26.09.2026 · депозит $1 000 · тест на реальных тиках.</p>
+    </div>
+
+    <div class="grid">
+      <div class="stat">
+        <div class="value">+187,99%</div>
+        <div class="label">Чистая доходность за тестовый период</div>
+      </div>
+      <div class="stat">
+        <div class="value">$2 879,94</div>
+        <div class="label">Итоговый баланс при старте с $1 000</div>
+      </div>
+      <div class="stat">
+        <div class="value">2,461</div>
+        <div class="label">Profit Factor</div>
+      </div>
+      <div class="stat">
+        <div class="value">10,41%</div>
+        <div class="label">Максимальная относительная просадка equity</div>
+      </div>
+      <div class="stat">
+        <div class="value">70,42%</div>
+        <div class="label">Прибыльных сделок: 807 из 1 146</div>
+      </div>
+      <div class="stat">
+        <div class="value">37 млн+</div>
+        <div class="label">Тиков в тесте · качество истории 99%</div>
+      </div>
+    </div>
+
+    <div class="note">
+      В представленном отчёте все 21 месячных интервала имеют положительный
+      результат по закрытому балансу. Чистая прибыль составляет $1 879,94.
+      Максимальная относительная просадка equity: $124,78 (10,41%).
+      Максимальная просадка equity по показателю Maximal: $185,42 (9,36%).
+      Это разные показатели, и они не означают отсутствия риска.
+    </div>
+  </div>
+</section>
+
+<section id="screenshots">
+  <div class="wrap">
+    <div class="heading">
+      <h2>График и отчёт</h2>
+      <p class="intro">Оригинальные скриншоты MetaTrader 5 из папки проекта.</p>
+    </div>
+
+    <div class="screens">
+      <figure>
+        <div class="shot">
+          <img src="./1.png" alt="График тестирования Imperial Crazy Bot в MetaTrader 5" loading="lazy">
+        </div>
+        <figcaption>01 / График тестирования</figcaption>
+      </figure>
+      <figure>
+        <div class="shot">
+          <img src="./2.png" alt="Отчёт тестирования Imperial Crazy Bot" loading="lazy">
+        </div>
+        <figcaption>02 / Статистика и параметры тестера</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="settings">
+  <div class="wrap">
+    <div class="heading">
+      <h2>Условия эксперимента</h2>
+      <p class="intro">Демонстрационный продукт с ограниченной средой запуска.</p>
+    </div>
+
+    <table>
+      <tbody>
+        <tr><th>Платформа</th><td>MetaTrader 5 · тестовый брокер Alpari</td></tr>
+        <tr><th>Таймфрейм</th><td>M15</td></tr>
+        <tr><th>Период</th><td>1 января 2025 — 26 сентября 2026</td></tr>
+        <tr><th>Модель теста</th><td>99% real ticks · 37 044 172 тика</td></tr>
+        <tr><th>Стартовый депозит</th><td>$1 000 · плечо 1:100</td></tr>
+        <tr>
+          <th>Шесть валютных пар</th>
+          <td>
+            <div class="pairs">
+              <span class="pair">EURUSD</span>
+              <span class="pair">USDJPY</span>
+              <span class="pair">EURJPY</span>
+              <span class="pair">AUDUSD</span>
+              <span class="pair">EURAUD</span>
+              <span class="pair">AUDJPY</span>
+            </div>
+          </td>
+        </tr>
+        <tr><th>Доступная настройка</th><td>Размер торгового лота</td></tr>
+        <tr><th>Параметры теста</th><td>MA Period = 190 · Step = 0,28 · Target Profit = 14 · Max Real Orders = 3000</td></tr>
+        <tr><th>Количество сделок</th><td>1 146 · прибыльных 807 · убыточных 339</td></tr>
+        <tr><th>Среднее удержание</th><td>Около 41 часа 56 минут</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      Для сравнимости результатов тестируйте стратегию на продолжительных
+      периодах, желательно от одного года, и сверяйте спреды, свопы
+      и условия исполнения. Значение Max Real Orders = 3000 приведено
+      из параметров теста и само по себе не доказывает, что робот открывает
+      одновременно 3000 ордеров.
+    </div>
+  </div>
+</section>
+
+<section id="compounding">
+  <div class="wrap">
+    <div class="heading">
+      <h2>Отдел рекламной арифметики</h2>
+      <p class="intro">Сложный процент умеет производить впечатление. Рынок не обязан его обеспечивать.</p>
+    </div>
+
+    <div class="columns">
+      <article class="calc">
+        <h3>Условные 100% годовых</h3>
+        <p>Старт $1 000 · горизонт два года.</p>
+        <div class="calcrow"><span>Простой процент</span><strong>$3 000</strong></div>
+        <div class="calcrow"><span>Сложный процент</span><strong>$4 000</strong></div>
+        <div class="calcrow"><span>Прибыль при сложном проценте</span><strong>+300%</strong></div>
+      </article>
+
+      <article class="calc">
+        <h3>Для любителей риска: 400%</h3>
+        <p>Условные 400% в год · старт $1 000 · два года.</p>
+        <div class="calcrow"><span>Простой процент</span><strong>$9 000</strong></div>
+        <div class="calcrow"><span>Сложный процент</span><strong>$25 000</strong></div>
+        <div class="calcrow"><span>Прибыль при сложном проценте</span><strong>+2 400%</strong></div>
+      </article>
+    </div>
+
+    <p class="intro" style="margin-top:17px">
+      Это математические сценарии при условии постоянной доходности,
+      а не прогноз робота и не обещание результата. Фактическая торговля
+      может привести к убыткам, вплоть до потери всего капитала.
+    </p>
+  </div>
+</section>
+
+<section id="files">
+  <div class="wrap">
+    <div class="heading">
+      <h2>Файлы проекта</h2>
+      <p class="intro">Сохраняйте отчёт и исследуйте результаты самостоятельно.</p>
+    </div>
+
+    <div class="files">
+      <a class="file" href="./Imperial_Crazy_Bot.ex5" download>
+        <strong>Imperial_Crazy_Bot.ex5</strong>
+        <span>Скомпилированный эксперт MetaTrader 5. Сначала проверьте в тестере и на демо-счёте.</span>
+      </a>
+      <a class="file" href="./CrazyBot.xlsx" download>
+        <strong>CrazyBot.xlsx</strong>
+        <span>Данные исторического тестирования и торговая статистика.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="idea">
+  <div class="wrap">
+    <p class="eyebrow">Не верить на слово. Проверять на дистанции.</p>
+    <h2>Математика против физики рынка</h2>
+    <p class="manifesto">
+      За почти 21 календарный месяц в представленном отчёте робот показал
+      положительный результат, Profit Factor <strong>2,461</strong> и
+      относительную просадку equity <strong>10,41%</strong>.
+      Эти цифры заслуживают изучения.
+    </p>
+    <p class="intro" style="margin-top:18px">
+      «Не Мартингейл, не Даламбер, не сеточник» является заявлением автора
+      о принципе алгоритма. В комплекте находится EX5, а не исходный код MQ5,
+      поэтому внутреннюю механику нельзя полностью проверить по одному
+      скомпилированному файлу.
+    </p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <h2>Вопросы к алгоритму?</h2>
+        <p>По всем вопросам обращаться к Королеве Чиане.</p>
+      </div>
+      <a class="btn" href="mailto:koroleva.chiana@gmail.com?subject=Imperial%20Crazy%20Bot">koroleva.chiana@gmail.com ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="Навигация">
+      <a href="https://korolevachiana.github.io/FiveText/index.html">Пятый текст</a>
+      <a href="#results">Результаты</a>
+      <a href="#settings">Параметры</a>
+      <a href="#files">Файлы</a>
+      <a href="mailto:koroleva.chiana@gmail.com">Контакт</a>
+    </nav>
+    <p>
+      <strong>Предупреждение о риске.</strong>
+      Исторические результаты не гарантируют аналогичной доходности в будущем.
+      Реальное исполнение может отличаться из-за проскальзывания, ликвидности,
+      спредов, свопов и иных условий. Используйте демо-счёт и не рискуйте
+      средствами, потерю которых не готовы принять.
+    </p>
+    <p>© Королева Чиана · Imperial Crazy Bot.</p>
+  </div>
+</footer>
+</body>
+</html>
