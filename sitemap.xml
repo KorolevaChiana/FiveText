@@ -417,4 +417,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Imperial Crazy Bot demo page -->
+  <url>
+    <loc>https://korolevachiana.github.io/FiveText/CrazyBot/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>
