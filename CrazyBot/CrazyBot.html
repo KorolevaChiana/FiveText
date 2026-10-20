@@ -646,10 +646,26 @@
                     <strong>AR:</strong> Imperial Crazy Bot — روبوت التداول النخبوي متعدد العملات لمنصة MetaTrader 5 (Alpari). بدون مضاعفات مارتينجال (No Martingale)، وبدون نظام دالامبير أو الشبكات التقليدية. يعتمد بالكامل على الرياضيات البحتة ونظرية البيانات والمقاصة المثلثية لـ 6 أزواج عملات. عائد سنوي من 100% إلى 400% مع أقصى درجات الأمان. حمل ملف .ex5 مجاناً لاختباره على فترات طويلة.
                 </div>
             </div>
-            <img src="https://api.counterapi.dev/v1/korolevachiana/fivetext/count.svg" alt="Views">
+            
         </footer>
 
     </main>
 
+<div style="text-align: center; margin: 20px; font-size: 18px; color: #8b949e;">
+    Просмотров имперской базы: <span id="imperial-counter" style="color: #58a6ff; font-weight: bold;">загрузка...</span>
+</div>
+
+<script>
+  fetch('https://api.counterapi.dev/v1/korolevachiana/fivetext/up')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('imperial-counter').innerText = data.count;
+    })
+    .catch(error => {
+      document.getElementById('imperial-counter').innerText = 'активен';
+    });
+</script>
+
+    
 </body>
 </html>
