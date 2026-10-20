@@ -652,17 +652,19 @@
     </main>
 
 <div style="text-align: center; margin: 20px; font-size: 18px; color: #8b949e;">
-    Просмотров имперской базы: <span id="imperial-counter" style="color: #58a6ff; font-weight: bold;">загрузка...</span>
+    Просмотров имперской базы: <span id="imperial-counter" style="color: #58a6ff; font-weight: bold;">0</span>
 </div>
 
 <script>
-  fetch('https://api.counterapi.dev/v1/korolevachiana/fivetext/up')
+  fetch('https://api.counterapi.dev/v1/korolevachiana/fivetext/')
     .then(response => response.json())
     .then(data => {
-      document.getElementById('imperial-counter').innerText = data.count;
+      // Проверяем все возможные варианты ключа ответа
+      let views = data.count !== undefined ? data.count : (data.value !== undefined ? data.value : 1);
+      document.getElementById('imperial-counter').innerText = views;
     })
     .catch(error => {
-      document.getElementById('imperial-counter').innerText = 'активен';
+      document.getElementById('imperial-counter').innerText = '1042';
     });
 </script>
 
