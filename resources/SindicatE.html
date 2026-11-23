@@ -68,12 +68,235 @@
 
 
 
-<p style="font-size: 1.2em; line-height: 1.2;">
-  Апофеозом псковского правосудия стало ноу-хау мирового уровня — <strong>банкротство при полном отсутствии долга</strong>. 
-  Ещё 15 июля 2026 года само УФНС по Псковской области бодро отчиталось приставам, что налоговая задолженность в 2,59 млн руб. по ИП № 1322190/25/60039-ИП полностью погашена, а 7 сентября этот медицинский факт подтвердила прокуратура (<a href="https://korolevachiana.github.io/FiveText/CriminalSyndicate/merged.pdf" target="_blank" rel="noopener noreferrer">ответ № Исуб-20580019-325-26/3413-20580019</a>: долг перед налоговой равен нулю, болтаются лишь исполнительские сборы на 233 тыс. руб.). 
-  Казалось бы, расходимся — но нет: 18 ноября 2026 года судья Арбитражного суда Псковской области А.Г. Рутковская <a href="https://korolevachiana.github.io/FiveText/CriminalSyndicate/merged.pdf" target="_blank" rel="noopener noreferrer">решением по делу № А52-4405/2025</a> с каменным лицом удовлетворяет требования той же самой ФНС, утверждает управляющим Р.Р. Девликамова и запускает немедленную распродажу имущества. 
-  Никакой логики и никаких законов, чистый магический реализм — просто кому-то до дрожи в коленках захотелось пустить с молотка подмосковную усадьбу за 3 млн долларов (Химки, Сходня, ул. Микояна, 25/4, вл. 10), ничуть не смущаясь тем, что эта «конкурсная масса» вообще-то <strong>проходит вещдоком по басмановскому УД № 12301450013000412 и лубянским делам М 16044 и М 5950</strong>.
-</p>
+<style>
+  .pskov-vitrina,
+  .pskov-vitrina * {
+    box-sizing: border-box;
+  }
+
+  .pskov-vitrina {
+    max-width: 960px;
+    margin: 24px auto 36px;
+    padding: 28px 24px;
+    background: #ffffff;
+    color: #000000;
+    border: 3px solid #000000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.45;
+  }
+
+  .pskov-vitrina__badge {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 14px;
+    background: #000000;
+    color: #ffffff;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .pskov-vitrina__title {
+    margin: 0 0 12px;
+    font-size: clamp(24px, 4.5vw, 38px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: #000000;
+  }
+
+  .pskov-vitrina__subtitle {
+    margin: 0 0 24px;
+    font-size: clamp(16px, 2.2vw, 20px);
+    color: #222222;
+  }
+
+  .pskov-vitrina__metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .pskov-vitrina__metric {
+    padding: 16px;
+    background: #f5f5f5;
+    border: 2px solid #000000;
+  }
+
+  .pskov-vitrina__metric-val {
+    font-size: clamp(24px, 3.5vw, 32px);
+    font-weight: 900;
+    color: #000000;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .pskov-vitrina__metric-desc {
+    font-size: 14px;
+    color: #111111;
+  }
+
+  .pskov-vitrina__clash {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .pskov-vitrina__card {
+    padding: 18px;
+    font-size: 16px;
+    border: 2px solid #000000;
+  }
+
+  .pskov-vitrina__card--ok {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .pskov-vitrina__card--alert {
+    background: #111111;
+    color: #ffffff;
+  }
+
+  .pskov-vitrina__card-head {
+    font-size: 15px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .pskov-vitrina__leak {
+    padding: 14px 16px;
+    margin-bottom: 22px;
+    background: #f5f5f5;
+    border: 2px dashed #000000;
+    font-size: 15px;
+    color: #000000;
+  }
+
+  .pskov-vitrina__leak code {
+    padding: 1px 5px;
+    background: #000000;
+    color: #ffffff;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+  }
+
+  .pskov-vitrina__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .pskov-vitrina__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+    text-align: center;
+    border: 2px solid #000000;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .pskov-vitrina__btn--primary {
+    flex: 1 1 300px;
+    background: #000000;
+    color: #ffffff !important;
+  }
+
+  .pskov-vitrina__btn--primary:hover {
+    background: #333333;
+  }
+
+  .pskov-vitrina__btn--secondary {
+    flex: 1 1 240px;
+    background: #ffffff;
+    color: #000000 !important;
+  }
+
+  .pskov-vitrina__btn--secondary:hover {
+    background: #000000;
+    color: #ffffff !important;
+  }
+
+  @media (max-width: 720px) {
+    .pskov-vitrina {
+      margin: 12px 8px 24px;
+      padding: 20px 16px;
+    }
+
+    .pskov-vitrina__metrics,
+    .pskov-vitrina__clash {
+      grid-template-columns: 1fr;
+    }
+
+    .pskov-vitrina__btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<section class="pskov-vitrina" aria-label="Сводка по делу А52-4405/2025">
+  <div class="pskov-vitrina__badge">ДОСЬЕ • ДЕЛО № А52-4405/2025 • ЛУБЯНКА, 20</div>
+
+  <h1 class="pskov-vitrina__title">Банкротство при нулевом долге: псковский суд пускает с молотка московский вещдок за $3 млн</h1>
+
+  <p class="pskov-vitrina__subtitle">
+    На одном столе — официальные бумаги ФНС и прокуратуры об отсутствии долга. На соседнем — решение арбитражного суда о немедленной распродаже подмосковной усадьбы по требованию той же самой ФНС.
+  </p>
+
+  <div class="pskov-vitrina__metrics">
+    <div class="pskov-vitrina__metric">
+      <div class="pskov-vitrina__metric-val">0 ₽</div>
+      <div class="pskov-vitrina__metric-desc"><strong>Налоговый долг.</strong> Погашен 15.07.2026 (ИП № 1322190/25/60039-ИП), подтверждено прокуратурой 07.09.2026.</div>
+    </div>
+
+    <div class="pskov-vitrina__metric">
+      <div class="pskov-vitrina__metric-val">$3 000 000</div>
+      <div class="pskov-vitrina__metric-desc"><strong>Целевой актив:</strong> усадьба в г. Химки, мкр. Сходня, ул. Микояна, 25/4, вл. 10 (берег р. Сходни).</div>
+    </div>
+
+    <div class="pskov-vitrina__metric">
+      <div class="pskov-vitrina__metric-val">3 ДЕЛА</div>
+      <div class="pskov-vitrina__metric-desc"><strong>Статус вещдока:</strong> УД № 12301450013000412 (Басманное ОМВД), дела <strong>М 16044</strong> (УСБ) и <strong>М 5950</strong> (ФСБ, Лубянка, 20).</div>
+    </div>
+  </div>
+
+  <div class="pskov-vitrina__clash">
+    <div class="pskov-vitrina__card pskov-vitrina__card--ok">
+      <div class="pskov-vitrina__card-head">15.07 — 07.09.2026 • ДОЛГА НЕТ</div>
+      Само УФНС по Псковской области отчиталось приставам о полном погашении 2,59 млн руб. Прокуратура Себежского района (и.о. прокурора Д.С. Майоров, ответ № Исуб-20580019-325-26/3413-20580019) официально подтвердила: налоговый долг равен нулю, остались лишь сборы 233 тыс. руб. (ниже порога банкротства).
+    </div>
+
+    <div class="pskov-vitrina__card pskov-vitrina__card--alert">
+      <div class="pskov-vitrina__card-head">18.11.2026 • ПРОДАТЬ НЕМЕДЛЕННО</div>
+      Спустя 4 месяца после закрытия долга судья АС Псковской области А.Г. Рутковская (дело № А52-4405/2025) по требованию той же самой ФНС утверждает управляющим Р.Р. Девликамова и вводит немедленную реализацию имущества — прямо поверх действующих уголовных и чекистских дел.
+    </div>
+  </div>
+
+  <div class="pskov-vitrina__leak">
+    <strong>Эпизод УСБ:</strong> замначальника УФСБ по Псковской области полковник <strong>М.В. Кабач</strong> (исх. № 3/10/79-2757 от 29.07.2026) слил оперативный сигнал с защищённого шлюза <code>duty@fsb.ru</code> вместе с техническим дампом и IP-адресом в гражданскую прокуратуру и МВД.
+  </div>
+
+  <div class="pskov-vitrina__actions">
+    <a class="pskov-vitrina__btn pskov-vitrina__btn--primary" href="https://korolevachiana.github.io/FiveText/CriminalSyndicate/merged.pdf" target="_blank" rel="noopener noreferrer">
+      Открыть документы: Прокуратура + Решение суда (PDF)
+    </a>
+    <a class="pskov-vitrina__btn pskov-vitrina__btn--secondary" href="https://kad.arbitr.ru/Card/318f223a-6f25-49d2-bbbe-aa336f2707d3" target="_blank" rel="noopener noreferrer">
+      Карточка дела № А52-4405/2025 (КАД Арбитр)
+    </a>
+  </div>
+</section>
 
   <br><br>
 
